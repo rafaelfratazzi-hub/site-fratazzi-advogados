@@ -3,402 +3,323 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Fratazzi Advogados Associados - Especialistas em Advocacia Tributária, Bancária, Redução de Dívidas e Planejamento Fiscal">
+    <meta name="description" content="Fratazzi Advogados - Especialistas em Advocacia Tributária, Bancária, Redução de Dívidas e Planejamento Fiscal">
     <title>Serviços - Fratazzi Advogados Associados</title>
-    <link rel="stylesheet" href="css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: { gold: { 400: '#d4b87a', 500: '#c9a961', 600: '#a68b4f' }, navy: { 900: '#0f1419', 950: '#0a0e12' } },
+                    fontFamily: { serif: ['Playfair Display', 'serif'], sans: ['Inter', 'sans-serif'] }
+                }
+            }
+        }
+    </script>
+    <style>
+        ::-webkit-scrollbar { width: 0px; }
+        @keyframes fadeSlideIn { 0% { opacity: 0; transform: translateY(30px); filter: blur(8px); } 100% { opacity: 1; transform: translateY(0); filter: blur(0px); } }
+        .animate-on-scroll { animation-play-state: paused !important; }
+        .animate-on-scroll.animate { animation-play-state: running !important; }
+        @keyframes beam-fall { 0% { transform: translateY(-100%); opacity: 0; } 5% { opacity: 0.5; } 50% { opacity: 1; } 95% { opacity: 0.5; } 100% { transform: translateY(120vh); opacity: 0; } }
+        .animate-beam-1 { animation: beam-fall 6s linear infinite; }
+        .animate-beam-2 { animation: beam-fall 8s linear infinite; animation-delay: 2s; }
+        .animate-beam-3 { animation: beam-fall 7s linear infinite; animation-delay: 4s; }
+        .whatsapp-btn { background: #25d366 !important; }
+        .whatsapp-btn:hover { background: #128c7e !important; filter: brightness(1.05); }
+        .servico-card { background: rgba(255,255,255,0.05); border-radius: 16px; border: 1px solid rgba(255,255,255,0.1); backdrop-filter: blur(12px); padding: 1.5rem; transition: all 0.3s ease; }
+        .servico-card:hover { background: rgba(255,255,255,0.08); border-color: rgba(201,169,97,0.3); }
+        .servico-card h3 { font-family: 'Playfair Display', serif; font-size: 1.125rem; font-weight: 600; color: #c9a961; margin-bottom: 0.5rem; }
+        .servico-card p { color: rgba(255,255,255,0.65); font-size: 0.9375rem; line-height: 1.6; }
+        .servico-section { background: rgba(255,255,255,0.03); border-radius: 20px; border: 1px solid rgba(255,255,255,0.08); padding: 2.5rem; margin-bottom: 2rem; }
+        .servico-section-alt { background: rgba(255,255,255,0.02); }
+        @media (max-width: 767px) {
+            .nav-menu { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; background: rgba(10,14,18,0.98); backdrop-filter: blur(12px); padding: 1rem; gap: 0.5rem; border-bottom: 1px solid rgba(255,255,255,0.1); }
+            .nav-menu.active { display: flex !important; }
+            .nav-menu li { width: 100%; }
+            .nav-menu .nav-link { display: block; padding: 0.75rem 1rem; }
+        }
+    </style>
+    <script>
+        (function(){const once=true;if(!window.__inViewIO){window.__inViewIO=new IntersectionObserver((entries)=>{entries.forEach((entry)=>{if(entry.isIntersecting){entry.target.classList.add("animate");if(once)window.__inViewIO.unobserve(entry.target)}})},{threshold:0.15,rootMargin:"0px 0px -10% 0px"})}window.initInViewAnimations=function(selector=".animate-on-scroll"){document.querySelectorAll(selector).forEach((el)=>{window.__inViewIO.observe(el)})};document.addEventListener("DOMContentLoaded",()=>initInViewAnimations())})();
+    </script>
     <!-- Meta Pixel Code -->
     <script>
-    !function(f,b,e,v,n,t,s)
-    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-    n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];
-    s.parentNode.insertBefore(t,s)}(window, document,'script',
-    'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '1591877872052675');
-    fbq('track', 'PageView');
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','1591877872052675');fbq('track','PageView');
     </script>
-    <noscript><img height="1" width="1" style="display:none"
-    src="https://www.facebook.com/tr?id=1591877872052675&ev=PageView&noscript=1"
-    /></noscript>
+    <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1591877872052675&ev=PageView&noscript=1"/></noscript>
     <!-- End Meta Pixel Code -->
 </head>
-<body>
-    <!-- Header / Navigation -->
-    <header class="header">
-        <nav class="navbar">
-            <div class="container">
-                <div class="nav-wrapper">
-                    <div class="logo">
-                        <a href="index.html">
-                            <svg class="logo-svg" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
-                                <defs>
-                                    <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                                        <stop offset="0%" style="stop-color:#c9a961;stop-opacity:1" />
-                                        <stop offset="50%" style="stop-color:#d4b87a;stop-opacity:1" />
-                                        <stop offset="100%" style="stop-color:#a68b4f;stop-opacity:1" />
-                                    </linearGradient>
-                                </defs>
-                                <rect x="8" y="8" width="8" height="44" rx="2" fill="url(#goldGradient)"/>
-                                <rect x="8" y="8" width="28" height="8" rx="2" fill="url(#goldGradient)"/>
-                                <rect x="8" y="26" width="20" height="8" rx="2" fill="url(#goldGradient)"/>
-                            </svg>
-                            <div class="logo-text-container">
-                                <span class="logo-text">FRATAZZI</span>
-                                <span class="logo-accent">ADVOGADOS ASSOCIADOS</span>
-                            </div>
-                        </a>
-                    </div>
-                    <button class="menu-toggle" id="menuToggle" aria-label="Menu">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </button>
-                    <ul class="nav-menu" id="navMenu">
-                        <li><a href="index.html">Início</a></li>
-                        <li><a href="servicos.html" class="active">Serviços</a></li>
-                        <li><a href="blog.html">Blog</a></li>
-                        <li><a href="index.html#sobre">Sobre</a></li>
-                        <li><a href="index.html#diferenciais">Diferenciais</a></li>
-                        <li><a href="index.html#avaliacoes">Avaliações</a></li>
-                        <li><a href="index.html#contato">Contato</a></li>
-                    </ul>
+<body class="bg-[#0a0e12] text-white font-sans antialiased overflow-x-hidden selection:bg-gold-500/30 flex flex-col min-h-screen" style="font-family: 'Inter', sans-serif;">
+    <div class="fixed z-0 top-0 right-0 bottom-0 left-0">
+        <div class="w-full h-full bg-gradient-to-br from-[#1a2332] via-[#0f1419] to-[#0a0e12]"></div>
+        <div class="absolute inset-0 bg-gradient-to-b from-[#0a0e12]/90 via-[#0a0e12]/60 to-[#0a0e12]"></div>
+        <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-gold-600/10 via-[#0a0e12]/0 to-[#0a0e12]/0"></div>
+    </div>
+    <div class="fixed inset-0 z-0 pointer-events-none flex w-full max-w-7xl mx-auto">
+        <div class="flex-1 border-l border-white/5 h-full relative overflow-hidden"><div class="absolute top-0 -left-[1px] w-[1px] h-64 bg-gradient-to-b from-transparent via-gold-500/60 to-transparent animate-beam-1"></div></div>
+        <div class="flex-1 border-l border-white/5 h-full relative overflow-hidden"><div class="absolute top-0 -left-[1px] w-[1px] h-96 bg-gradient-to-b from-transparent via-gold-500/80 to-transparent animate-beam-2"></div></div>
+        <div class="flex-1 border-l border-white/5 h-full relative overflow-hidden"><div class="absolute top-0 -left-[1px] w-[1px] h-64 bg-gradient-to-b from-transparent via-gold-500 to-transparent animate-beam-1" style="animation-delay: 1.5s;"></div></div>
+        <div class="flex-1 border-l border-white/5 h-full relative overflow-hidden"><div class="absolute top-0 -left-[1px] w-[1px] h-48 bg-gradient-to-b from-transparent via-gold-500/60 to-transparent animate-beam-3"></div></div>
+        <div class="flex-1 border-l border-white/5 h-full"></div>
+    </div>
+
+    <div class="flex-1 flex flex-col w-full max-w-7xl mx-auto relative">
+        <nav class="flex justify-between items-center py-8 px-6 md:px-10 sticky top-0 z-50 bg-[#0a0e12]/80 backdrop-blur-md border-b border-white/5">
+            <a href="index.html" class="flex items-center gap-3 group cursor-pointer">
+                <div class="flex bg-gradient-to-tr from-gold-500 to-gold-400 w-10 h-10 rounded-full items-center justify-center">
+                    <svg viewBox="0 0 60 60" class="w-6 h-6" xmlns="http://www.w3.org/2000/svg">
+                        <defs><linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#c9a961"/><stop offset="50%" style="stop-color:#d4b87a"/><stop offset="100%" style="stop-color:#a68b4f"/></linearGradient></defs>
+                        <rect x="8" y="8" width="8" height="44" rx="2" fill="url(#goldGrad)"/><rect x="8" y="8" width="28" height="8" rx="2" fill="url(#goldGrad)"/><rect x="8" y="26" width="20" height="8" rx="2" fill="url(#goldGrad)"/>
+                    </svg>
                 </div>
-            </div>
+                <div class="flex flex-col">
+                    <span class="text-lg font-semibold tracking-tight text-gold-400" style="font-family: 'Playfair Display', serif;">FRATAZZI</span>
+                    <span class="text-xs tracking-widest text-white/70">ADVOGADOS ASSOCIADOS</span>
+                </div>
+            </a>
+            <ul id="navMenu" class="nav-menu hidden md:flex items-center gap-6 list-none m-0 p-0">
+                <li><a class="nav-link text-xs font-medium tracking-widest uppercase hover:text-gold-400 transition-colors text-neutral-400" href="index.html">Início</a></li>
+                <li><a class="nav-link text-xs font-medium tracking-widest uppercase text-gold-400" href="servicos.html">Serviços</a></li>
+                <li><a class="nav-link text-xs font-medium tracking-widest uppercase hover:text-gold-400 transition-colors text-neutral-400" href="blog.html">Blog</a></li>
+                <li><a class="nav-link text-xs font-medium tracking-widest uppercase hover:text-gold-400 transition-colors text-neutral-400" href="index.html#sobre">Sobre</a></li>
+                <li><a class="nav-link text-xs font-medium tracking-widest uppercase hover:text-gold-400 transition-colors text-neutral-400" href="index.html#diferenciais">Diferenciais</a></li>
+                <li><a class="nav-link text-xs font-medium tracking-widest uppercase hover:text-gold-400 transition-colors text-neutral-400" href="index.html#avaliacoes">Avaliações</a></li>
+                <li><a class="nav-link text-xs font-medium tracking-widest uppercase hover:text-gold-400 transition-colors text-neutral-400" href="index.html#contato">Contato</a></li>
+            </ul>
+            <button class="md:hidden p-2 text-white" id="menuToggle" aria-label="Menu">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+            </button>
         </nav>
-    </header>
 
-    <!-- Hero Section Serviços -->
-    <section class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <h1 class="hero-title">Nossas Áreas de Atuação</h1>
-                <p class="hero-subtitle">Soluções jurídicas especializadas para proteger seus direitos e otimizar seus resultados</p>
+        <section class="pt-24 pb-16 px-6 md:px-10 animate-on-scroll" style="animation: fadeSlideIn 1s cubic-bezier(0.2,0.8,0.2,1) 0.1s both;">
+            <div class="inline-flex items-center gap-2 text-gold-500 mb-8">
+                <span class="flex h-2 w-2 rounded-full bg-gold-500"></span>
+                <span class="text-xs font-bold tracking-widest uppercase text-gold-500/80">O que fazemos</span>
             </div>
+            <h1 class="text-5xl md:text-6xl lg:text-7xl leading-[0.95] tracking-tighter text-white font-medium mb-6" style="font-family: 'Playfair Display', serif;">
+                Nossas Áreas
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-gold-400 via-gold-300 to-gold-600"> de Atuação</span>
+            </h1>
+            <p class="leading-relaxed text-lg font-medium text-white/60 max-w-2xl">
+                Soluções jurídicas especializadas para proteger seus direitos e otimizar seus resultados
+            </p>
+        </section>
+
+        <div class="px-6 md:px-10 pb-24 space-y-4">
+            <!-- Advocacia Tributária -->
+            <section id="tributaria" class="servico-section animate-on-scroll" style="animation: fadeSlideIn 1s cubic-bezier(0.2,0.8,0.2,1) 0.15s both;">
+                <div class="flex items-center gap-3 mb-6">
+                    <div class="w-12 h-12 rounded-xl bg-gold-500/20 flex items-center justify-center text-gold-400">
+                        <i data-lucide="trending-up" class="w-6 h-6"></i>
+                    </div>
+                    <h2 class="text-2xl md:text-3xl font-semibold text-white" style="font-family: 'Playfair Display', serif;">Advocacia Tributária</h2>
+                </div>
+                <p class="text-white/70 mb-8 max-w-3xl">Atuação especializada na defesa de interesses fiscais. Nossa equipe trabalha na defesa de interesses fiscais, buscando que o contribuinte pague apenas o que é devido, conforme a legislação vigente.</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <div class="servico-card">
+                        <h3>Defesa em Execuções Fiscais</h3>
+                        <p>Atuamos na defesa contra cobranças indevidas da Receita Federal, Estadual e Municipal. Buscamos a suspensão de processos executivos e a negociação de condições adequadas, quando aplicável.</p>
+                    </div>
+                    <div class="servico-card">
+                        <h3>Consultoria Tributária Preventiva</h3>
+                        <p>Análise detalhada da sua situação fiscal para identificar oportunidades de economia legal e evitar problemas futuros com o Fisco.</p>
+                    </div>
+                    <div class="servico-card">
+                        <h3>Recursos Administrativos e Judiciais</h3>
+                        <p>Preparamos e protocolamos recursos estratégicos para contestar autuações fiscais, buscando a defesa dos direitos do contribuinte em todas as instâncias.</p>
+                    </div>
+                    <div class="servico-card">
+                        <h3>Recuperação de Créditos Tributários</h3>
+                        <p>Identificamos e recuperamos valores pagos indevidamente aos cofres públicos, devolvendo recursos que são de direito do contribuinte.</p>
+                    </div>
+                </div>
+                <div class="flex flex-wrap gap-3 mt-8">
+                    <a href="https://wa.me/5511945617464?text=Olá,%20vim%20pelo%20site%20e%20gostaria%20de%20mais%20informações." class="inline-flex items-center gap-2 px-6 py-3 rounded-full whatsapp-btn text-white font-medium text-sm" target="_blank" rel="noopener noreferrer">Falar com Especialista</a>
+                    <a href="index.html#contato" class="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-gold-500/50 text-gold-400 font-medium text-sm hover:bg-gold-500/10 transition-colors">Solicitar Consulta</a>
+                </div>
+            </section>
+
+            <!-- Advocacia Bancária -->
+            <section id="bancaria" class="servico-section servico-section-alt animate-on-scroll" style="animation: fadeSlideIn 1s cubic-bezier(0.2,0.8,0.2,1) 0.2s both;">
+                <div class="flex items-center gap-3 mb-6">
+                    <div class="w-12 h-12 rounded-xl bg-gold-500/20 flex items-center justify-center text-gold-400">
+                        <i data-lucide="landmark" class="w-6 h-6"></i>
+                    </div>
+                    <h2 class="text-2xl md:text-3xl font-semibold text-white" style="font-family: 'Playfair Display', serif;">Advocacia Bancária</h2>
+                </div>
+                <p class="text-white/70 mb-8 max-w-3xl">Atuação na defesa de direitos bancários. Atuamos na defesa de consumidores e empresas contra práticas abusivas do sistema financeiro, buscando a proteção dos direitos e a reparação de danos quando aplicável.</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <div class="servico-card">
+                        <h3>Revisão de Contratos Bancários</h3>
+                        <p>Análise detalhada de contratos para identificar cláusulas abusivas, juros excessivos e condições ilegais. Recuperamos valores pagos indevidamente.</p>
+                    </div>
+                    <div class="servico-card">
+                        <h3>Defesa em Cobranças Indevidas</h3>
+                        <p>Atuamos contra cobranças abusivas, tarifas indevidas e juros ilegais. Buscamos a suspensão de processos e a revisão de valores quando aplicável, conforme a legislação vigente.</p>
+                    </div>
+                    <div class="servico-card">
+                        <h3>Negociação de Dívidas Bancárias</h3>
+                        <p>Estratégias eficazes para renegociar dívidas com condições favoráveis, incluindo redução de juros, parcelamento e quitação com desconto.</p>
+                    </div>
+                    <div class="servico-card">
+                        <h3>Ações contra Práticas Abusivas</h3>
+                        <p>Processos judiciais para combater cobrança indevida, inclusão indevida em cadastros de inadimplência e outras violações do CDC.</p>
+                    </div>
+                </div>
+                <div class="flex flex-wrap gap-3 mt-8">
+                    <a href="https://wa.me/5511945617464?text=Olá,%20vim%20pelo%20site%20e%20gostaria%20de%20mais%20informações." class="inline-flex items-center gap-2 px-6 py-3 rounded-full whatsapp-btn text-white font-medium text-sm" target="_blank" rel="noopener noreferrer">Falar com Especialista</a>
+                    <a href="index.html#contato" class="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-gold-500/50 text-gold-400 font-medium text-sm hover:bg-gold-500/10 transition-colors">Solicitar Consulta</a>
+                </div>
+            </section>
+
+            <!-- Redução de Dívidas -->
+            <section id="reducao-dividas" class="servico-section animate-on-scroll" style="animation: fadeSlideIn 1s cubic-bezier(0.2,0.8,0.2,1) 0.25s both;">
+                <div class="flex items-center gap-3 mb-6">
+                    <div class="w-12 h-12 rounded-xl bg-gold-500/20 flex items-center justify-center text-gold-400">
+                        <i data-lucide="credit-card" class="w-6 h-6"></i>
+                    </div>
+                    <h2 class="text-2xl md:text-3xl font-semibold text-white" style="font-family: 'Playfair Display', serif;">Redução de Dívidas</h2>
+                </div>
+                <p class="text-white/70 mb-8 max-w-3xl">Atuação na redução e renegociação de dívidas. Nossa equipe especializada atua na negociação com credores para buscar condições adequadas, incluindo possibilidade de descontos e parcelamentos, quando aplicável.</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <div class="servico-card">
+                        <h3>Negociação Direta com Credores</h3>
+                        <p>Atuamos como intermediários qualificados para negociar diretamente com bancos, financeiras e empresas, buscando condições adequadas para cada situação.</p>
+                    </div>
+                    <div class="servico-card">
+                        <h3>Revisão e Redução de Juros</h3>
+                        <p>Analisamos contratos e processos para identificar juros abusivos e ilegais, buscando reduções através de ações judiciais ou negociações extrajudiciais, quando aplicável.</p>
+                    </div>
+                    <div class="servico-card">
+                        <h3>Planejamento de Quitação</h3>
+                        <p>Desenvolvemos estratégias personalizadas para quitar dívidas de forma organizada, priorizando as mais urgentes e negociando condições favoráveis.</p>
+                    </div>
+                    <div class="servico-card">
+                        <h3>Proteção contra Cobranças Abusivas</h3>
+                        <p>Atuamos na defesa contra práticas ilegais de cobrança, incluindo ligações excessivas, ameaças e constrangimentos, buscando a proteção dos direitos do consumidor.</p>
+                    </div>
+                </div>
+                <div class="flex flex-wrap gap-3 mt-8">
+                    <a href="https://wa.me/5511945617464?text=Olá,%20vim%20pelo%20site%20e%20gostaria%20de%20mais%20informações." class="inline-flex items-center gap-2 px-6 py-3 rounded-full whatsapp-btn text-white font-medium text-sm" target="_blank" rel="noopener noreferrer">Falar com Especialista</a>
+                    <a href="index.html#contato" class="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-gold-500/50 text-gold-400 font-medium text-sm hover:bg-gold-500/10 transition-colors">Solicitar Consulta</a>
+                </div>
+            </section>
+
+            <!-- Impostos e Restituições -->
+            <section id="impostos-restituicoes" class="servico-section servico-section-alt animate-on-scroll" style="animation: fadeSlideIn 1s cubic-bezier(0.2,0.8,0.2,1) 0.3s both;">
+                <div class="flex items-center gap-3 mb-6">
+                    <div class="w-12 h-12 rounded-xl bg-gold-500/20 flex items-center justify-center text-gold-400">
+                        <i data-lucide="receipt" class="w-6 h-6"></i>
+                    </div>
+                    <h2 class="text-2xl md:text-3xl font-semibold text-white" style="font-family: 'Playfair Display', serif;">Impostos e Restituições</h2>
+                </div>
+                <p class="text-white/70 mb-8 max-w-3xl">Atuação na recuperação de valores e otimização de declarações. Nossa equipe trabalha na identificação de valores pagos indevidamente e na preparação de declarações de imposto de renda, buscando que o contribuinte receba as restituições a que tem direito e pague apenas o imposto devido.</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <div class="servico-card">
+                        <h3>Restituição de IRPF e IRPJ</h3>
+                        <p>Identificamos e trabalhamos na recuperação de valores retidos indevidamente na fonte, buscando que o contribuinte receba as restituições do Imposto de Renda a que tem direito.</p>
+                    </div>
+                    <div class="servico-card">
+                        <h3>Declaração de Ajuste Anual</h3>
+                        <p>Preparação completa e otimizada da declaração de imposto de renda, buscando maximizar deduções legais e garantir conformidade com a legislação vigente.</p>
+                    </div>
+                    <div class="servico-card">
+                        <h3>Recuperação de Impostos Pagos Indevidamente</h3>
+                        <p>Análise detalhada para identificar pagamentos indevidos de impostos federais, estaduais e municipais, com recuperação efetiva dos valores.</p>
+                    </div>
+                    <div class="servico-card">
+                        <h3>Consultoria em Obrigações Acessórias</h3>
+                        <p>Orientamos sobre as obrigações fiscais da empresa, buscando evitar multas e garantir o cumprimento correto das exigências legais.</p>
+                    </div>
+                </div>
+                <div class="flex flex-wrap gap-3 mt-8">
+                    <a href="https://wa.me/5511945617464?text=Olá,%20vim%20pelo%20site%20e%20gostaria%20de%20mais%20informações." class="inline-flex items-center gap-2 px-6 py-3 rounded-full whatsapp-btn text-white font-medium text-sm" target="_blank" rel="noopener noreferrer">Falar com Especialista</a>
+                    <a href="index.html#contato" class="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-gold-500/50 text-gold-400 font-medium text-sm hover:bg-gold-500/10 transition-colors">Solicitar Consulta</a>
+                </div>
+            </section>
+
+            <!-- Planejamento Tributário -->
+            <section id="planejamento-tributario" class="servico-section animate-on-scroll" style="animation: fadeSlideIn 1s cubic-bezier(0.2,0.8,0.2,1) 0.35s both;">
+                <div class="flex items-center gap-3 mb-6">
+                    <div class="w-12 h-12 rounded-xl bg-gold-500/20 flex items-center justify-center text-gold-400">
+                        <i data-lucide="bar-chart-3" class="w-6 h-6"></i>
+                    </div>
+                    <h2 class="text-2xl md:text-3xl font-semibold text-white" style="font-family: 'Playfair Display', serif;">Planejamento Tributário</h2>
+                </div>
+                <p class="text-white/70 mb-8 max-w-3xl">Planejamento tributário dentro da legalidade. Desenvolvemos planejamentos fiscais personalizados que buscam reduzir a carga tributária dentro da legalidade, conforme a legislação vigente.</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <div class="servico-card">
+                        <h3>Análise de Regimes Tributários</h3>
+                        <p>Analisamos o regime tributário mais adequado para a empresa (Simples Nacional, Lucro Presumido ou Real), buscando economia legal e sustentável.</p>
+                    </div>
+                    <div class="servico-card">
+                        <h3>Estruturação Societária</h3>
+                        <p>Otimizamos a estrutura jurídica da sua empresa para reduzir a carga tributária, incluindo análise de holding, fusões e reorganizações societárias.</p>
+                    </div>
+                    <div class="servico-card">
+                        <h3>Planejamento de Operações</h3>
+                        <p>Desenvolvemos estratégias para operações específicas, buscando estruturar cada transação da forma mais eficiente do ponto de vista tributário.</p>
+                    </div>
+                    <div class="servico-card">
+                        <h3>Compliance e Regularização</h3>
+                        <p>Trabalhamos para que a empresa esteja em conformidade com a legislação fiscal, buscando evitar autuações e multas desnecessárias.</p>
+                    </div>
+                </div>
+                <div class="flex flex-wrap gap-3 mt-8">
+                    <a href="https://wa.me/5511945617464?text=Olá,%20vim%20pelo%20site%20e%20gostaria%20de%20mais%20informações." class="inline-flex items-center gap-2 px-6 py-3 rounded-full whatsapp-btn text-white font-medium text-sm" target="_blank" rel="noopener noreferrer">Falar com Especialista</a>
+                    <a href="index.html#contato" class="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-gold-500/50 text-gold-400 font-medium text-sm hover:bg-gold-500/10 transition-colors">Solicitar Consulta</a>
+                </div>
+            </section>
+
+            <!-- CTA Final -->
+            <section class="servico-section text-center animate-on-scroll" style="animation: fadeSlideIn 1s cubic-bezier(0.2,0.8,0.2,1) 0.4s both;">
+                <h2 class="text-2xl md:text-3xl font-semibold text-white mb-4" style="font-family: 'Playfair Display', serif;">Entre em Contato</h2>
+                <p class="text-white/70 mb-8 max-w-xl mx-auto">Nossa equipe está disponível para analisar seu caso e oferecer orientação jurídica especializada. Entre em contato para agendar uma consulta.</p>
+                <div class="flex flex-wrap justify-center gap-4">
+                    <a href="https://wa.me/5511945617464?text=Olá,%20vim%20pelo%20site%20e%20gostaria%20de%20mais%20informações." class="inline-flex items-center gap-2 px-6 py-3 rounded-full whatsapp-btn text-white font-medium" target="_blank" rel="noopener noreferrer">Falar no WhatsApp</a>
+                    <a href="index.html#contato" class="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-gold-500/50 text-gold-400 font-medium hover:bg-gold-500/10 transition-colors">Ver Contatos</a>
+                </div>
+            </section>
         </div>
-    </section>
 
-    <!-- Advocacia Tributária -->
-    <section class="servico-detalhado" id="tributaria">
-        <div class="container">
-            <div class="servico-detalhado-content">
-                <div class="servico-detalhado-header">
-                    <div class="servico-detalhado-icon">
-                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M3 3V21H21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M7 16L12 11L16 15L21 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M21 10V3H14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </div>
-                    <h2 class="section-title">Advocacia Tributária</h2>
+        <footer id="contato" class="w-full max-w-7xl mx-auto px-6 md:px-10 py-24 border-t border-white/5">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+                <div>
+                    <h3 class="text-lg font-semibold text-white mb-4" style="font-family: 'Playfair Display', serif;">Contato</h3>
+                    <p class="text-sm text-white/60 mb-2"><strong class="text-white">Endereço:</strong></p>
+                    <p class="text-sm text-white/60 mb-4">R. Otávio Forghieri, 72 - Sala 63 - Centro<br>Guarulhos - SP, 07090-070</p>
+                    <p class="text-sm text-white/60 mb-2"><strong class="text-white">Telefone:</strong> <a href="https://wa.me/5511945617464" class="text-gold-400 hover:text-gold-300 transition-colors" target="_blank" rel="noopener noreferrer">(11) 94561-7464</a></p>
+                    <p class="text-sm text-white/60"><strong class="text-white">E-mail:</strong> <a href="mailto:rafael@fratazziadvogados.com.br" class="text-gold-400 hover:text-gold-300 transition-colors">rafael@fratazziadvogados.com.br</a></p>
                 </div>
-                <div class="servico-detalhado-body">
-                    <p class="servico-detalhado-intro">
-                        <strong>Atuação especializada na defesa de interesses fiscais.</strong> Nossa equipe trabalha na defesa de interesses fiscais, buscando que o contribuinte pague apenas o que é devido, conforme a legislação vigente.
-                    </p>
-                    <div class="servico-detalhado-grid">
-                        <div class="servico-detalhado-item">
-                            <h3>Defesa em Execuções Fiscais</h3>
-                            <p>Atuamos na defesa contra cobranças indevidas da Receita Federal, Estadual e Municipal. Buscamos a suspensão de processos executivos e a negociação de condições adequadas, quando aplicável.</p>
-                        </div>
-                        <div class="servico-detalhado-item">
-                            <h3>Consultoria Tributária Preventiva</h3>
-                            <p>Análise detalhada da sua situação fiscal para identificar oportunidades de economia legal e evitar problemas futuros com o Fisco.</p>
-                        </div>
-                        <div class="servico-detalhado-item">
-                            <h3>Recursos Administrativos e Judiciais</h3>
-                            <p>Preparamos e protocolamos recursos estratégicos para contestar autuações fiscais, buscando a defesa dos direitos do contribuinte em todas as instâncias.</p>
-                        </div>
-                        <div class="servico-detalhado-item">
-                            <h3>Recuperação de Créditos Tributários</h3>
-                            <p>Identificamos e recuperamos valores pagos indevidamente aos cofres públicos, devolvendo recursos que são de direito do contribuinte.</p>
-                        </div>
-                    </div>
-                    <div class="servico-cta">
-                        <a href="https://wa.me/5511945617464?text=Olá,%20vim%20pelo%20site%20e%20gostaria%20de%20mais%20informações." class="btn btn-whatsapp" target="_blank" rel="noopener noreferrer" aria-label="Falar no WhatsApp">
-                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
-                            </svg>
-                            Falar com Especialista
-                        </a>
-                        <a href="index.html#contato" class="btn btn-primary">Solicitar Consulta</a>
+                <div>
+                    <h3 class="text-lg font-semibold text-white mb-4" style="font-family: 'Playfair Display', serif;">Horário de Atendimento</h3>
+                    <p class="text-sm text-white/60 mb-2">Segunda a Sexta: 09:00 às 18:00</p>
+                    <p class="text-sm text-white/60 mb-2">Sábado: Fechado</p>
+                    <p class="text-sm text-white/60">Domingo e Feriados: Fechado</p>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold text-white mb-4" style="font-family: 'Playfair Display', serif;">Localização</h3>
+                    <div class="rounded-xl overflow-hidden border border-white/10 aspect-video">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3658.5!2d-46.5333!3d-23.4533!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94cef7c8c8c8c8c8%3A0x8c8c8c8c8c8c8c8!2sR.%20Ot%C3%A1vio%20Forghieri%2C%2072%20-%20Sala%2063%20-%20Centro%2C%20Guarulhos%20-%20SP%2C%2007090-070!5e0!3m2!1spt-BR!2sbr!4v1234567890" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- Advocacia Bancária -->
-    <section class="servico-detalhado servico-detalhado-alt" id="bancaria">
-        <div class="container">
-            <div class="servico-detalhado-content">
-                <div class="servico-detalhado-header">
-                    <div class="servico-detalhado-icon">
-                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M3 9L12 2L21 9V20C21 20.5304 20.7893 21.0391 20.4142 21.4142C20.0391 21.7893 19.5304 22 19 22H5C4.46957 22 3.96086 21.7893 3.58579 21.4142C3.21071 21.0391 3 20.5304 3 20V9Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M9 22V12H15V22" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </div>
-                    <h2 class="section-title">Advocacia Bancária</h2>
-                </div>
-                <div class="servico-detalhado-body">
-                    <p class="servico-detalhado-intro">
-                        <strong>Atuação na defesa de direitos bancários.</strong> Atuamos na defesa de consumidores e empresas contra práticas abusivas do sistema financeiro, buscando a proteção dos direitos e a reparação de danos quando aplicável.
-                    </p>
-                    <div class="servico-detalhado-grid">
-                        <div class="servico-detalhado-item">
-                            <h3>Revisão de Contratos Bancários</h3>
-                            <p>Análise detalhada de contratos para identificar cláusulas abusivas, juros excessivos e condições ilegais. Recuperamos valores pagos indevidamente.</p>
-                        </div>
-                        <div class="servico-detalhado-item">
-                            <h3>Defesa em Cobranças Indevidas</h3>
-                            <p>Atuamos contra cobranças abusivas, tarifas indevidas e juros ilegais. Buscamos a suspensão de processos e a revisão de valores quando aplicável, conforme a legislação vigente.</p>
-                        </div>
-                        <div class="servico-detalhado-item">
-                            <h3>Negociação de Dívidas Bancárias</h3>
-                            <p>Estratégias eficazes para renegociar dívidas com condições favoráveis, incluindo redução de juros, parcelamento e quitação com desconto.</p>
-                        </div>
-                        <div class="servico-detalhado-item">
-                            <h3>Ações contra Práticas Abusivas</h3>
-                            <p>Processos judiciais para combater cobrança indevida, inclusão indevida em cadastros de inadimplência e outras violações do CDC.</p>
-                        </div>
-                    </div>
-                    <div class="servico-cta">
-                        <a href="https://wa.me/5511945617464?text=Olá,%20vim%20pelo%20site%20e%20gostaria%20de%20mais%20informações." class="btn btn-whatsapp" target="_blank" rel="noopener noreferrer" aria-label="Falar no WhatsApp">
-                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
-                            </svg>
-                            Falar com Especialista
-                        </a>
-                        <a href="index.html#contato" class="btn btn-primary">Solicitar Consulta</a>
-                    </div>
-                </div>
+            <div class="mt-16 pt-8 border-t border-white/5 text-center">
+                <p class="text-sm text-white/40">&copy; 2018 Fratazzi Advogados Associados. Todos os direitos reservados.</p>
             </div>
-        </div>
-    </section>
+        </footer>
+    </div>
 
-    <!-- Redução de Dívidas -->
-    <section class="servico-detalhado" id="reducao-dividas">
-        <div class="container">
-            <div class="servico-detalhado-content">
-                <div class="servico-detalhado-header">
-                    <div class="servico-detalhado-icon">
-                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <rect x="1" y="4" width="22" height="16" rx="2" ry="2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            <line x1="1" y1="10" x2="23" y2="10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </div>
-                    <h2 class="section-title">Redução de Dívidas</h2>
-                </div>
-                <div class="servico-detalhado-body">
-                    <p class="servico-detalhado-intro">
-                        <strong>Atuação na redução e renegociação de dívidas.</strong> Nossa equipe especializada atua na negociação com credores para buscar condições adequadas, incluindo possibilidade de descontos e parcelamentos, quando aplicável.
-                    </p>
-                    <div class="servico-detalhado-grid">
-                        <div class="servico-detalhado-item">
-                            <h3>Negociação Direta com Credores</h3>
-                            <p>Atuamos como intermediários qualificados para negociar diretamente com bancos, financeiras e empresas, buscando condições adequadas para cada situação.</p>
-                        </div>
-                        <div class="servico-detalhado-item">
-                            <h3>Revisão e Redução de Juros</h3>
-                            <p>Analisamos contratos e processos para identificar juros abusivos e ilegais, buscando reduções através de ações judiciais ou negociações extrajudiciais, quando aplicável.</p>
-                        </div>
-                        <div class="servico-detalhado-item">
-                            <h3>Planejamento de Quitação</h3>
-                            <p>Desenvolvemos estratégias personalizadas para quitar dívidas de forma organizada, priorizando as mais urgentes e negociando condições favoráveis.</p>
-                        </div>
-                        <div class="servico-detalhado-item">
-                            <h3>Proteção contra Cobranças Abusivas</h3>
-                            <p>Atuamos na defesa contra práticas ilegais de cobrança, incluindo ligações excessivas, ameaças e constrangimentos, buscando a proteção dos direitos do consumidor.</p>
-                        </div>
-                    </div>
-                    <div class="servico-cta">
-                        <a href="https://wa.me/5511945617464?text=Olá,%20vim%20pelo%20site%20e%20gostaria%20de%20mais%20informações." class="btn btn-whatsapp" target="_blank" rel="noopener noreferrer" aria-label="Falar no WhatsApp">
-                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
-                            </svg>
-                            Falar com Especialista
-                        </a>
-                        <a href="index.html#contato" class="btn btn-primary">Solicitar Consulta</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Impostos e Restituições -->
-    <section class="servico-detalhado servico-detalhado-alt" id="impostos-restituicoes">
-        <div class="container">
-            <div class="servico-detalhado-content">
-                <div class="servico-detalhado-header">
-                    <div class="servico-detalhado-icon">
-                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <line x1="12" y1="1" x2="12" y2="23" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M17 5H9.5C8.57174 5 7.6815 5.36875 7.02513 6.02513C6.36875 6.6815 6 7.57174 6 8.5C6 9.42826 6.36875 10.3185 7.02513 10.9749C7.6815 11.6313 8.57174 12 9.5 12H14.5C15.4283 12 16.3185 12.3687 16.9749 13.0251C17.6313 13.6815 18 14.5717 18 15.5C18 16.4283 17.6313 17.3185 16.9749 17.9749C16.3185 18.6313 15.4283 19 14.5 19H6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </div>
-                    <h2 class="section-title">Impostos e Restituições</h2>
-                </div>
-                <div class="servico-detalhado-body">
-                    <p class="servico-detalhado-intro">
-                        <strong>Atuação na recuperação de valores e otimização de declarações.</strong> Nossa equipe trabalha na identificação de valores pagos indevidamente e na preparação de declarações de imposto de renda, buscando que o contribuinte receba as restituições a que tem direito e pague apenas o imposto devido.
-                    </p>
-                    <div class="servico-detalhado-grid">
-                        <div class="servico-detalhado-item">
-                            <h3>Restituição de IRPF e IRPJ</h3>
-                            <p>Identificamos e trabalhamos na recuperação de valores retidos indevidamente na fonte, buscando que o contribuinte receba as restituições do Imposto de Renda a que tem direito.</p>
-                        </div>
-                        <div class="servico-detalhado-item">
-                            <h3>Declaração de Ajuste Anual</h3>
-                            <p>Preparação completa e otimizada da declaração de imposto de renda, buscando maximizar deduções legais e garantir conformidade com a legislação vigente.</p>
-                        </div>
-                        <div class="servico-detalhado-item">
-                            <h3>Recuperação de Impostos Pagos Indevidamente</h3>
-                            <p>Análise detalhada para identificar pagamentos indevidos de impostos federais, estaduais e municipais, com recuperação efetiva dos valores.</p>
-                        </div>
-                        <div class="servico-detalhado-item">
-                            <h3>Consultoria em Obrigações Acessórias</h3>
-                            <p>Orientamos sobre as obrigações fiscais da empresa, buscando evitar multas e garantir o cumprimento correto das exigências legais.</p>
-                        </div>
-                    </div>
-                    <div class="servico-cta">
-                        <a href="https://wa.me/5511945617464?text=Olá,%20vim%20pelo%20site%20e%20gostaria%20de%20mais%20informações." class="btn btn-whatsapp" target="_blank" rel="noopener noreferrer" aria-label="Falar no WhatsApp">
-                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
-                            </svg>
-                            Falar com Especialista
-                        </a>
-                        <a href="index.html#contato" class="btn btn-primary">Solicitar Consulta</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Planejamento Tributário -->
-    <section class="servico-detalhado" id="planejamento-tributario">
-        <div class="container">
-            <div class="servico-detalhado-content">
-                <div class="servico-detalhado-header">
-                    <div class="servico-detalhado-icon">
-                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M18 20V10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M12 20V4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M6 20V14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </div>
-                    <h2 class="section-title">Planejamento Tributário</h2>
-                </div>
-                <div class="servico-detalhado-body">
-                    <p class="servico-detalhado-intro">
-                        <strong>Planejamento tributário dentro da legalidade.</strong> Desenvolvemos planejamentos fiscais personalizados que buscam reduzir a carga tributária dentro da legalidade, conforme a legislação vigente.
-                    </p>
-                    <div class="servico-detalhado-grid">
-                        <div class="servico-detalhado-item">
-                            <h3>Análise de Regimes Tributários</h3>
-                            <p>Analisamos o regime tributário mais adequado para a empresa (Simples Nacional, Lucro Presumido ou Real), buscando economia legal e sustentável.</p>
-                        </div>
-                        <div class="servico-detalhado-item">
-                            <h3>Estruturação Societária</h3>
-                            <p>Otimizamos a estrutura jurídica da sua empresa para reduzir a carga tributária, incluindo análise de holding, fusões e reorganizações societárias.</p>
-                        </div>
-                        <div class="servico-detalhado-item">
-                            <h3>Planejamento de Operações</h3>
-                            <p>Desenvolvemos estratégias para operações específicas, buscando estruturar cada transação da forma mais eficiente do ponto de vista tributário.</p>
-                        </div>
-                        <div class="servico-detalhado-item">
-                            <h3>Compliance e Regularização</h3>
-                            <p>Trabalhamos para que a empresa esteja em conformidade com a legislação fiscal, buscando evitar autuações e multas desnecessárias.</p>
-                        </div>
-                    </div>
-                    <div class="servico-cta">
-                        <a href="https://wa.me/5511945617464?text=Olá,%20vim%20pelo%20site%20e%20gostaria%20de%20mais%20informações." class="btn btn-whatsapp" target="_blank" rel="noopener noreferrer" aria-label="Falar no WhatsApp">
-                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
-                            </svg>
-                            Falar com Especialista
-                        </a>
-                        <a href="index.html#contato" class="btn btn-primary">Solicitar Consulta</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA Final -->
-    <section class="cta-final">
-        <div class="container">
-            <div class="cta-final-content">
-                <h2>Entre em Contato</h2>
-                <p>Nossa equipe está disponível para analisar seu caso e oferecer orientação jurídica especializada. Entre em contato para agendar uma consulta.</p>
-                <div class="cta-final-buttons">
-                    <a href="https://wa.me/5511945617464?text=Olá,%20vim%20pelo%20site%20e%20gostaria%20de%20mais%20informações." class="btn btn-whatsapp" target="_blank" rel="noopener noreferrer" aria-label="Falar no WhatsApp">
-                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
-                        </svg>
-                        Falar no WhatsApp
-                    </a>
-                    <a href="index.html#contato" class="btn btn-primary">Ver Contatos</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer" id="contato">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>Contato</h3>
-                    <div class="footer-info">
-                        <p><strong>Endereço:</strong></p>
-                        <p>R. Otávio Forghieri, 72 - Sala 63 - Centro<br>Guarulhos - SP, 07090-070</p>
-                        <p><strong>Telefone:</strong> <a href="https://wa.me/5511945617464" target="_blank" rel="noopener noreferrer">(11) 94561-7464</a></p>
-                        <p><strong>E-mail:</strong> <a href="mailto:rafael@fratazziadvogados.com.br" class="email-link">rafael@fratazziadvogados.com.br</a></p>
-                    </div>
-                </div>
-                <div class="footer-section">
-                    <h3>Horário de Atendimento</h3>
-                    <div class="footer-info">
-                        <p>Segunda a Sexta: 09:00 às 18:00</p>
-                        <p>Sábado: Fechado</p>
-                        <p>Domingo: Fechado</p>
-                        <p>Feriados: Fechado</p>
-                    </div>
-                </div>
-                <div class="footer-section footer-map">
-                    <h3>Localização</h3>
-                    <div class="map-container">
-                        <iframe 
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3658.5!2d-46.5333!3d-23.4533!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94cef7c8c8c8c8c8%3A0x8c8c8c8c8c8c8c8!2sR.%20Ot%C3%A1vio%20Forghieri%2C%2072%20-%20Sala%2063%20-%20Centro%2C%20Guarulhos%20-%20SP%2C%2007090-070!5e0!3m2!1spt-BR!2sbr!4v1234567890"
-                            width="100%" 
-                            height="250" 
-                            style="border:0;" 
-                            allowfullscreen="" 
-                            loading="lazy" 
-                            referrerpolicy="no-referrer-when-downgrade">
-                        </iframe>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2018 Fratazzi Advogados Associados. Todos os direitos reservados.</p>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Botão Flutuante WhatsApp -->
-    <a href="https://wa.me/5511945617464?text=Olá,%20vim%20pelo%20site%20e%20gostaria%20de%20mais%20informações." class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Falar no WhatsApp">
-        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="width: 35px; height: 35px; fill: white;">
-            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
-        </svg>
+    <a href="https://wa.me/5511945617464?text=Olá,%20vim%20pelo%20site%20e%20gostaria%20de%20mais%20informações." class="fixed bottom-6 right-6 z-50 w-14 h-14 whatsapp-btn rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+        <svg class="w-7 h-7 text-white" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
     </a>
 
     <script src="js/menu.js"></script>
+    <script>lucide.createIcons({ attrs: { 'stroke-width': 1.5 } });</script>
 </body>
 </html>
-
