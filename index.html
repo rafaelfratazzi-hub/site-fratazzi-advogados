@@ -5,337 +5,388 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Escritório de Advocacia especializado em soluções jurídicas de excelência">
     <title>Escritório de Advocacia - Soluções Jurídicas de Excelência</title>
-    <link rel="stylesheet" href="css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Meta Pixel Code -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
     <script>
-    !function(f,b,e,v,n,t,s)
-    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-    n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];
-    s.parentNode.insertBefore(t,s)}(window, document,'script',
-    'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '1591877872052675');
-    fbq('track', 'PageView');
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        gold: {
+                            400: '#d4b87a',
+                            500: '#c9a961',
+                            600: '#a68b4f',
+                        },
+                        navy: {
+                            900: '#0f1419',
+                            950: '#0a0e12',
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['Playfair Display', 'serif'],
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
     </script>
-    <noscript><img height="1" width="1" style="display:none"
-    src="https://www.facebook.com/tr?id=1591877872052675&ev=PageView&noscript=1"
-    /></noscript>
+    <style>
+        ::-webkit-scrollbar { width: 0px; }
+        /* Gold Button - adapted from design system */
+        .button-custom {
+            cursor: pointer;
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            transition: all 0.25s ease;
+            background: radial-gradient(65.28% 65.28% at 50% 100%, rgba(212, 184, 122, 0.8) 0%, rgba(212, 184, 122, 0) 100%), linear-gradient(0deg, #a68b4f, #a68b4f);
+            border-radius: 9999px;
+            border: none;
+            padding: 10px 24px;
+            min-height: 44px;
+        }
+        .button-custom::before {
+            content: "";
+            position: absolute;
+            inset: 1px;
+            background: linear-gradient(177.95deg, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0) 100%);
+            border-radius: 9999px;
+            transition: all 0.5s ease-in-out;
+            z-index: 0;
+        }
+        .button-custom::after {
+            content: "";
+            position: absolute;
+            inset: 2px;
+            background: radial-gradient(65.28% 65.28% at 50% 100%, rgba(212, 184, 122, 0.8) 0%, rgba(212, 184, 122, 0) 100%), linear-gradient(0deg, #a68b4f, #a68b4f);
+            border-radius: 9999px;
+            transition: all 0.5s ease-in-out;
+            z-index: 0;
+        }
+        .button-custom:hover .inner svg.icon { transform: translateX(2px); }
+        .inner { z-index: 2; gap: 6px; position: relative; width: 100%; color: white; display: inline-flex; align-items: center; justify-content: center; font-size: 0.875rem; font-weight: 500; }
+        .inner svg.icon { width: 16px; height: 16px; transition: transform 0.3s ease; stroke: white; fill: none; }
+        .points_wrapper { overflow: hidden; width: 100%; height: 100%; pointer-events: none; position: absolute; z-index: 1; }
+        .points_wrapper .point { bottom: -10px; position: absolute; animation: floating-points infinite ease-in-out; pointer-events: none; width: 2px; height: 2px; background-color: #fff; border-radius: 9999px; }
+        @keyframes floating-points { 0% { transform: translateY(0); } 85% { opacity: 0; } 100% { transform: translateY(-55px); opacity: 0; } }
+        .points_wrapper .point:nth-child(1) { left: 10%; opacity: 1; animation-duration: 2.35s; animation-delay: 0.2s; }
+        .points_wrapper .point:nth-child(2) { left: 30%; opacity: 0.7; animation-duration: 2.5s; animation-delay: 0.5s; }
+        .points_wrapper .point:nth-child(3) { left: 25%; opacity: 0.8; animation-duration: 2.2s; animation-delay: 0.1s; }
+        .points_wrapper .point:nth-child(4) { left: 44%; opacity: 0.6; animation-duration: 2.05s; }
+        .points_wrapper .point:nth-child(5) { left: 50%; opacity: 1; animation-duration: 1.9s; }
+        .points_wrapper .point:nth-child(6) { left: 75%; opacity: 0.5; animation-duration: 1.5s; animation-delay: 1.5s; }
+        .points_wrapper .point:nth-child(7) { left: 88%; opacity: 0.9; animation-duration: 2.2s; animation-delay: 0.2s; }
+        @keyframes beam-fall {
+            0% { transform: translateY(-100%); opacity: 0; }
+            5% { opacity: 0.5; }
+            50% { opacity: 1; }
+            95% { opacity: 0.5; }
+            100% { transform: translateY(120vh); opacity: 0; }
+        }
+        .animate-beam-1 { animation: beam-fall 6s linear infinite; animation-delay: 0s; }
+        .animate-beam-2 { animation: beam-fall 8s linear infinite; animation-delay: 2s; }
+        .animate-beam-3 { animation: beam-fall 7s linear infinite; animation-delay: 4s; }
+        .card-stack-item {
+            transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.5s ease, z-index 0s;
+        }
+        @keyframes fadeSlideIn { 0% { opacity: 0; transform: translateY(30px); filter: blur(8px); } 100% { opacity: 1; transform: translateY(0); filter: blur(0px); } }
+        .animate-on-scroll { animation-play-state: paused !important; }
+        .animate-on-scroll.animate { animation-play-state: running !important; }
+        [style*="--border-gradient"]::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            padding: 1px;
+            border-radius: var(--border-radius-before, inherit);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            background: var(--border-gradient);
+            pointer-events: none;
+        }
+        .whatsapp-btn { background: #25d366 !important; }
+        .whatsapp-btn:hover { background: #128c7e !important; filter: brightness(1.05); }
+        .avaliacao-card { background: rgba(255,255,255,0.05); border-radius: 12px; border: 1px solid rgba(255,255,255,0.1); backdrop-filter: blur(12px); padding: 2rem; min-height: 180px; display: flex; flex-direction: column; }
+        .avaliacao-header { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; margin-bottom: 1rem; }
+        .avaliacao-stars { color: #c9a961; font-size: 1.125rem; }
+        .avaliacao-author { font-size: 0.875rem; color: rgba(255,255,255,0.6); }
+        .avaliacao-author strong { color: white; font-weight: 600; }
+        .avaliacao-text { font-size: 1.125rem; color: rgba(255,255,255,0.9); line-height: 1.6; flex: 1; }
+        @media (max-width: 767px) {
+            .nav-menu { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; background: rgba(10,14,18,0.98); backdrop-blur-md; padding: 1rem; gap: 0.5rem; border-b border-white/10; }
+            .nav-menu.active { display: flex !important; }
+            .nav-menu li { width: 100%; }
+            .nav-menu .nav-link { display: block; padding: 0.75rem 1rem; }
+        }
+    </style>
+    <script>
+        (function(){const once=true;if(!window.__inViewIO){window.__inViewIO=new IntersectionObserver((entries)=>{entries.forEach((entry)=>{if(entry.isIntersecting){entry.target.classList.add("animate");if(once)window.__inViewIO.unobserve(entry.target)}})},{threshold:0.15,rootMargin:"0px 0px -10% 0px"})}window.initInViewAnimations=function(selector=".animate-on-scroll"){document.querySelectorAll(selector).forEach((el)=>{window.__inViewIO.observe(el)})};document.addEventListener("DOMContentLoaded",()=>initInViewAnimations())})();
+    </script>
+    <script>
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','1199971412124179');fbq('track','PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1199971412124179&ev=PageView&noscript=1"/></noscript>
     <!-- End Meta Pixel Code -->
 </head>
-<body>
-    <!-- Header / Navigation -->
-    <header class="header">
-        <nav class="navbar">
-            <div class="container">
-                <div class="nav-wrapper">
-                    <div class="logo">
-                        <a href="index.html">
-                            <svg class="logo-svg" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
-                                <defs>
-                                    <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                                        <stop offset="0%" style="stop-color:#c9a961;stop-opacity:1" />
-                                        <stop offset="50%" style="stop-color:#d4b87a;stop-opacity:1" />
-                                        <stop offset="100%" style="stop-color:#a68b4f;stop-opacity:1" />
-                                    </linearGradient>
-                                </defs>
-                                <!-- Letra F estilizada -->
-                                <rect x="8" y="8" width="8" height="44" rx="2" fill="url(#goldGradient)"/>
-                                <rect x="8" y="8" width="28" height="8" rx="2" fill="url(#goldGradient)"/>
-                                <rect x="8" y="26" width="20" height="8" rx="2" fill="url(#goldGradient)"/>
-                            </svg>
-                            <div class="logo-text-container">
-                                <span class="logo-text">FRATAZZI</span>
-                                <span class="logo-accent">ADVOGADOS ASSOCIADOS</span>
-                            </div>
-                        </a>
-                    </div>
-                    <button class="menu-toggle" id="menuToggle" aria-label="Menu">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </button>
-                    <ul class="nav-menu" id="navMenu">
-                        <li><a href="index.html" class="active">Início</a></li>
-                        <li><a href="servicos.html">Serviços</a></li>
-                        <li><a href="blog.html">Blog</a></li>
-                        <li><a href="#sobre">Sobre</a></li>
-                        <li><a href="#diferenciais">Diferenciais</a></li>
-                        <li><a href="#avaliacoes">Avaliações</a></li>
-                        <li><a href="#contato">Contato</a></li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </header>
+<body class="bg-[#0a0e12] text-white font-sans antialiased overflow-x-hidden selection:bg-gold-500/30 flex flex-col min-h-screen" style="font-family: 'Inter', sans-serif;">
+    <!-- Background -->
+    <div class="fixed z-0 top-0 right-0 bottom-0 left-0">
+        <div class="w-full h-full bg-gradient-to-br from-[#1a2332] via-[#0f1419] to-[#0a0e12] opacity-100"></div>
+        <div class="absolute inset-0 bg-gradient-to-b from-[#0a0e12]/90 via-[#0a0e12]/60 to-[#0a0e12]"></div>
+        <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-gold-600/10 via-[#0a0e12]/0 to-[#0a0e12]/0"></div>
+    </div>
+    <!-- Vertical Grid Lines with Falling Beams -->
+    <div class="fixed inset-0 z-0 pointer-events-none flex w-full max-w-7xl mx-auto">
+        <div class="flex-1 border-l border-white/5 h-full relative overflow-hidden"><div class="absolute top-0 -left-[1px] w-[1px] h-64 bg-gradient-to-b from-transparent via-gold-500/60 to-transparent animate-beam-1"></div></div>
+        <div class="flex-1 border-l border-white/5 h-full relative overflow-hidden"><div class="absolute top-0 -left-[1px] w-[1px] h-96 bg-gradient-to-b from-transparent via-gold-500/80 to-transparent animate-beam-2"></div></div>
+        <div class="flex-1 border-l border-white/5 h-full relative overflow-hidden"><div class="absolute top-0 -left-[1px] w-[1px] h-64 bg-gradient-to-b from-transparent via-gold-500 to-transparent animate-beam-1" style="animation-delay: 1.5s;"></div></div>
+        <div class="flex-1 border-l border-white/5 h-full relative overflow-hidden"><div class="absolute top-0 -left-[1px] w-[1px] h-48 bg-gradient-to-b from-transparent via-gold-500/60 to-transparent animate-beam-3"></div></div>
+        <div class="flex-1 border-l border-white/5 h-full"></div>
+    </div>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <h1 class="hero-title">Excelência Jurídica ao Seu Alcance</h1>
-                <p class="hero-subtitle">Proteção legal completa com expertise, dedicação e resultados que fazem a diferença</p>
-                <div class="hero-buttons">
-                    <a href="https://wa.me/5511945617464?text=Olá,%20vim%20pelo%20site%20e%20gostaria%20de%20mais%20informações." 
-                       class="btn btn-whatsapp" target="_blank" rel="noopener noreferrer" aria-label="Falar no WhatsApp">
-                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
-                        </svg>
+    <!-- Content -->
+    <div class="flex-1 flex flex-col w-full max-w-7xl mx-auto relative">
+        <!-- Navigation -->
+        <nav class="flex justify-between items-center py-8 px-6 md:px-10 sticky top-0 z-50 bg-[#0a0e12]/80 backdrop-blur-md border-b border-white/5 relative">
+            <a href="index.html" class="flex items-center gap-3 group cursor-pointer">
+                <div class="flex bg-gradient-to-tr from-gold-500 to-gold-400 w-10 h-10 rounded-full items-center justify-center" style="--border-gradient: linear-gradient(180deg, rgba(255,255,255,0.5), rgba(255,255,255,0)); --border-radius-before: 9999px;">
+                    <svg viewBox="0 0 60 60" class="w-6 h-6" xmlns="http://www.w3.org/2000/svg">
+                        <defs><linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#c9a961"/><stop offset="50%" style="stop-color:#d4b87a"/><stop offset="100%" style="stop-color:#a68b4f"/></linearGradient></defs>
+                        <rect x="8" y="8" width="8" height="44" rx="2" fill="url(#goldGrad)"/><rect x="8" y="8" width="28" height="8" rx="2" fill="url(#goldGrad)"/><rect x="8" y="26" width="20" height="8" rx="2" fill="url(#goldGrad)"/>
+                    </svg>
+                </div>
+                <div class="flex flex-col">
+                    <span class="text-lg font-semibold tracking-tight text-gold-400" style="font-family: 'Playfair Display', serif;">FRATAZZI</span>
+                    <span class="text-xs tracking-widest text-white/70">ADVOGADOS ASSOCIADOS</span>
+                </div>
+            </a>
+            <ul id="navMenu" class="nav-menu hidden md:flex items-center gap-6 list-none m-0 p-0">
+                <li><a class="nav-link text-xs font-medium tracking-widest uppercase hover:text-gold-400 transition-colors text-neutral-400" href="index.html">Início</a></li>
+                <li><a class="nav-link text-xs font-medium tracking-widest uppercase hover:text-gold-400 transition-colors text-neutral-400" href="servicos.html">Serviços</a></li>
+                <li><a class="nav-link text-xs font-medium tracking-widest uppercase hover:text-gold-400 transition-colors text-neutral-400" href="blog.html">Blog</a></li>
+                <li><a class="nav-link text-xs font-medium tracking-widest uppercase hover:text-gold-400 transition-colors text-neutral-400" href="#sobre">Sobre</a></li>
+                <li><a class="nav-link text-xs font-medium tracking-widest uppercase hover:text-gold-400 transition-colors text-neutral-400" href="#diferenciais">Diferenciais</a></li>
+                <li><a class="nav-link text-xs font-medium tracking-widest uppercase hover:text-gold-400 transition-colors text-neutral-400" href="#avaliacoes">Avaliações</a></li>
+                <li><a class="nav-link text-xs font-medium tracking-widest uppercase hover:text-gold-400 transition-colors text-neutral-400" href="#contato">Contato</a></li>
+            </ul>
+            <button class="md:hidden p-2 text-white" id="menuToggle" aria-label="Menu">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+            </button>
+        </nav>
+
+        <!-- Hero Section -->
+        <section id="hero" class="flex-1 grid grid-cols-1 lg:grid-cols-12 pt-24 pb-16 gap-x-4 gap-y-4 items-center px-6 md:px-10">
+            <div class="col-span-1 lg:col-span-7 pt-10 lg:pt-0 flex flex-col justify-center">
+                <div class="inline-flex items-center gap-2 text-gold-500 mb-8 animate-on-scroll" style="animation: fadeSlideIn 1s cubic-bezier(0.2,0.8,0.2,1) 0.1s both;">
+                    <span class="flex h-2 w-2 rounded-full bg-gold-500"></span>
+                    <span class="text-xs font-bold tracking-widest uppercase text-gold-500/80">Escritório de Advocacia</span>
+                </div>
+                <h1 class="text-5xl md:text-6xl lg:text-7xl leading-[0.95] tracking-tighter text-white font-medium mb-6 animate-on-scroll" style="font-family: 'Playfair Display', serif; animation: fadeSlideIn 1s cubic-bezier(0.2,0.8,0.2,1) 0.2s both;">
+                    Excelência Jurídica
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-gold-400 via-gold-300 to-gold-600">ao Seu Alcance</span>
+                </h1>
+                <p class="leading-relaxed text-lg font-medium text-white/60 max-w-xl animate-on-scroll" style="animation: fadeSlideIn 1s cubic-bezier(0.2,0.8,0.2,1) 0.35s both;">
+                    Proteção legal completa com expertise, dedicação e resultados que fazem a diferença
+                </p>
+                <div class="mt-10 flex flex-wrap gap-4 items-center animate-on-scroll" style="animation: fadeSlideIn 1s cubic-bezier(0.2,0.8,0.2,1) 0.5s both;">
+                    <a href="https://wa.me/5511945617464?text=Olá,%20vim%20pelo%20site%20e%20gostaria%20de%20mais%20informações." class="whatsapp-btn group isolate inline-flex overflow-hidden transition-all duration-300 hover:scale-105 rounded-full relative px-6 py-3 items-center gap-2 text-white font-medium" target="_blank" rel="noopener noreferrer">
+                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
                         <span>Falar no WhatsApp</span>
                     </a>
-                    <a href="#contato" class="btn btn-primary">Fale Conosco</a>
-                    <a href="servicos.html" class="btn btn-secondary">Nossos Serviços</a>
+                    <a href="#contato" class="button-custom" type="button">
+                        <div class="points_wrapper"><i class="point"></i><i class="point"></i><i class="point"></i><i class="point"></i></div>
+                        <span class="inner">Fale Conosco</span>
+                    </a>
+                    <a href="servicos.html" class="group isolate inline-flex cursor-pointer overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-[0_0_50px_10px_rgba(201,169,97,0.3)] bg-gradient-to-b from-white/20 via-white/0 to-white/5 rounded-full relative shadow-[0_0_25px_rgba(201,169,97,0.2)] border border-white/10">
+                        <div class="absolute inset-[1px] rounded-full backdrop-blur-xl z-0 bg-[#0a0e12]/90"></div>
+                        <div class="z-10 flex gap-3 px-5 py-3 text-sm font-medium text-white items-center relative">
+                            <span>Nossos Serviços</span>
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                        </div>
+                    </a>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Apresentação -->
-    <section class="apresentacao" id="sobre">
-        <div class="container">
-            <div class="apresentacao-content">
-                <h2 class="section-title">Sobre Nosso Escritório</h2>
-                <div class="apresentacao-text">
-                    <p>Nosso escritório atua no mercado jurídico com foco em excelência, comprometimento e resultados efetivos. Oferecemos soluções jurídicas personalizadas que atendem às necessidades específicas de cada cliente.</p>
-                    <p>Nossa equipe é formada por advogados qualificados e comprometidos com a ética profissional, mantendo-se atualizados com as mudanças legislativas e jurisprudenciais. Trabalhamos com transparência, agilidade e dedicação para buscar resultados adequados em cada caso.</p>
-                    <p>Valorizamos o relacionamento próximo com nossos clientes, oferecendo atendimento humanizado e consultoria jurídica estratégica. Nossa missão é proteger os direitos e interesses dos clientes, proporcionando segurança jurídica.</p>
+        <!-- Sobre -->
+        <section id="sobre" class="w-full max-w-7xl mx-auto px-6 md:px-10 py-24 border-t border-white/5 animate-on-scroll" style="animation: fadeSlideIn 1s cubic-bezier(0.2,0.8,0.2,1) 0.1s both;">
+            <div class="mb-12">
+                <h2 class="text-4xl md:text-5xl font-medium tracking-tighter text-white mb-4" style="font-family: 'Playfair Display', serif;">Sobre Nosso Escritório</h2>
+            </div>
+            <div class="grid grid-cols-1 lg:grid-cols-1 gap-8">
+                <div class="bg-white/5 rounded-xl border border-white/10 backdrop-blur-md p-8 lg:p-12">
+                    <p class="leading-relaxed text-lg font-medium text-white/60 mb-4">Nosso escritório atua no mercado jurídico com foco em excelência, comprometimento e resultados efetivos. Oferecemos soluções jurídicas personalizadas que atendem às necessidades específicas de cada cliente.</p>
+                    <p class="leading-relaxed text-lg font-medium text-white/60 mb-4">Nossa equipe é formada por advogados qualificados e comprometidos com a ética profissional, mantendo-se atualizados com as mudanças legislativas e jurisprudenciais. Trabalhamos com transparência, agilidade e dedicação para buscar resultados adequados em cada caso.</p>
+                    <p class="leading-relaxed text-lg font-medium text-white/60">Valorizamos o relacionamento próximo com nossos clientes, oferecendo atendimento humanizado e consultoria jurídica estratégica. Nossa missão é proteger os direitos e interesses dos clientes, proporcionando segurança jurídica.</p>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Serviços -->
-    <section class="servicos">
-        <div class="container">
-            <h2 class="section-title">Nossos Serviços</h2>
-            <p class="section-subtitle">Soluções jurídicas completas para pessoas físicas e jurídicas</p>
-            <div class="servicos-grid">
-                <div class="servico-card">
-                    <div class="servico-icon">
-                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </div>
-                    <h3>Direito Civil</h3>
-                    <p>Contratos, responsabilidade civil, direito de família, sucessões e questões patrimoniais com expertise e agilidade.</p>
+        <!-- Serviços -->
+        <section class="w-full max-w-7xl mx-auto px-6 md:px-10 py-24 border-t border-white/5">
+            <div class="mb-16 animate-on-scroll" style="animation: fadeSlideIn 1s cubic-bezier(0.2,0.8,0.2,1) 0.1s both;">
+                <h2 class="text-4xl md:text-5xl font-medium tracking-tighter text-white mb-4" style="font-family: 'Playfair Display', serif;">Nossos Serviços</h2>
+                <p class="text-lg text-white/60 max-w-2xl">Soluções jurídicas completas para pessoas físicas e jurídicas</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="bg-white/5 rounded-xl border border-white/10 backdrop-blur-md p-8 transition-all duration-300 hover:bg-white/10 hover:-translate-y-1 animate-on-scroll" style="animation: fadeSlideIn 1s cubic-bezier(0.2,0.8,0.2,1) 0.2s both;">
+                    <div class="w-12 h-12 rounded-lg bg-gold-500/20 flex items-center justify-center mb-4 text-gold-500"><i data-lucide="layers" class="w-6 h-6"></i></div>
+                    <h3 class="text-xl font-semibold text-white mb-2" style="font-family: 'Playfair Display', serif;">Direito Civil</h3>
+                    <p class="text-sm text-white/60">Contratos, responsabilidade civil, direito de família, sucessões e questões patrimoniais.</p>
                 </div>
-                <div class="servico-card">
-                    <div class="servico-icon">
-                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M3 9L12 2L21 9V20C21 20.5304 20.7893 21.0391 20.4142 21.4142C20.0391 21.7893 19.5304 22 19 22H5C4.46957 22 3.96086 21.7893 3.58579 21.4142C3.21071 21.0391 3 20.5304 3 20V9Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M9 22V12H15V22" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </div>
-                    <h3>Direito Empresarial</h3>
-                    <p>Constituição de empresas, contratos comerciais, recuperação judicial, fusões e aquisições.</p>
+                <div class="bg-white/5 rounded-xl border border-white/10 backdrop-blur-md p-8 transition-all duration-300 hover:bg-white/10 hover:-translate-y-1 animate-on-scroll" style="animation: fadeSlideIn 1s cubic-bezier(0.2,0.8,0.2,1) 0.25s both;">
+                    <div class="w-12 h-12 rounded-lg bg-gold-500/20 flex items-center justify-center mb-4 text-gold-500"><i data-lucide="building-2" class="w-6 h-6"></i></div>
+                    <h3 class="text-xl font-semibold text-white mb-2" style="font-family: 'Playfair Display', serif;">Direito Empresarial</h3>
+                    <p class="text-sm text-white/60">Constituição de empresas, contratos comerciais, recuperação judicial, fusões e aquisições.</p>
                 </div>
-                <div class="servico-card">
-                    <div class="servico-icon">
-                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M16 21V5C16 4.46957 15.7893 3.96086 15.4142 3.58579C15.0391 3.21071 14.5304 3 14 3H10C9.46957 3 8.96086 3.21071 8.58579 3.58579C8.21071 3.96086 8 4.46957 8 5V21L12 19L16 21Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </div>
-                    <h3>Direito Trabalhista</h3>
-                    <p>Defesa em ações trabalhistas, consultoria preventiva, negociações coletivas e compliance trabalhista.</p>
+                <div class="bg-white/5 rounded-xl border border-white/10 backdrop-blur-md p-8 transition-all duration-300 hover:bg-white/10 hover:-translate-y-1 animate-on-scroll" style="animation: fadeSlideIn 1s cubic-bezier(0.2,0.8,0.2,1) 0.3s both;">
+                    <div class="w-12 h-12 rounded-lg bg-gold-500/20 flex items-center justify-center mb-4 text-gold-500"><i data-lucide="briefcase" class="w-6 h-6"></i></div>
+                    <h3 class="text-xl font-semibold text-white mb-2" style="font-family: 'Playfair Display', serif;">Direito Trabalhista</h3>
+                    <p class="text-sm text-white/60">Defesa em ações trabalhistas, consultoria preventiva e compliance trabalhista.</p>
                 </div>
-                <div class="servico-card">
-                    <div class="servico-icon">
-                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M14 2H6C5.46957 2 4.96086 2.21071 4.58579 2.58579C4.21071 2.96086 4 3.46957 4 4V20C4 20.5304 4.21071 21.0391 4.58579 21.4142C4.96086 21.7893 5.46957 22 6 22H18C18.5304 22 19.0391 21.7893 19.4142 21.4142C19.7893 21.0391 20 20.5304 20 20V8L14 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M14 2V8H20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </div>
-                    <h3>Direito Tributário</h3>
-                    <p>Planejamento tributário, defesa em execuções fiscais, consultoria e recuperação de créditos.</p>
+                <div class="bg-white/5 rounded-xl border border-white/10 backdrop-blur-md p-8 transition-all duration-300 hover:bg-white/10 hover:-translate-y-1 animate-on-scroll" style="animation: fadeSlideIn 1s cubic-bezier(0.2,0.8,0.2,1) 0.35s both;">
+                    <div class="w-12 h-12 rounded-lg bg-gold-500/20 flex items-center justify-center mb-4 text-gold-500"><i data-lucide="file-text" class="w-6 h-6"></i></div>
+                    <h3 class="text-xl font-semibold text-white mb-2" style="font-family: 'Playfair Display', serif;">Direito Tributário</h3>
+                    <p class="text-sm text-white/60">Planejamento tributário, defesa em execuções fiscais e recuperação de créditos.</p>
                 </div>
-                <div class="servico-card">
-                    <div class="servico-icon">
-                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </div>
-                    <h3>Direito Administrativo</h3>
-                    <p>Licitações, contratos administrativos, defesa em processos administrativos e consultoria ao setor público.</p>
+                <div class="bg-white/5 rounded-xl border border-white/10 backdrop-blur-md p-8 transition-all duration-300 hover:bg-white/10 hover:-translate-y-1 animate-on-scroll" style="animation: fadeSlideIn 1s cubic-bezier(0.2,0.8,0.2,1) 0.4s both;">
+                    <div class="w-12 h-12 rounded-lg bg-gold-500/20 flex items-center justify-center mb-4 text-gold-500"><i data-lucide="landmark" class="w-6 h-6"></i></div>
+                    <h3 class="text-xl font-semibold text-white mb-2" style="font-family: 'Playfair Display', serif;">Direito Administrativo</h3>
+                    <p class="text-sm text-white/60">Licitações, contratos administrativos e consultoria ao setor público.</p>
                 </div>
-                <div class="servico-card">
-                    <div class="servico-icon">
-                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M12 8V12L15 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </div>
-                    <h3>Consultoria Jurídica</h3>
-                    <p>Assessoria preventiva, análise de riscos, compliance e orientação estratégica para sua empresa.</p>
+                <div class="bg-white/5 rounded-xl border border-white/10 backdrop-blur-md p-8 transition-all duration-300 hover:bg-white/10 hover:-translate-y-1 animate-on-scroll" style="animation: fadeSlideIn 1s cubic-bezier(0.2,0.8,0.2,1) 0.45s both;">
+                    <div class="w-12 h-12 rounded-lg bg-gold-500/20 flex items-center justify-center mb-4 text-gold-500"><i data-lucide="circle-help" class="w-6 h-6"></i></div>
+                    <h3 class="text-xl font-semibold text-white mb-2" style="font-family: 'Playfair Display', serif;">Consultoria Jurídica</h3>
+                    <p class="text-sm text-white/60">Assessoria preventiva, análise de riscos e orientação estratégica para sua empresa.</p>
                 </div>
             </div>
-            <div class="whatsapp-section">
-                <a href="https://wa.me/5511945617464?text=Olá,%20vim%20pelo%20site%20e%20gostaria%20de%20mais%20informações." class="btn btn-whatsapp" target="_blank" rel="noopener noreferrer" aria-label="Falar no WhatsApp">
-                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
-                    </svg>
+            <div class="mt-12 flex flex-wrap gap-4 animate-on-scroll" style="animation: fadeSlideIn 1s cubic-bezier(0.2,0.8,0.2,1) 0.5s both;">
+                <a href="https://wa.me/5511945617464?text=Olá,%20vim%20pelo%20site%20e%20gostaria%20de%20mais%20informações." class="whatsapp-btn inline-flex items-center gap-2 px-6 py-3 rounded-full text-white font-medium" target="_blank" rel="noopener noreferrer">
+                    <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
                     Tire suas dúvidas no WhatsApp
                 </a>
-                <a href="servicos.html" class="btn btn-primary" style="margin-top: 1rem; display: inline-block;">Ver Todos os Serviços</a>
+                <a href="servicos.html" class="button-custom" type="button">
+                    <div class="points_wrapper"><i class="point"></i><i class="point"></i><i class="point"></i></div>
+                    <span class="inner">Ver Todos os Serviços</span>
+                </a>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Diferenciais -->
-    <section class="diferenciais" id="diferenciais">
-        <div class="container">
-            <h2 class="section-title">Por Que Escolher Nosso Escritório?</h2>
-            <div class="diferenciais-grid">
-                <div class="diferencial-item">
-                    <div class="diferencial-number">01</div>
-                    <h3>Experiência no Mercado</h3>
-                    <p>Atuação no mercado jurídico com experiência em diversas áreas do direito.</p>
+        <!-- Diferenciais -->
+        <section id="diferenciais" class="w-full max-w-7xl mx-auto px-6 md:px-10 py-24 border-t border-white/5">
+            <div class="mb-16 animate-on-scroll" style="animation: fadeSlideIn 1s cubic-bezier(0.2,0.8,0.2,1) 0.1s both;">
+                <h2 class="text-4xl md:text-5xl font-medium tracking-tighter text-white mb-4" style="font-family: 'Playfair Display', serif;">Por Que Escolher Nosso Escritório?</h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="flex gap-4 bg-white/5 rounded-xl border border-white/10 p-6 transition-all duration-300 hover:bg-white/10 hover:-translate-y-1 animate-on-scroll" style="animation: fadeSlideIn 1s cubic-bezier(0.2,0.8,0.2,1) 0.15s both;">
+                    <div class="w-10 h-10 rounded-full bg-gold-500 flex items-center justify-center text-black text-sm font-bold shrink-0">01</div>
+                    <div><h3 class="text-lg font-semibold text-white mb-2">Experiência no Mercado</h3><p class="text-sm text-white/60">Atuação no mercado jurídico com experiência em diversas áreas do direito.</p></div>
                 </div>
-                <div class="diferencial-item">
-                    <div class="diferencial-number">02</div>
-                    <h3>Atendimento Personalizado</h3>
-                    <p>Cada cliente recebe atenção exclusiva e soluções jurídicas sob medida para suas necessidades.</p>
+                <div class="flex gap-4 bg-white/5 rounded-xl border border-white/10 p-6 transition-all duration-300 hover:bg-white/10 hover:-translate-y-1 animate-on-scroll" style="animation: fadeSlideIn 1s cubic-bezier(0.2,0.8,0.2,1) 0.2s both;">
+                    <div class="w-10 h-10 rounded-full bg-gold-500 flex items-center justify-center text-black text-sm font-bold shrink-0">02</div>
+                    <div><h3 class="text-lg font-semibold text-white mb-2">Atendimento Personalizado</h3><p class="text-sm text-white/60">Cada cliente recebe atenção exclusiva e soluções jurídicas sob medida.</p></div>
                 </div>
-                <div class="diferencial-item">
-                    <div class="diferencial-number">03</div>
-                    <h3>Transparência Total</h3>
-                    <p>Comunicação clara sobre processos, prazos e valores, sem surpresas ou custos ocultos.</p>
+                <div class="flex gap-4 bg-white/5 rounded-xl border border-white/10 p-6 transition-all duration-300 hover:bg-white/10 hover:-translate-y-1 animate-on-scroll" style="animation: fadeSlideIn 1s cubic-bezier(0.2,0.8,0.2,1) 0.25s both;">
+                    <div class="w-10 h-10 rounded-full bg-gold-500 flex items-center justify-center text-black text-sm font-bold shrink-0">03</div>
+                    <div><h3 class="text-lg font-semibold text-white mb-2">Transparência Total</h3><p class="text-sm text-white/60">Comunicação clara sobre processos, prazos e valores, sem custos ocultos.</p></div>
                 </div>
-                <div class="diferencial-item">
-                    <div class="diferencial-number">04</div>
-                    <h3>Resultados Efetivos</h3>
-                    <p>Estratégias jurídicas desenvolvidas com base na legislação vigente e na jurisprudência consolidada.</p>
+                <div class="flex gap-4 bg-white/5 rounded-xl border border-white/10 p-6 transition-all duration-300 hover:bg-white/10 hover:-translate-y-1 animate-on-scroll" style="animation: fadeSlideIn 1s cubic-bezier(0.2,0.8,0.2,1) 0.3s both;">
+                    <div class="w-10 h-10 rounded-full bg-gold-500 flex items-center justify-center text-black text-sm font-bold shrink-0">04</div>
+                    <div><h3 class="text-lg font-semibold text-white mb-2">Resultados Efetivos</h3><p class="text-sm text-white/60">Estratégias baseadas na legislação vigente e jurisprudência consolidada.</p></div>
                 </div>
-                <div class="diferencial-item">
-                    <div class="diferencial-number">05</div>
-                    <h3>Agilidade e Eficiência</h3>
-                    <p>Processos otimizados e equipe dedicada para oferecer respostas ágeis e soluções eficientes.</p>
+                <div class="flex gap-4 bg-white/5 rounded-xl border border-white/10 p-6 transition-all duration-300 hover:bg-white/10 hover:-translate-y-1 animate-on-scroll" style="animation: fadeSlideIn 1s cubic-bezier(0.2,0.8,0.2,1) 0.35s both;">
+                    <div class="w-10 h-10 rounded-full bg-gold-500 flex items-center justify-center text-black text-sm font-bold shrink-0">05</div>
+                    <div><h3 class="text-lg font-semibold text-white mb-2">Agilidade e Eficiência</h3><p class="text-sm text-white/60">Processos otimizados e equipe dedicada para respostas ágeis.</p></div>
                 </div>
-                <div class="diferencial-item">
-                    <div class="diferencial-number">06</div>
-                    <h3>Compromisso Ético</h3>
-                    <p>Atuação pautada nos mais altos padrões éticos e profissionais, com total confiabilidade.</p>
+                <div class="flex gap-4 bg-white/5 rounded-xl border border-white/10 p-6 transition-all duration-300 hover:bg-white/10 hover:-translate-y-1 animate-on-scroll" style="animation: fadeSlideIn 1s cubic-bezier(0.2,0.8,0.2,1) 0.4s both;">
+                    <div class="w-10 h-10 rounded-full bg-gold-500 flex items-center justify-center text-black text-sm font-bold shrink-0">06</div>
+                    <div><h3 class="text-lg font-semibold text-white mb-2">Compromisso Ético</h3><p class="text-sm text-white/60">Atuação pautada nos mais altos padrões éticos e profissionais.</p></div>
                 </div>
             </div>
-            <div class="whatsapp-section">
-                <a href="https://wa.me/5511945617464?text=Olá,%20vim%20pelo%20site%20e%20gostaria%20de%20mais%20informações." class="btn btn-whatsapp" target="_blank" rel="noopener noreferrer" aria-label="Falar no WhatsApp">
-                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
-                    </svg>
+            <div class="mt-12 animate-on-scroll" style="animation: fadeSlideIn 1s cubic-bezier(0.2,0.8,0.2,1) 0.45s both;">
+                <a href="https://wa.me/5511945617464?text=Olá,%20vim%20pelo%20site%20e%20gostaria%20de%20mais%20informações." class="whatsapp-btn inline-flex items-center gap-2 px-6 py-3 rounded-full text-white font-medium" target="_blank" rel="noopener noreferrer">
+                    <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
                     Fale conosco agora
                 </a>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Avaliações Google -->
-    <section class="avaliacoes" id="avaliacoes">
-        <div class="container">
-            <h2 class="section-title">Avaliações do Google</h2>
-            <p class="section-subtitle" id="avaliacoesSubtitle">O que nossos clientes dizem sobre nosso trabalho</p>
-            <div class="avaliacoes-grid">
-                <div class="avaliacao-card">
-                    <div class="avaliacao-header">
-                        <div class="avaliacao-stars">★★★★★</div>
-                        <div class="avaliacao-author">
-                            <strong>Maria Silva</strong>
-                            <span>Há 2 meses</span>
-                        </div>
-                    </div>
-                    <p class="avaliacao-text">"Atendimento profissional. O escritório atuou no meu caso com agilidade e profissionalismo. Recomendo."</p>
+        <!-- Avaliações -->
+        <section id="avaliacoes" class="avaliacoes w-full max-w-7xl mx-auto px-6 md:px-10 py-24 border-t border-white/5">
+            <div class="mb-16 animate-on-scroll" style="animation: fadeSlideIn 1s cubic-bezier(0.2,0.8,0.2,1) 0.1s both;">
+                <h2 class="section-title text-4xl md:text-5xl font-medium tracking-tighter text-white mb-4" style="font-family: 'Playfair Display', serif;">Avaliações do Google</h2>
+                <p class="section-subtitle text-lg text-white/60">O que nossos clientes dizem sobre nosso trabalho</p>
+            </div>
+            <div class="avaliacoes-grid grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="flex flex-col min-h-[180px] bg-gradient-to-b from-gold-400 to-gold-600 rounded-xl p-8 text-black shadow-2xl animate-on-scroll" style="animation: fadeSlideIn 1s cubic-bezier(0.2,0.8,0.2,1) 0.2s both; --border-gradient: linear-gradient(180deg, rgba(255,255,255,0.3), rgba(255,255,255,0)); --border-radius-before: 12px;">
+                    <p class="text-lg font-semibold leading-snug mb-4">"Atendimento profissional. O escritório atuou no meu caso com agilidade e profissionalismo. Recomendo."</p>
+                    <div class="mt-auto pt-4 border-t border-black/10 flex items-center gap-2 text-sm font-medium">★★★★★ <span class="font-semibold">Maria Silva</span> · Há 2 meses</div>
                 </div>
-                <div class="avaliacao-card">
-                    <div class="avaliacao-header">
-                        <div class="avaliacao-stars">★★★★★</div>
-                        <div class="avaliacao-author">
-                            <strong>João Santos</strong>
-                            <span>Há 1 mês</span>
-                        </div>
-                    </div>
-                    <p class="avaliacao-text">"Profissionais competentes e atenciosos. Fui bem atendido e o caso foi tratado com agilidade."</p>
+                <div class="flex flex-col min-h-[180px] bg-white/5 rounded-xl border border-white/10 backdrop-blur-md p-8 animate-on-scroll" style="animation: fadeSlideIn 1s cubic-bezier(0.2,0.8,0.2,1) 0.3s both;">
+                    <p class="text-lg font-medium text-white/90 mb-4">"Profissionais competentes e atenciosos. Fui bem atendido e o caso foi tratado com agilidade."</p>
+                    <div class="mt-auto pt-4 border-t border-white/10 flex items-center gap-2 text-sm text-white/60">★★★★★ <span class="font-semibold text-white">João Santos</span> · Há 1 mês</div>
                 </div>
-                <div class="avaliacao-card">
-                    <div class="avaliacao-header">
-                        <div class="avaliacao-stars">★★★★★</div>
-                        <div class="avaliacao-author">
-                            <strong>Ana Costa</strong>
-                            <span>Há 3 semanas</span>
-                        </div>
-                    </div>
-                    <p class="avaliacao-text">"Transparência, ética e profissionalismo. Atendimento conforme esperado de um escritório de advocacia."</p>
+                <div class="flex flex-col min-h-[180px] bg-white/5 rounded-xl border border-white/10 backdrop-blur-md p-8 animate-on-scroll" style="animation: fadeSlideIn 1s cubic-bezier(0.2,0.8,0.2,1) 0.4s both;">
+                    <p class="text-lg font-medium text-white/90 mb-4">"Transparência, ética e profissionalismo. Atendimento conforme esperado de um escritório de advocacia."</p>
+                    <div class="mt-auto pt-4 border-t border-white/10 flex items-center gap-2 text-sm text-white/60">★★★★★ <span class="font-semibold text-white">Ana Costa</span> · Há 3 semanas</div>
                 </div>
             </div>
-            <div class="avaliacoes-cta">
-                <a href="https://www.google.com/maps/place/R.+Ot%C3%A1vio+Forghieri,+72+-+Sala+63+-+Centro,+Guarulhos+-+SP,+07090-070" target="_blank" class="btn btn-primary" id="linkAvaliacoes">Ver Todas as Avaliações</a>
-                <a href="https://wa.me/5511945617464?text=Olá,%20vim%20pelo%20site%20e%20gostaria%20de%20mais%20informações." class="btn btn-whatsapp" target="_blank" rel="noopener noreferrer" aria-label="Falar no WhatsApp" style="margin-left: 1rem;">
-                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
-                    </svg>
+            <div class="avaliacoes-cta mt-12 flex flex-wrap gap-4 animate-on-scroll" style="animation: fadeSlideIn 1s cubic-bezier(0.2,0.8,0.2,1) 0.5s both;">
+                <a href="https://www.google.com/maps/place/R.+Ot%C3%A1vio+Forghieri,+72+-+Sala+63+-+Centro,+Guarulhos+-+SP,+07090-070" target="_blank" class="btn-primary button-custom" type="button" id="linkAvaliacoes">
+                    <div class="points_wrapper"><i class="point"></i><i class="point"></i><i class="point"></i></div>
+                    <span class="inner">Ver Todas as Avaliações</span>
+                </a>
+                <a href="https://wa.me/5511945617464?text=Olá,%20vim%20pelo%20site%20e%20gostaria%20de%20mais%20informações." class="whatsapp-btn inline-flex items-center gap-2 px-6 py-3 rounded-full text-white font-medium" target="_blank" rel="noopener noreferrer">
+                    <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
                     Solicitar Orçamento
                 </a>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Footer -->
-    <footer class="footer" id="contato">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>Contato</h3>
-                    <div class="footer-info">
-                        <p><strong>Endereço:</strong></p>
-                        <p>R. Otávio Forghieri, 72 - Sala 63 - Centro<br>Guarulhos - SP, 07090-070</p>
-                        <p><strong>Telefone:</strong> <a href="https://wa.me/5511945617464" target="_blank" rel="noopener noreferrer">(11) 94561-7464</a></p>
-                        <p><strong>E-mail:</strong> <a href="mailto:rafael@fratazziadvogados.com.br" class="email-link">rafael@fratazziadvogados.com.br</a></p>
-                    </div>
+        <!-- Footer / Contato -->
+        <footer id="contato" class="w-full max-w-7xl mx-auto px-6 md:px-10 py-24 border-t border-white/5">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 animate-on-scroll" style="animation: fadeSlideIn 1s cubic-bezier(0.2,0.8,0.2,1) 0.1s both;">
+                <div>
+                    <h3 class="text-lg font-semibold text-white mb-4" style="font-family: 'Playfair Display', serif;">Contato</h3>
+                    <p class="text-sm text-white/60 mb-2"><strong class="text-white">Endereço:</strong></p>
+                    <p class="text-sm text-white/60 mb-4">R. Otávio Forghieri, 72 - Sala 63 - Centro<br>Guarulhos - SP, 07090-070</p>
+                    <p class="text-sm text-white/60 mb-2"><strong class="text-white">Telefone:</strong> <a href="https://wa.me/5511945617464" class="text-gold-400 hover:text-gold-300 transition-colors" target="_blank" rel="noopener noreferrer">(11) 94561-7464</a></p>
+                    <p class="text-sm text-white/60"><strong class="text-white">E-mail:</strong> <a href="mailto:rafael@fratazziadvogados.com.br" class="text-gold-400 hover:text-gold-300 transition-colors">rafael@fratazziadvogados.com.br</a></p>
                 </div>
-                <div class="footer-section">
-                    <h3>Horário de Atendimento</h3>
-                    <div class="footer-info">
-                        <p>Segunda a Sexta: 09:00 às 18:00</p>
-                        <p>Sábado: Fechado</p>
-                        <p>Domingo: Fechado</p>
-                        <p>Feriados: Fechado</p>
-                    </div>
+                <div>
+                    <h3 class="text-lg font-semibold text-white mb-4" style="font-family: 'Playfair Display', serif;">Horário de Atendimento</h3>
+                    <p class="text-sm text-white/60 mb-2">Segunda a Sexta: 09:00 às 18:00</p>
+                    <p class="text-sm text-white/60 mb-2">Sábado: Fechado</p>
+                    <p class="text-sm text-white/60 mb-2">Domingo: Fechado</p>
+                    <p class="text-sm text-white/60">Feriados: Fechado</p>
                 </div>
-                <div class="footer-section footer-map">
-                    <h3>Localização</h3>
-                    <div class="map-container">
-                        <iframe 
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3658.5!2d-46.5333!3d-23.4533!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94cef7c8c8c8c8c8%3A0x8c8c8c8c8c8c8c8!2sR.%20Ot%C3%A1vio%20Forghieri%2C%2072%20-%20Sala%2063%20-%20Centro%2C%20Guarulhos%20-%20SP%2C%2007090-070!5e0!3m2!1spt-BR!2sbr!4v1234567890"
-                            width="100%" 
-                            height="250" 
-                            style="border:0;" 
-                            allowfullscreen="" 
-                            loading="lazy" 
-                            referrerpolicy="no-referrer-when-downgrade">
-                        </iframe>
+                <div>
+                    <h3 class="text-lg font-semibold text-white mb-4" style="font-family: 'Playfair Display', serif;">Localização</h3>
+                    <div class="rounded-xl overflow-hidden border border-white/10 aspect-video">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3658.5!2d-46.5333!3d-23.4533!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94cef7c8c8c8c8c8%3A0x8c8c8c8c8c8c8c8!2sR.%20Ot%C3%A1vio%20Forghieri%2C%2072%20-%20Sala%2063%20-%20Centro%2C%20Guarulhos%20-%20SP%2C%2007090-070!5e0!3m2!1spt-BR!2sbr!4v1234567890" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>
                 </div>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2018 Fratazzi Advogados Associados. Todos os direitos reservados.</p>
+            <div class="mt-16 pt-8 border-t border-white/5 text-center">
+                <p class="text-sm text-white/40">&copy; 2018 Fratazzi Advogados Associados. Todos os direitos reservados.</p>
             </div>
-        </div>
-    </footer>
+        </footer>
+    </div>
 
-    <!-- Botão Flutuante WhatsApp -->
-    <a href="https://wa.me/5511945617464?text=Olá,%20vim%20pelo%20site%20e%20gostaria%20de%20mais%20informações." class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Falar no WhatsApp">
-        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="width: 35px; height: 35px; fill: white;">
-            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
-        </svg>
+    <!-- WhatsApp Float -->
+    <a href="https://wa.me/5511945617464?text=Olá,%20vim%20pelo%20site%20e%20gostaria%20de%20mais%20informações." class="fixed bottom-6 right-6 z-50 w-14 h-14 whatsapp-btn rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+        <svg class="w-7 h-7 text-white" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
     </a>
 
     <script src="js/menu.js"></script>
     <script src="js/google-reviews.js"></script>
+    <script>
+        lucide.createIcons({ attrs: { 'stroke-width': 1.5 } });
+    </script>
 </body>
 </html>
-
