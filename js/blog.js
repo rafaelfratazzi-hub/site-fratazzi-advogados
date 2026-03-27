@@ -220,7 +220,46 @@ const blogPosts = [
         readTime: "10 min",
         image: "⚖️",
         tags: ["Judicial", "Extrajudicial", "Estratégias"]
-    }
+    },
+    {
+        id: 18,
+        title: "Cobrança Extrajudicial vs Judicial: Qual a Melhor Estratégia para Recuperar Seu Crédito?",
+        category: "bancario",
+        categoryLabel: "Direito Bancário",
+        excerpt: "Entenda as diferenças entre cobrança extrajudicial e judicial, quando usar cada abordagem e como maximizar as chances de receber o que lhe é devido.",
+        content: "A escolha entre a via extrajudicial e judicial na recuperação de créditos é decisiva para o sucesso e a velocidade do recebimento. Neste artigo, explicamos cada estratégia em detalhes...",
+        author: "Equipe Fratazzi",
+        date: "2025-01-10",
+        readTime: "7 min",
+        image: "⚖️",
+        tags: ["Cobrança", "Recuperação de Créditos", "Estratégia Jurídica"]
+    },
+    {
+        id: 19,
+        title: "SISBAJUD e RENAJUD: Como a Tecnologia Garante a Recuperação do Seu Crédito",
+        category: "novidades",
+        categoryLabel: "Novidades",
+        excerpt: "Conheça as ferramentas tecnológicas que permitem bloquear contas bancárias e penhorar veículos do devedor de forma eletrônica e imediata após decisão judicial.",
+        content: "O sistema judiciário brasileiro conta com ferramentas tecnológicas poderosas para garantir o efetivo recebimento de créditos. SISBAJUD e RENAJUD são as principais delas...",
+        author: "Equipe Fratazzi",
+        date: "2025-01-20",
+        readTime: "6 min",
+        image: "🔍",
+        tags: ["SISBAJUD", "RENAJUD", "Tecnologia Jurídica", "Penhora"]
+    },
+    {
+        id: 20,
+        title: "Devedor Sumiu? Conheça as Estratégias para Localizar Patrimônio e Garantir o Recebimento",
+        category: "dicas-empresas",
+        categoryLabel: "Dicas para Empresas",
+        excerpt: "Quando o devedor some ou esconde bens, existem ferramentas jurídicas e tecnológicas para rastrear ativos e garantir o recebimento do crédito.",
+        content: "Um dos maiores desafios na recuperação de créditos é quando o devedor simplesmente não aparece ou esconde seu patrimônio. Mas existem ferramentas eficazes para isso...",
+        author: "Equipe Fratazzi",
+        date: "2025-02-05",
+        readTime: "8 min",
+        image: "🎯",
+        tags: ["Localização Patrimonial", "Penhora", "Recuperação de Créditos", "Empresas"]
+    },
 ];
 
 // Função para formatar data
