@@ -97,20 +97,41 @@ function criarCardAvaliacao(avaliacao, index) {
     const delay = (index * 0.1 + 0.2).toFixed(1);
 
     if (index === 0) {
-        // Primeiro card: fundo dourado + electric glow
-        card.className = 'electric-glow-card flex flex-col min-h-[180px] rounded-xl p-8 text-black shadow-2xl animate-on-scroll';
-        card.style.cssText = `background: linear-gradient(to bottom, #d4b87a, #a68b4f); animation: fadeSlideIn 1s cubic-bezier(0.2,0.8,0.2,1) ${delay}s both, electric-pulse 3.5s ease-in-out 1s infinite;`;
+        // Primeiro card: fundo dourado + electric glow — usa inline styles (Tailwind CDN não processa classes dinâmicas)
+        card.className = 'electric-glow-card';
+        card.style.cssText = `
+            background: linear-gradient(to bottom, #d4b87a, #a68b4f);
+            border-radius: 12px;
+            padding: 2rem;
+            min-height: 180px;
+            display: flex;
+            flex-direction: column;
+            color: #0a0e12;
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.4);
+            animation: fadeSlideIn 1s cubic-bezier(0.2,0.8,0.2,1) ${delay}s both, electric-pulse 3.5s ease-in-out 1s infinite;
+        `;
         card.innerHTML = `
-            <p class="text-lg font-semibold leading-snug mb-4">"${avaliacao.texto}"</p>
-            <div class="mt-auto pt-4 border-t border-black/10 flex items-center gap-2 text-sm font-medium">${stars} <span class="font-semibold">${avaliacao.autor}</span> · ${avaliacao.data}</div>
+            <p style="font-size:1.125rem;font-weight:600;line-height:1.4;margin-bottom:1rem;">"${avaliacao.texto}"</p>
+            <div style="margin-top:auto;padding-top:1rem;border-top:1px solid rgba(0,0,0,0.15);display:flex;align-items:center;gap:0.5rem;font-size:0.875rem;font-weight:500;">${stars} <span style="font-weight:600;">${avaliacao.autor}</span> · ${avaliacao.data}</div>
         `;
     } else {
-        // Demais cards: fundo escuro + electric glow
-        card.className = 'electric-glow-card flex flex-col min-h-[180px] bg-white/5 rounded-xl border border-white/10 backdrop-blur-md p-8 animate-on-scroll';
-        card.style.animation = `fadeSlideIn 1s cubic-bezier(0.2,0.8,0.2,1) ${delay}s both`;
+        // Demais cards: fundo escuro + electric glow — usa inline styles
+        card.className = 'electric-glow-card';
+        card.style.cssText = `
+            background: rgba(255,255,255,0.05);
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.1);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            padding: 2rem;
+            min-height: 180px;
+            display: flex;
+            flex-direction: column;
+            animation: fadeSlideIn 1s cubic-bezier(0.2,0.8,0.2,1) ${delay}s both;
+        `;
         card.innerHTML = `
-            <p class="text-lg font-medium text-white/90 mb-4">"${avaliacao.texto}"</p>
-            <div class="mt-auto pt-4 border-t border-white/10 flex items-center gap-2 text-sm text-white/60">${stars} <span class="font-semibold text-white">${avaliacao.autor}</span> · ${avaliacao.data}</div>
+            <p style="font-size:1.125rem;font-weight:500;color:rgba(255,255,255,0.9);line-height:1.6;margin-bottom:1rem;">"${avaliacao.texto}"</p>
+            <div style="margin-top:auto;padding-top:1rem;border-top:1px solid rgba(255,255,255,0.1);display:flex;align-items:center;gap:0.5rem;font-size:0.875rem;color:rgba(255,255,255,0.6);">${stars} <span style="font-weight:600;color:white;">${avaliacao.autor}</span> · ${avaliacao.data}</div>
         `;
     }
 
