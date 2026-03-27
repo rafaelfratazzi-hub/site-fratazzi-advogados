@@ -224,8 +224,8 @@ const blogPosts = [
     {
         id: 18,
         title: "Cobrança Extrajudicial vs Judicial: Qual a Melhor Estratégia para Recuperar Seu Crédito?",
-        category: "bancario",
-        categoryLabel: "Direito Bancário",
+        category: "recuperacao-creditos",
+        categoryLabel: "Recuperação de Créditos",
         excerpt: "Entenda as diferenças entre cobrança extrajudicial e judicial, quando usar cada abordagem e como maximizar as chances de receber o que lhe é devido.",
         content: "A escolha entre a via extrajudicial e judicial na recuperação de créditos é decisiva para o sucesso e a velocidade do recebimento. Neste artigo, explicamos cada estratégia em detalhes...",
         author: "Equipe Fratazzi",
@@ -237,8 +237,8 @@ const blogPosts = [
     {
         id: 19,
         title: "SISBAJUD e RENAJUD: Como a Tecnologia Garante a Recuperação do Seu Crédito",
-        category: "novidades",
-        categoryLabel: "Novidades",
+        category: "recuperacao-creditos",
+        categoryLabel: "Recuperação de Créditos",
         excerpt: "Conheça as ferramentas tecnológicas que permitem bloquear contas bancárias e penhorar veículos do devedor de forma eletrônica e imediata após decisão judicial.",
         content: "O sistema judiciário brasileiro conta com ferramentas tecnológicas poderosas para garantir o efetivo recebimento de créditos. SISBAJUD e RENAJUD são as principais delas...",
         author: "Equipe Fratazzi",
@@ -250,8 +250,8 @@ const blogPosts = [
     {
         id: 20,
         title: "Devedor Sumiu? Conheça as Estratégias para Localizar Patrimônio e Garantir o Recebimento",
-        category: "dicas-empresas",
-        categoryLabel: "Dicas para Empresas",
+        category: "recuperacao-creditos",
+        categoryLabel: "Recuperação de Créditos",
         excerpt: "Quando o devedor some ou esconde bens, existem ferramentas jurídicas e tecnológicas para rastrear ativos e garantir o recebimento do crédito.",
         content: "Um dos maiores desafios na recuperação de créditos é quando o devedor simplesmente não aparece ou esconde seu patrimônio. Mas existem ferramentas eficazes para isso...",
         author: "Equipe Fratazzi",
@@ -259,6 +259,58 @@ const blogPosts = [
         readTime: "8 min",
         image: "🎯",
         tags: ["Localização Patrimonial", "Penhora", "Recuperação de Créditos", "Empresas"]
+    },
+    {
+        id: 21,
+        title: "Protesto em Cartório e Negativação no Serasa: Quando e Como Usar na Cobrança de Dívidas",
+        category: "recuperacao-creditos",
+        categoryLabel: "Recuperação de Créditos",
+        excerpt: "Protesto e negativação são ferramentas legítimas de pressão que aceleram o recebimento de dívidas. Saiba como utilizá-las corretamente e evitar abusos.",
+        content: "O protesto em cartório e a negativação no Serasa/SPC são instrumentos extrajudiciais eficazes para a recuperação de créditos. Quando usados corretamente, geram pressão legítima sobre o devedor...",
+        author: "Equipe Fratazzi",
+        date: "2025-02-15",
+        readTime: "6 min",
+        image: "📋",
+        tags: ["Protesto", "Serasa", "Negativação", "Cobrança Extrajudicial"]
+    },
+    {
+        id: 22,
+        title: "Empresas Inadimplentes: Como Recuperar Créditos de Pessoa Jurídica com Segurança",
+        category: "recuperacao-creditos",
+        categoryLabel: "Recuperação de Créditos",
+        excerpt: "Cobrar de outra empresa exige estratégia específica. Conheça as particularidades jurídicas da recuperação de créditos entre pessoas jurídicas e como maximizar suas chances.",
+        content: "A cobrança de créditos entre empresas possui particularidades que exigem estratégia jurídica especializada. Desde a análise societária do devedor até a penhora de cotas e faturamento...",
+        author: "Equipe Fratazzi",
+        date: "2025-02-25",
+        readTime: "9 min",
+        image: "🏢",
+        tags: ["Pessoa Jurídica", "Recuperação Créditos", "Empresas", "Cobrança B2B"]
+    },
+    {
+        id: 23,
+        title: "Demissão por Justa Causa: Quando é Legal e Como se Defender",
+        category: "trabalhista",
+        categoryLabel: "Trabalhista",
+        excerpt: "A demissão por justa causa exige requisitos rígidos da CLT. Saiba quais situações autorizam essa modalidade e como o trabalhador pode contestar uma justa causa indevida.",
+        content: "A demissão por justa causa é a modalidade mais grave de rescisão contratual, pois priva o trabalhador de várias verbas rescisórias. A CLT exige requisitos rigorosos para sua aplicação...",
+        author: "Equipe Fratazzi",
+        date: "2025-03-05",
+        readTime: "7 min",
+        image: "⚖️",
+        tags: ["Justa Causa", "CLT", "Rescisão", "Direito Trabalhista"]
+    },
+    {
+        id: 24,
+        title: "Horas Extras e Banco de Horas: Direitos do Trabalhador que Muitas Empresas Descumprem",
+        category: "trabalhista",
+        categoryLabel: "Trabalhista",
+        excerpt: "Horas extras não pagas e banco de horas irregular são irregularidades frequentes. Saiba quais são seus direitos e como calcular os valores devidos.",
+        content: "As horas extras e o banco de horas são temas frequentes em ações trabalhistas. Muitas empresas descumprem as regras da CLT, gerando prejuízo significativo ao trabalhador...",
+        author: "Equipe Fratazzi",
+        date: "2025-03-15",
+        readTime: "8 min",
+        image: "⏰",
+        tags: ["Horas Extras", "Banco de Horas", "CLT", "Trabalhista"]
     },
 ];
 

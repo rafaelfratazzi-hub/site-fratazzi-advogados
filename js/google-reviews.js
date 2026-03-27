@@ -43,11 +43,8 @@ async function atualizarAvaliacoesGoogle() {
             ]
         };
         
-        // Atualizar o número total de avaliações no site
+        // Atualizar apenas o subtítulo e o botão — os cards ficam no HTML estático
         atualizarTotalAvaliacoes(avaliacoesGoogle.totalAvaliacoes, avaliacoesGoogle.mediaNota);
-        
-        // Atualizar os cards de avaliações
-        atualizarCardsAvaliacoes(avaliacoesGoogle.avaliacoes);
         
     } catch (error) {
         console.error('Erro ao buscar avaliações do Google:', error);
