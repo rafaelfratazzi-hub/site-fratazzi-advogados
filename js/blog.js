@@ -312,6 +312,45 @@ const blogPosts = [
         image: "⏰",
         tags: ["Horas Extras", "Banco de Horas", "CLT", "Trabalhista"]
     },
+    {
+        id: 25,
+        title: "Assédio Moral no Trabalho: Como Reconhecer, Provar e Pedir Indenização",
+        category: "trabalhista",
+        categoryLabel: "Trabalhista",
+        excerpt: "O assédio moral é uma das causas mais comuns de ações trabalhistas. Saiba o que caracteriza, como reunir provas e quais valores podem ser pedidos na Justiça do Trabalho.",
+        content: "O assédio moral no ambiente de trabalho é uma realidade que afeta milhares de trabalhadores e gera direito à indenização por danos morais. Entender como provar é essencial...",
+        author: "Equipe Fratazzi",
+        date: "2025-03-20",
+        readTime: "8 min",
+        image: "🛡️",
+        tags: ["Assédio Moral", "Danos Morais", "CLT", "Indenização"]
+    },
+    {
+        id: 26,
+        title: "FGTS: Quando Você Tem Direito ao Saque e Como Calcular a Multa Rescisória",
+        category: "trabalhista",
+        categoryLabel: "Trabalhista",
+        excerpt: "O FGTS é um dos principais direitos do trabalhador, mas muitas empresas cometem irregularidades no recolhimento. Saiba quando sacar e como calcular a multa de 40%.",
+        content: "O Fundo de Garantia do Tempo de Serviço (FGTS) é um direito fundamental do trabalhador regido pela Lei 8.036/1990. Irregularidades no recolhimento são frequentes e geram ações trabalhistas...",
+        author: "Equipe Fratazzi",
+        date: "2025-03-22",
+        readTime: "7 min",
+        image: "💰",
+        tags: ["FGTS", "Multa Rescisória", "Saque", "Direitos Trabalhistas"]
+    },
+    {
+        id: 27,
+        title: "Acidente de Trabalho: Direitos, Indenizações e Responsabilidade do Empregador",
+        category: "trabalhista",
+        categoryLabel: "Trabalhista",
+        excerpt: "Acidente de trabalho gera direito a estabilidade, indenização por danos materiais e morais. Saiba quais são seus direitos e como agir imediatamente após o acidente.",
+        content: "O acidente de trabalho gera uma série de direitos ao trabalhador, tanto perante a Previdência Social quanto em relação ao empregador. A CLT e o CC/2002 estabelecem regras claras...",
+        author: "Equipe Fratazzi",
+        date: "2025-03-25",
+        readTime: "9 min",
+        image: "🏥",
+        tags: ["Acidente de Trabalho", "CAT", "Indenização", "Estabilidade"]
+    },
 ];
 
 // Função para formatar data
