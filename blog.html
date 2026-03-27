@@ -106,9 +106,24 @@
         .blog-search-input { width: 100%; padding: 0.875rem 3rem 0.875rem 1rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; color: white; font-size: 1rem; transition: all 0.3s ease; }
         .blog-search-input::placeholder { color: rgba(255,255,255,0.4); }
         .blog-search-input:focus { outline: none; border-color: rgba(201,169,97,0.5); background: rgba(255,255,255,0.08); box-shadow: 0 0 0 2px rgba(201,169,97,0.2); }
-        .category-btn { padding: 0.625rem 1.25rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: rgba(255,255,255,0.7); border-radius: 9999px; font-size: 0.875rem; font-weight: 500; cursor: pointer; transition: all 0.3s ease; }
+        .category-btn { padding: 0.625rem 1.25rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: rgba(255,255,255,0.7); border-radius: 9999px; font-size: 0.875rem; font-weight: 500; cursor: pointer; transition: all 0.3s ease; position: relative; overflow: hidden; }
         .category-btn:hover { background: rgba(255,255,255,0.1); color: white; border-color: rgba(255,255,255,0.2); transform: translateY(-2px); }
         .category-btn.active { background: linear-gradient(135deg, #a68b4f, #c9a961); border-color: #c9a961; color: #0a0e12; font-weight: 600; box-shadow: 0 4px 15px rgba(201,169,97,0.3); }
+        /* Floating particles (odd buttons) */
+        @keyframes floating-points { 0% { transform: translateY(0); } 85% { opacity: 0; } 100% { transform: translateY(-55px); opacity: 0; } }
+        .btn-particles .points_wrapper { overflow: hidden; width: 100%; height: 100%; pointer-events: none; position: absolute; top: 0; left: 0; z-index: 1; }
+        .btn-particles .points_wrapper .point { bottom: -6px; position: absolute; animation: floating-points infinite ease-in-out; pointer-events: none; width: 2px; height: 2px; background-color: rgba(212,184,122,0.8); border-radius: 9999px; }
+        .btn-particles .points_wrapper .point:nth-child(1) { left: 15%; opacity: 0.9; animation-duration: 2.2s; animation-delay: 0.1s; }
+        .btn-particles .points_wrapper .point:nth-child(2) { left: 50%; opacity: 0.6; animation-duration: 2.0s; }
+        .btn-particles .points_wrapper .point:nth-child(3) { left: 80%; opacity: 0.8; animation-duration: 2.4s; animation-delay: 0.3s; }
+        .btn-particles span { position: relative; z-index: 2; }
+        /* Spinning gold border (even buttons) */
+        .btn-spin-border { isolation: isolate; }
+        .cat-spin { position: absolute; inset: 0; border-radius: 9999px; z-index: 1; overflow: hidden; pointer-events: none; }
+        .cat-spin::before { content: ''; position: absolute; width: 300%; height: 300%; top: -100%; left: -100%; background: conic-gradient(from 0deg, transparent 0deg, transparent 75deg, rgba(201,169,97,0.75) 180deg, transparent 285deg, transparent 360deg); animation: whatsapp-spin 3s linear infinite; }
+        .cat-spin::after { content: ''; position: absolute; inset: 2px; border-radius: 9999px; background: rgba(12,16,21,0.97); }
+        .btn-spin-border.active .cat-spin::after { background: linear-gradient(135deg, #a68b4f, #c9a961); }
+        .btn-spin-border span { position: relative; z-index: 2; }
         @media (max-width: 767px) {
             .nav-menu { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; background: rgba(10,14,18,0.98); backdrop-filter: blur(12px); padding: 1rem; gap: 0.5rem; border-bottom: 1px solid rgba(255,255,255,0.1); }
             .nav-menu.active { display: flex !important; }
@@ -188,11 +203,11 @@
         <section class="flex-1 pt-24 pb-16 px-6 md:px-10 animate-on-scroll" style="animation: fadeSlideIn 1s cubic-bezier(0.2,0.8,0.2,1) 0.1s both;">
             <div class="inline-flex items-center gap-2 text-gold-500 mb-8">
                 <span class="flex h-2 w-2 rounded-full bg-gold-500"></span>
-                <span class="text-xs font-bold tracking-widest uppercase text-gold-500/80">Artigos Jurídicos</span>
+                <span class="badge-shimmer text-xs font-bold tracking-widest uppercase">Artigos Jurídicos</span>
             </div>
             <h1 class="text-5xl md:text-6xl lg:text-7xl leading-[0.95] tracking-tighter text-white font-medium mb-6" style="font-family: 'Playfair Display', serif;">
                 Blog
-                <span class="text-transparent bg-clip-text bg-gradient-to-r from-gold-400 via-gold-300 to-gold-600">Jurídico</span>
+                <span class="hero-shimmer">Jurídico</span>
             </h1>
             <p class="leading-relaxed text-lg font-medium text-white/60 max-w-2xl">
                 Fique por dentro das principais novidades, dicas e orientações jurídicas
@@ -209,11 +224,26 @@
                     </button>
                 </div>
                 <div class="flex flex-wrap gap-2">
-                    <button class="category-btn active" data-category="todos">Todos</button>
-                    <button class="category-btn" data-category="tributario">Tributário</button>
-                    <button class="category-btn" data-category="bancario">Direito Bancário</button>
-                    <button class="category-btn" data-category="novidades">Novidades</button>
-                    <button class="category-btn" data-category="dicas-empresas">Dicas para Empresas</button>
+                    <button class="category-btn btn-particles active" data-category="todos">
+                        <div class="points_wrapper"><i class="point"></i><i class="point"></i><i class="point"></i></div>
+                        <span>Todos</span>
+                    </button>
+                    <button class="category-btn btn-spin-border" data-category="tributario">
+                        <div class="cat-spin"></div>
+                        <span>Tributário</span>
+                    </button>
+                    <button class="category-btn btn-particles" data-category="bancario">
+                        <div class="points_wrapper"><i class="point"></i><i class="point"></i><i class="point"></i></div>
+                        <span>Direito Bancário</span>
+                    </button>
+                    <button class="category-btn btn-spin-border" data-category="novidades">
+                        <div class="cat-spin"></div>
+                        <span>Novidades</span>
+                    </button>
+                    <button class="category-btn btn-particles" data-category="dicas-empresas">
+                        <div class="points_wrapper"><i class="point"></i><i class="point"></i><i class="point"></i></div>
+                        <span>Dicas para Empresas</span>
+                    </button>
                 </div>
             </div>
         </section>

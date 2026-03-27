@@ -65,10 +65,13 @@ function atualizarTotalAvaliacoes(total, media) {
         }
     }
     
-    // Atualizar no link "Ver Todas as Avaliações"
+    // Atualizar no link "Ver Todas as Avaliações" — preservar estrutura .inner para visibilidade do texto
     const linkAvaliacoes = document.querySelector('.avaliacoes-cta .btn-primary');
     if (linkAvaliacoes) {
-        linkAvaliacoes.textContent = `Ver Todas as ${total} Avaliações no Google`;
+        const inner = linkAvaliacoes.querySelector('.inner');
+        if (inner) {
+            inner.textContent = `Ver ${total} Avaliações no Google Maps`;
+        }
         linkAvaliacoes.href = `https://www.google.com/maps/place/R.+Ot%C3%A1vio+Forghieri,+72+-+Sala+63+-+Centro,+Guarulhos+-+SP,+07090-070`;
     }
 }
@@ -81,30 +84,36 @@ function atualizarCardsAvaliacoes(avaliacoes) {
     // Limpar avaliações antigas (manter apenas as 3 primeiras)
     grid.innerHTML = '';
     
-    avaliacoes.slice(0, 3).forEach(avaliacao => {
-        const card = criarCardAvaliacao(avaliacao);
+    avaliacoes.slice(0, 3).forEach((avaliacao, index) => {
+        const card = criarCardAvaliacao(avaliacao, index);
         grid.appendChild(card);
     });
 }
 
 // Função para criar um card de avaliação
-function criarCardAvaliacao(avaliacao) {
+function criarCardAvaliacao(avaliacao, index) {
     const card = document.createElement('div');
-    card.className = 'avaliacao-card';
-    
     const stars = '★'.repeat(avaliacao.nota) + '☆'.repeat(5 - avaliacao.nota);
-    
-    card.innerHTML = `
-        <div class="avaliacao-header">
-            <div class="avaliacao-stars">${stars}</div>
-            <div class="avaliacao-author">
-                <strong>${avaliacao.autor}</strong>
-                <span>${avaliacao.data}</span>
-            </div>
-        </div>
-        <p class="avaliacao-text">"${avaliacao.texto}"</p>
-    `;
-    
+    const delay = (index * 0.1 + 0.2).toFixed(1);
+
+    if (index === 0) {
+        // Primeiro card: fundo dourado + electric glow
+        card.className = 'electric-glow-card flex flex-col min-h-[180px] rounded-xl p-8 text-black shadow-2xl animate-on-scroll';
+        card.style.cssText = `background: linear-gradient(to bottom, #d4b87a, #a68b4f); animation: fadeSlideIn 1s cubic-bezier(0.2,0.8,0.2,1) ${delay}s both, electric-pulse 3.5s ease-in-out 1s infinite;`;
+        card.innerHTML = `
+            <p class="text-lg font-semibold leading-snug mb-4">"${avaliacao.texto}"</p>
+            <div class="mt-auto pt-4 border-t border-black/10 flex items-center gap-2 text-sm font-medium">${stars} <span class="font-semibold">${avaliacao.autor}</span> · ${avaliacao.data}</div>
+        `;
+    } else {
+        // Demais cards: fundo escuro + electric glow
+        card.className = 'electric-glow-card flex flex-col min-h-[180px] bg-white/5 rounded-xl border border-white/10 backdrop-blur-md p-8 animate-on-scroll';
+        card.style.animation = `fadeSlideIn 1s cubic-bezier(0.2,0.8,0.2,1) ${delay}s both`;
+        card.innerHTML = `
+            <p class="text-lg font-medium text-white/90 mb-4">"${avaliacao.texto}"</p>
+            <div class="mt-auto pt-4 border-t border-white/10 flex items-center gap-2 text-sm text-white/60">${stars} <span class="font-semibold text-white">${avaliacao.autor}</span> · ${avaliacao.data}</div>
+        `;
+    }
+
     return card;
 }
 

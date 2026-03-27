@@ -25,6 +25,12 @@
         .button-custom::before { content: ""; position: absolute; inset: 1px; background: linear-gradient(177.95deg, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0) 100%); border-radius: 9999px; z-index: 0; }
         .button-custom::after { content: ""; position: absolute; inset: 2px; background: radial-gradient(65.28% 65.28% at 50% 100%, rgba(212, 184, 122, 0.8) 0%, rgba(212, 184, 122, 0) 100%), linear-gradient(0deg, #a68b4f, #a68b4f); border-radius: 9999px; z-index: 0; }
         .inner { z-index: 2; position: relative; color: #0a0e12; display: inline-flex; align-items: center; justify-content: center; font-size: 0.875rem; font-weight: 500; }
+        .points_wrapper { overflow: hidden; width: 100%; height: 100%; pointer-events: none; position: absolute; top: 0; left: 0; z-index: 1; }
+        @keyframes floating-points { 0% { transform: translateY(0); } 85% { opacity: 0; } 100% { transform: translateY(-55px); opacity: 0; } }
+        .points_wrapper .point { bottom: -10px; position: absolute; animation: floating-points infinite ease-in-out; pointer-events: none; width: 2px; height: 2px; background-color: #fff; border-radius: 9999px; }
+        .points_wrapper .point:nth-child(1) { left: 10%; opacity: 1; animation-duration: 2.35s; animation-delay: 0.2s; }
+        .points_wrapper .point:nth-child(2) { left: 30%; opacity: 0.7; animation-duration: 2.5s; animation-delay: 0.5s; }
+        .points_wrapper .point:nth-child(3) { left: 70%; opacity: 0.8; animation-duration: 2.2s; animation-delay: 0.1s; }
         @keyframes beam-fall { 0% { transform: translateY(-100%); opacity: 0; } 50% { opacity: 1; } 100% { transform: translateY(120vh); opacity: 0; } }
         .animate-beam-1 { animation: beam-fall 6s linear infinite; }
         .animate-beam-2 { animation: beam-fall 8s linear infinite; animation-delay: 2s; }
@@ -148,10 +154,10 @@
         <section class="pt-24 pb-12 px-6 md:px-10" style="animation: fadeSlideIn 1s cubic-bezier(0.2,0.8,0.2,1) 0.1s both;">
             <div class="inline-flex items-center gap-2 text-gold-500 mb-6">
                 <span class="flex h-2 w-2 rounded-full bg-gold-500"></span>
-                <span class="text-xs font-bold tracking-widest uppercase text-gold-500/80">Fale conosco</span>
+                <span class="badge-shimmer text-xs font-bold tracking-widest uppercase">Fale conosco</span>
             </div>
             <h1 class="text-5xl md:text-6xl leading-[0.95] tracking-tighter text-white font-medium mb-4" style="font-family: 'Playfair Display', serif;">
-                <span class="text-transparent bg-clip-text bg-gradient-to-r from-gold-400 via-gold-300 to-gold-600">Contato</span>
+                <span class="hero-shimmer">Contato</span>
             </h1>
             <p class="text-lg text-white/60 max-w-xl">Preencha o formulário abaixo e retornaremos o mais breve possível.</p>
         </section>
@@ -184,6 +190,7 @@
                         <textarea id="mensagem" name="mensagem" class="form-input" placeholder="Como podemos ajudar?" required></textarea>
                     </div>
                     <button type="submit" class="button-custom">
+                        <div class="points_wrapper"><i class="point"></i><i class="point"></i><i class="point"></i></div>
                         <span class="inner">Enviar mensagem</span>
                     </button>
                 </form>
