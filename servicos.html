@@ -99,6 +99,100 @@
         .servico-card p { color: rgba(255,255,255,0.65); font-size: 0.9375rem; line-height: 1.6; }
         .servico-section { background: rgba(255,255,255,0.03); border-radius: 20px; border: 1px solid rgba(255,255,255,0.08); padding: 2.5rem; margin-bottom: 2rem; }
         .servico-section-alt { background: rgba(255,255,255,0.02); }
+        .whatsapp-btn[class*="fixed"] { position: fixed !important; }
+
+        /* Shimmer glow + analytics (same as index) */
+        @keyframes shimmer-glow-pulse {
+            0%, 100% { border-color: rgba(201,169,97,0.15); box-shadow: 0 0 20px rgba(201,169,97,0.05); }
+            50% { border-color: rgba(201,169,97,0.5); box-shadow: 0 0 40px rgba(201,169,97,0.18), 0 0 80px rgba(201,169,97,0.06); }
+        }
+        @keyframes shimmer-sweep {
+            0% { left: -100%; }
+            50%, 100% { left: 150%; }
+        }
+        @keyframes analytics-scan {
+            0% { bottom: 0; opacity: 1; }
+            80% { opacity: 0.8; }
+            100% { bottom: 100%; opacity: 0; }
+        }
+        @keyframes electric-pulse {
+            0%, 100% { box-shadow: 0 0 6px rgba(201,169,97,0.15); border-color: rgba(201,169,97,0.2); }
+            20% { box-shadow: 0 0 18px rgba(212,184,122,0.45), 0 0 35px rgba(201,169,97,0.2); border-color: rgba(212,184,122,0.65); }
+            40% { box-shadow: 0 0 8px rgba(201,169,97,0.2); border-color: rgba(201,169,97,0.25); }
+            70% { box-shadow: 0 0 22px rgba(201,169,97,0.5), 0 0 44px rgba(201,169,97,0.18); border-color: rgba(201,169,97,0.6); }
+        }
+
+        /* Flashlight reveal for large service sections */
+        .flashlight-card {
+            position: relative;
+            overflow: hidden;
+            --mx: 50%;
+            --my: 50%;
+        }
+        .flashlight-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at var(--mx) var(--my), rgba(201,169,97,0.1) 0%, rgba(201,169,97,0.05) 30%, transparent 65%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            pointer-events: none;
+            border-radius: inherit;
+            z-index: 1;
+        }
+        .flashlight-card:hover::after {
+            opacity: 1;
+        }
+
+        /* Electric glow for small servico-cards */
+        .servico-card {
+            animation: electric-pulse 3.5s ease-in-out infinite;
+            border-color: rgba(201,169,97,0.15) !important;
+            position: relative;
+            overflow: hidden;
+        }
+        .servico-card::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(201,169,97,0.7), transparent);
+            bottom: 0;
+            opacity: 0;
+            pointer-events: none;
+            z-index: 2;
+        }
+        .servico-card:hover::after {
+            animation: analytics-scan 0.9s ease-out forwards;
+            opacity: 1;
+        }
+
+        /* Solicitar Consulta button effect (ver tipografia style) */
+        .solicitar-btn {
+            position: relative;
+            overflow: hidden;
+            transition: border-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease !important;
+        }
+        .solicitar-btn::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg, transparent 0%, rgba(201,169,97,0.12) 50%, transparent 100%);
+            transform: translateX(-100%);
+            transition: transform 0.6s ease;
+            pointer-events: none;
+        }
+        .solicitar-btn:hover::before {
+            transform: translateX(100%);
+        }
+        .solicitar-btn:hover {
+            border-color: rgba(201,169,97,0.8) !important;
+            color: #d4b87a !important;
+            box-shadow: 0 0 20px rgba(201,169,97,0.15), inset 0 0 10px rgba(201,169,97,0.05) !important;
+            background: rgba(201,169,97,0.05) !important;
+        }
+
         @media (max-width: 767px) {
             .nav-menu { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; background: rgba(10,14,18,0.98); backdrop-filter: blur(12px); padding: 1rem; gap: 0.5rem; border-bottom: 1px solid rgba(255,255,255,0.1); }
             .nav-menu.active { display: flex !important; }
@@ -174,10 +268,10 @@
         <section class="pt-24 pb-16 px-6 md:px-10 animate-on-scroll" style="animation: fadeSlideIn 1s cubic-bezier(0.2,0.8,0.2,1) 0.1s both;">
             <div class="inline-flex items-center gap-2 text-gold-500 mb-8">
                 <span class="flex h-2 w-2 rounded-full bg-gold-500"></span>
-                <span class="text-xs font-bold tracking-widest uppercase text-gold-500/80">O que fazemos</span>
+                <span class="text-xs font-bold tracking-widest uppercase badge-shimmer">O que fazemos</span>
             </div>
             <h1 class="text-5xl md:text-6xl lg:text-7xl leading-[0.95] tracking-tighter text-white font-medium mb-6" style="font-family: 'Playfair Display', serif;">
-                Nossas Áreas
+                <span class="hero-shimmer">Nossas Áreas</span>
                 <span class="text-transparent bg-clip-text bg-gradient-to-r from-gold-400 via-gold-300 to-gold-600"> de Atuação</span>
             </h1>
             <p class="leading-relaxed text-lg font-medium text-white/60 max-w-2xl">
@@ -187,7 +281,7 @@
 
         <div class="px-6 md:px-10 pb-24 space-y-4">
             <!-- Advocacia Tributária -->
-            <section id="tributaria" class="servico-section animate-on-scroll" style="animation: fadeSlideIn 1s cubic-bezier(0.2,0.8,0.2,1) 0.15s both;">
+            <section id="tributaria" class="servico-section flashlight-card animate-on-scroll" style="animation: fadeSlideIn 1s cubic-bezier(0.2,0.8,0.2,1) 0.15s both;">
                 <div class="flex items-center gap-3 mb-6">
                     <div class="w-12 h-12 rounded-xl bg-gold-500/20 flex items-center justify-center text-gold-400">
                         <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
@@ -215,12 +309,12 @@
                 </div>
                 <div class="flex flex-wrap gap-3 mt-8">
                     <a href="https://wa.me/5511945617464?text=Olá,%20vim%20pelo%20site%20e%20gostaria%20de%20mais%20informações." class="inline-flex items-center gap-2 px-6 py-3 rounded-full whatsapp-btn text-white font-medium text-sm" target="_blank" rel="noopener noreferrer">Falar com Especialista</a>
-                    <a href="contato.html" class="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-gold-500/50 text-gold-400 font-medium text-sm hover:bg-gold-500/10 transition-colors">Solicitar Consulta</a>
+                    <a href="contato.html" class="solicitar-btn inline-flex items-center gap-2 px-6 py-3 rounded-full border border-gold-500/50 text-gold-400 font-medium text-sm hover:bg-gold-500/10 transition-colors">Solicitar Consulta</a>
                 </div>
             </section>
 
             <!-- Advocacia Bancária -->
-            <section id="bancaria" class="servico-section servico-section-alt animate-on-scroll" style="animation: fadeSlideIn 1s cubic-bezier(0.2,0.8,0.2,1) 0.2s both;">
+            <section id="bancaria" class="servico-section servico-section-alt flashlight-card animate-on-scroll" style="animation: fadeSlideIn 1s cubic-bezier(0.2,0.8,0.2,1) 0.2s both;">
                 <div class="flex items-center gap-3 mb-6">
                     <div class="w-12 h-12 rounded-xl bg-gold-500/20 flex items-center justify-center text-gold-400">
                         <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="3" x2="21" y1="22" y2="22"/><line x1="6" x2="6" y1="18" y2="11"/><line x1="10" x2="10" y1="18" y2="11"/><line x1="14" x2="14" y1="18" y2="11"/><line x1="18" x2="18" y1="18" y2="11"/><polygon points="12 2 20 7 4 7"/></svg>
@@ -248,12 +342,12 @@
                 </div>
                 <div class="flex flex-wrap gap-3 mt-8">
                     <a href="https://wa.me/5511945617464?text=Olá,%20vim%20pelo%20site%20e%20gostaria%20de%20mais%20informações." class="inline-flex items-center gap-2 px-6 py-3 rounded-full whatsapp-btn text-white font-medium text-sm" target="_blank" rel="noopener noreferrer">Falar com Especialista</a>
-                    <a href="contato.html" class="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-gold-500/50 text-gold-400 font-medium text-sm hover:bg-gold-500/10 transition-colors">Solicitar Consulta</a>
+                    <a href="contato.html" class="solicitar-btn inline-flex items-center gap-2 px-6 py-3 rounded-full border border-gold-500/50 text-gold-400 font-medium text-sm hover:bg-gold-500/10 transition-colors">Solicitar Consulta</a>
                 </div>
             </section>
 
             <!-- Redução de Dívidas -->
-            <section id="reducao-dividas" class="servico-section animate-on-scroll" style="animation: fadeSlideIn 1s cubic-bezier(0.2,0.8,0.2,1) 0.25s both;">
+            <section id="reducao-dividas" class="servico-section flashlight-card animate-on-scroll" style="animation: fadeSlideIn 1s cubic-bezier(0.2,0.8,0.2,1) 0.25s both;">
                 <div class="flex items-center gap-3 mb-6">
                     <div class="w-12 h-12 rounded-xl bg-gold-500/20 flex items-center justify-center text-gold-400">
                         <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="5" rx="2"/><line x1="2" x2="22" y1="10" y2="10"/></svg>
@@ -281,12 +375,12 @@
                 </div>
                 <div class="flex flex-wrap gap-3 mt-8">
                     <a href="https://wa.me/5511945617464?text=Olá,%20vim%20pelo%20site%20e%20gostaria%20de%20mais%20informações." class="inline-flex items-center gap-2 px-6 py-3 rounded-full whatsapp-btn text-white font-medium text-sm" target="_blank" rel="noopener noreferrer">Falar com Especialista</a>
-                    <a href="contato.html" class="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-gold-500/50 text-gold-400 font-medium text-sm hover:bg-gold-500/10 transition-colors">Solicitar Consulta</a>
+                    <a href="contato.html" class="solicitar-btn inline-flex items-center gap-2 px-6 py-3 rounded-full border border-gold-500/50 text-gold-400 font-medium text-sm hover:bg-gold-500/10 transition-colors">Solicitar Consulta</a>
                 </div>
             </section>
 
             <!-- Impostos e Restituições -->
-            <section id="impostos-restituicoes" class="servico-section servico-section-alt animate-on-scroll" style="animation: fadeSlideIn 1s cubic-bezier(0.2,0.8,0.2,1) 0.3s both;">
+            <section id="impostos-restituicoes" class="servico-section servico-section-alt flashlight-card animate-on-scroll" style="animation: fadeSlideIn 1s cubic-bezier(0.2,0.8,0.2,1) 0.3s both;">
                 <div class="flex items-center gap-3 mb-6">
                     <div class="w-12 h-12 rounded-xl bg-gold-500/20 flex items-center justify-center text-gold-400">
                         <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 2v20l2-1 2 1 2-1 2 1 2-1 2 1 2-1 2 1V2l-2 1-2-1-2 1-2-1-2 1-2-1-2 1-2-1Z"/><path d="M16 8H8"/><path d="M16 12H8"/><path d="M12 16H8"/></svg>
@@ -314,12 +408,12 @@
                 </div>
                 <div class="flex flex-wrap gap-3 mt-8">
                     <a href="https://wa.me/5511945617464?text=Olá,%20vim%20pelo%20site%20e%20gostaria%20de%20mais%20informações." class="inline-flex items-center gap-2 px-6 py-3 rounded-full whatsapp-btn text-white font-medium text-sm" target="_blank" rel="noopener noreferrer">Falar com Especialista</a>
-                    <a href="contato.html" class="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-gold-500/50 text-gold-400 font-medium text-sm hover:bg-gold-500/10 transition-colors">Solicitar Consulta</a>
+                    <a href="contato.html" class="solicitar-btn inline-flex items-center gap-2 px-6 py-3 rounded-full border border-gold-500/50 text-gold-400 font-medium text-sm hover:bg-gold-500/10 transition-colors">Solicitar Consulta</a>
                 </div>
             </section>
 
             <!-- Planejamento Tributário -->
-            <section id="planejamento-tributario" class="servico-section animate-on-scroll" style="animation: fadeSlideIn 1s cubic-bezier(0.2,0.8,0.2,1) 0.35s both;">
+            <section id="planejamento-tributario" class="servico-section flashlight-card animate-on-scroll" style="animation: fadeSlideIn 1s cubic-bezier(0.2,0.8,0.2,1) 0.35s both;">
                 <div class="flex items-center gap-3 mb-6">
                     <div class="w-12 h-12 rounded-xl bg-gold-500/20 flex items-center justify-center text-gold-400">
                         <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></svg>
@@ -347,12 +441,12 @@
                 </div>
                 <div class="flex flex-wrap gap-3 mt-8">
                     <a href="https://wa.me/5511945617464?text=Olá,%20vim%20pelo%20site%20e%20gostaria%20de%20mais%20informações." class="inline-flex items-center gap-2 px-6 py-3 rounded-full whatsapp-btn text-white font-medium text-sm" target="_blank" rel="noopener noreferrer">Falar com Especialista</a>
-                    <a href="contato.html" class="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-gold-500/50 text-gold-400 font-medium text-sm hover:bg-gold-500/10 transition-colors">Solicitar Consulta</a>
+                    <a href="contato.html" class="solicitar-btn inline-flex items-center gap-2 px-6 py-3 rounded-full border border-gold-500/50 text-gold-400 font-medium text-sm hover:bg-gold-500/10 transition-colors">Solicitar Consulta</a>
                 </div>
             </section>
 
             <!-- CTA Final -->
-            <section class="servico-section text-center animate-on-scroll" style="animation: fadeSlideIn 1s cubic-bezier(0.2,0.8,0.2,1) 0.4s both;">
+            <section class="servico-section flashlight-card text-center animate-on-scroll" style="animation: fadeSlideIn 1s cubic-bezier(0.2,0.8,0.2,1) 0.4s both;">
                 <h2 class="text-2xl md:text-3xl font-semibold text-white mb-4" style="font-family: 'Playfair Display', serif;">Entre em Contato</h2>
                 <p class="text-white/70 mb-8 max-w-xl mx-auto">Nossa equipe está disponível para analisar seu caso e oferecer orientação jurídica especializada. Entre em contato para agendar uma consulta.</p>
                 <div class="flex flex-wrap justify-center gap-4">
@@ -396,5 +490,16 @@
 
     <script src="js/menu.js"></script>
     <script>lucide.createIcons({ attrs: { 'stroke-width': 1.5 } });</script>
+    <script>
+    document.querySelectorAll('.flashlight-card').forEach(function(card) {
+        card.addEventListener('mousemove', function(e) {
+            var rect = card.getBoundingClientRect();
+            var x = ((e.clientX - rect.left) / rect.width) * 100;
+            var y = ((e.clientY - rect.top) / rect.height) * 100;
+            card.style.setProperty('--mx', x + '%');
+            card.style.setProperty('--my', y + '%');
+        });
+    });
+    </script>
 </body>
 </html>

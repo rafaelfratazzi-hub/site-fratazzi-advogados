@@ -48,6 +48,37 @@
         .whatsapp-btn::after { content: ''; position: absolute; inset: 2px; border-radius: 9999px; background: #25d366; z-index: -1; }
         .whatsapp-btn:hover::after { background: #1db954; }
         @keyframes whatsapp-spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+        .whatsapp-btn[class*="fixed"] { position: fixed !important; }
+        @keyframes electric-pulse {
+            0%, 100% { box-shadow: 0 0 6px rgba(201,169,97,0.15); border-color: rgba(201,169,97,0.15); }
+            20% { box-shadow: 0 0 18px rgba(212,184,122,0.4), 0 0 35px rgba(201,169,97,0.18); border-color: rgba(212,184,122,0.6); }
+            40% { box-shadow: 0 0 8px rgba(201,169,97,0.2); border-color: rgba(201,169,97,0.2); }
+            70% { box-shadow: 0 0 22px rgba(201,169,97,0.45), 0 0 44px rgba(201,169,97,0.15); border-color: rgba(201,169,97,0.55); }
+        }
+        .post-card {
+            animation: electric-pulse 3.5s ease-in-out infinite;
+        }
+        @keyframes analytics-scan {
+            0% { bottom: 0; opacity: 1; }
+            80% { opacity: 0.8; }
+            100% { bottom: 100%; opacity: 0; }
+        }
+        .post-card::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(201,169,97,0.7), transparent);
+            bottom: 0;
+            opacity: 0;
+            pointer-events: none;
+            z-index: 2;
+        }
+        .post-card:hover::after {
+            animation: analytics-scan 0.9s ease-out forwards;
+            opacity: 1;
+        }
         /* Blog - Post Cards (design system dark theme) */
         .post-card { background: rgba(255,255,255,0.05); border-radius: 16px; border: 1px solid rgba(255,255,255,0.1); backdrop-filter: blur(12px); overflow: hidden; display: flex; flex-direction: column; transition: all 0.3s ease; }
         .post-card:hover { background: rgba(255,255,255,0.08); transform: translateY(-4px); border-color: rgba(201,169,97,0.4); box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
