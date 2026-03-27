@@ -30,8 +30,12 @@
         .animate-beam-2 { animation: beam-fall 8s linear infinite; animation-delay: 2s; }
         .animate-beam-3 { animation: beam-fall 7s linear infinite; animation-delay: 4s; }
         @keyframes fadeSlideIn { 0% { opacity: 0; transform: translateY(30px); } 100% { opacity: 1; transform: translateY(0); } }
-        .whatsapp-btn { background: #25d366 !important; }
-        .whatsapp-btn:hover { background: #128c7e !important; filter: brightness(1.05); }
+        .whatsapp-btn { position: relative !important; isolation: isolate !important; overflow: hidden !important; background: transparent !important; box-shadow: 0 0 25px rgba(37,211,102,0.3), 0 8px 40px rgba(37,211,102,0.15) !important; transition: transform 0.3s ease, box-shadow 0.3s ease !important; }
+        .whatsapp-btn:hover { background: transparent !important; filter: none !important; box-shadow: 0 0 50px 10px rgba(37,211,102,0.45) !important; }
+        .whatsapp-btn::before { content: ''; position: absolute; width: 300%; height: 300%; top: -100%; left: -100%; background: conic-gradient(from 0deg, transparent 0deg, transparent 80deg, rgba(255,255,255,0.7) 180deg, transparent 280deg, transparent 360deg); animation: whatsapp-spin 3s linear infinite; z-index: -1; }
+        .whatsapp-btn::after { content: ''; position: absolute; inset: 2px; border-radius: 9999px; background: #25d366; z-index: -1; }
+        .whatsapp-btn:hover::after { background: #1db954; }
+        @keyframes whatsapp-spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
         .form-input { width: 100%; padding: 0.875rem 1rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; color: white; font-size: 1rem; transition: all 0.3s ease; }
         .form-input::placeholder { color: rgba(255,255,255,0.4); }
         .form-input:focus { outline: none; border-color: rgba(201,169,97,0.5); background: rgba(255,255,255,0.08); }
