@@ -173,6 +173,86 @@
             from { transform: rotate(0deg); }
             to { transform: rotate(360deg); }
         }
+        .whatsapp-btn[class*="fixed"] { position: fixed !important; }
+
+        /* === Shimmer Glow Card (for "Sobre" section) === */
+        @keyframes shimmer-glow-pulse {
+            0%, 100% { border-color: rgba(201,169,97,0.2); box-shadow: 0 0 20px rgba(201,169,97,0.06); }
+            50% { border-color: rgba(201,169,97,0.55); box-shadow: 0 0 40px rgba(201,169,97,0.2), 0 0 80px rgba(201,169,97,0.07); }
+        }
+        @keyframes shimmer-sweep {
+            0% { left: -100%; }
+            50%, 100% { left: 150%; }
+        }
+        .shimmer-glow-card {
+            position: relative;
+            overflow: hidden;
+            animation: shimmer-glow-pulse 4s ease-in-out infinite;
+            border-color: rgba(201,169,97,0.2) !important;
+        }
+        .shimmer-glow-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 60%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(201,169,97,0.07), rgba(212,184,122,0.04), transparent);
+            animation: shimmer-sweep 5s ease-in-out infinite;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* === Analytics Card (scanline sweep on hover) === */
+        .analytics-card {
+            position: relative;
+            overflow: hidden;
+        }
+        .analytics-card::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(201,169,97,0.7), transparent);
+            bottom: 0;
+            opacity: 0;
+            pointer-events: none;
+            z-index: 2;
+        }
+        .analytics-card:hover::after {
+            animation: analytics-scan 0.9s ease-out forwards;
+            opacity: 1;
+        }
+        @keyframes analytics-scan {
+            0% { bottom: 0; opacity: 1; }
+            80% { opacity: 0.8; }
+            100% { bottom: 100%; opacity: 0; }
+        }
+
+        /* === Electric Glow Card (for Avaliações) === */
+        @keyframes electric-pulse {
+            0%, 100% {
+                box-shadow: 0 0 6px rgba(201,169,97,0.15), 0 0 12px rgba(201,169,97,0.08);
+                border-color: rgba(201,169,97,0.2);
+            }
+            20% {
+                box-shadow: 0 0 18px rgba(212,184,122,0.45), 0 0 35px rgba(201,169,97,0.2);
+                border-color: rgba(212,184,122,0.65);
+            }
+            40% {
+                box-shadow: 0 0 8px rgba(201,169,97,0.2), 0 0 16px rgba(201,169,97,0.1);
+                border-color: rgba(201,169,97,0.25);
+            }
+            70% {
+                box-shadow: 0 0 22px rgba(201,169,97,0.5), 0 0 44px rgba(201,169,97,0.18);
+                border-color: rgba(201,169,97,0.6);
+            }
+        }
+        .electric-glow-card {
+            animation: electric-pulse 3.5s ease-in-out infinite;
+            border-color: rgba(201,169,97,0.2) !important;
+        }
 
         /* === Interactive Reveal Cards === */
         .reveal-card {
@@ -365,7 +445,7 @@
                 <h2 class="text-4xl md:text-5xl font-medium tracking-tighter text-white mb-4" style="font-family: 'Playfair Display', serif;">Sobre Nosso Escritório</h2>
             </div>
             <div class="grid grid-cols-1 lg:grid-cols-1 gap-8">
-                <div class="bg-white/5 rounded-xl border border-white/10 backdrop-blur-md p-8 lg:p-12">
+                <div class="shimmer-glow-card analytics-card bg-white/5 rounded-xl border border-white/10 backdrop-blur-md p-8 lg:p-12">
                     <p class="leading-relaxed text-lg font-medium text-white/60 mb-4">Nosso escritório atua no mercado jurídico com foco em excelência, comprometimento e resultados efetivos. Oferecemos soluções jurídicas personalizadas que atendem às necessidades específicas de cada cliente.</p>
                     <p class="leading-relaxed text-lg font-medium text-white/60 mb-4">Nossa equipe é formada por advogados qualificados e comprometidos com a ética profissional, mantendo-se atualizados com as mudanças legislativas e jurisprudenciais. Trabalhamos com transparência, agilidade e dedicação para buscar resultados adequados em cada caso.</p>
                     <p class="leading-relaxed text-lg font-medium text-white/60">Valorizamos o relacionamento próximo com nossos clientes, oferecendo atendimento humanizado e consultoria jurídica estratégica. Nossa missão é proteger os direitos e interesses dos clientes, proporcionando segurança jurídica.</p>
@@ -380,37 +460,37 @@
                 <p class="text-lg text-white/60 max-w-2xl">Soluções jurídicas completas para pessoas físicas e jurídicas</p>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <div class="reveal-card bg-white/5 rounded-xl border border-white/10 backdrop-blur-md p-8 transition-all duration-300 animate-on-scroll" style="animation: fadeSlideIn 1s cubic-bezier(0.2,0.8,0.2,1) 0.2s both;">
+                <div class="reveal-card analytics-card bg-white/5 rounded-xl border border-white/10 backdrop-blur-md p-8 transition-all duration-300 animate-on-scroll" style="animation: fadeSlideIn 1s cubic-bezier(0.2,0.8,0.2,1) 0.2s both;">
                     <div class="card-icon-wrap w-12 h-12 rounded-lg bg-gold-500/20 flex items-center justify-center mb-4 text-gold-500"><svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/><path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65"/><path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65"/></svg></div>
                     <h3 class="card-title text-xl font-semibold text-white mb-2" style="font-family: 'Playfair Display', serif;">Direito Civil</h3>
                     <p class="card-desc text-sm text-white/60">Contratos, responsabilidade civil, direito de família, sucessões e questões patrimoniais.</p>
                     <div class="card-line"></div>
                 </div>
-                <div class="reveal-card bg-white/5 rounded-xl border border-white/10 backdrop-blur-md p-8 transition-all duration-300 animate-on-scroll" style="animation: fadeSlideIn 1s cubic-bezier(0.2,0.8,0.2,1) 0.25s both;">
+                <div class="reveal-card analytics-card bg-white/5 rounded-xl border border-white/10 backdrop-blur-md p-8 transition-all duration-300 animate-on-scroll" style="animation: fadeSlideIn 1s cubic-bezier(0.2,0.8,0.2,1) 0.25s both;">
                     <div class="card-icon-wrap w-12 h-12 rounded-lg bg-gold-500/20 flex items-center justify-center mb-4 text-gold-500"><svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"/><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"/><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/><path d="M10 6h4"/><path d="M10 10h4"/><path d="M10 14h4"/><path d="M10 18h4"/></svg></div>
                     <h3 class="card-title text-xl font-semibold text-white mb-2" style="font-family: 'Playfair Display', serif;">Direito Empresarial</h3>
                     <p class="card-desc text-sm text-white/60">Constituição de empresas, contratos comerciais, recuperação judicial, fusões e aquisições.</p>
                     <div class="card-line"></div>
                 </div>
-                <div class="reveal-card bg-white/5 rounded-xl border border-white/10 backdrop-blur-md p-8 transition-all duration-300 animate-on-scroll" style="animation: fadeSlideIn 1s cubic-bezier(0.2,0.8,0.2,1) 0.3s both;">
+                <div class="reveal-card analytics-card bg-white/5 rounded-xl border border-white/10 backdrop-blur-md p-8 transition-all duration-300 animate-on-scroll" style="animation: fadeSlideIn 1s cubic-bezier(0.2,0.8,0.2,1) 0.3s both;">
                     <div class="card-icon-wrap w-12 h-12 rounded-lg bg-gold-500/20 flex items-center justify-center mb-4 text-gold-500"><svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="7" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></div>
                     <h3 class="card-title text-xl font-semibold text-white mb-2" style="font-family: 'Playfair Display', serif;">Direito Trabalhista</h3>
                     <p class="card-desc text-sm text-white/60">Defesa em ações trabalhistas, consultoria preventiva e compliance trabalhista.</p>
                     <div class="card-line"></div>
                 </div>
-                <div class="reveal-card bg-white/5 rounded-xl border border-white/10 backdrop-blur-md p-8 transition-all duration-300 animate-on-scroll" style="animation: fadeSlideIn 1s cubic-bezier(0.2,0.8,0.2,1) 0.35s both;">
+                <div class="reveal-card analytics-card bg-white/5 rounded-xl border border-white/10 backdrop-blur-md p-8 transition-all duration-300 animate-on-scroll" style="animation: fadeSlideIn 1s cubic-bezier(0.2,0.8,0.2,1) 0.35s both;">
                     <div class="card-icon-wrap w-12 h-12 rounded-lg bg-gold-500/20 flex items-center justify-center mb-4 text-gold-500"><svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></svg></div>
                     <h3 class="card-title text-xl font-semibold text-white mb-2" style="font-family: 'Playfair Display', serif;">Direito Tributário</h3>
                     <p class="card-desc text-sm text-white/60">Planejamento tributário, defesa em execuções fiscais e recuperação de créditos.</p>
                     <div class="card-line"></div>
                 </div>
-                <div class="reveal-card bg-white/5 rounded-xl border border-white/10 backdrop-blur-md p-8 transition-all duration-300 animate-on-scroll" style="animation: fadeSlideIn 1s cubic-bezier(0.2,0.8,0.2,1) 0.4s both;">
+                <div class="reveal-card analytics-card bg-white/5 rounded-xl border border-white/10 backdrop-blur-md p-8 transition-all duration-300 animate-on-scroll" style="animation: fadeSlideIn 1s cubic-bezier(0.2,0.8,0.2,1) 0.4s both;">
                     <div class="card-icon-wrap w-12 h-12 rounded-lg bg-gold-500/20 flex items-center justify-center mb-4 text-gold-500"><svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="3" x2="21" y1="22" y2="22"/><line x1="6" x2="6" y1="18" y2="11"/><line x1="10" x2="10" y1="18" y2="11"/><line x1="14" x2="14" y1="18" y2="11"/><line x1="18" x2="18" y1="18" y2="11"/><polygon points="12 2 20 7 4 7"/></svg></div>
                     <h3 class="card-title text-xl font-semibold text-white mb-2" style="font-family: 'Playfair Display', serif;">Direito Administrativo</h3>
                     <p class="card-desc text-sm text-white/60">Licitações, contratos administrativos e consultoria ao setor público.</p>
                     <div class="card-line"></div>
                 </div>
-                <div class="reveal-card bg-white/5 rounded-xl border border-white/10 backdrop-blur-md p-8 transition-all duration-300 animate-on-scroll" style="animation: fadeSlideIn 1s cubic-bezier(0.2,0.8,0.2,1) 0.45s both;">
+                <div class="reveal-card analytics-card bg-white/5 rounded-xl border border-white/10 backdrop-blur-md p-8 transition-all duration-300 animate-on-scroll" style="animation: fadeSlideIn 1s cubic-bezier(0.2,0.8,0.2,1) 0.45s both;">
                     <div class="card-icon-wrap w-12 h-12 rounded-lg bg-gold-500/20 flex items-center justify-center mb-4 text-gold-500"><svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg></div>
                     <h3 class="card-title text-xl font-semibold text-white mb-2" style="font-family: 'Playfair Display', serif;">Consultoria Jurídica</h3>
                     <p class="card-desc text-sm text-white/60">Assessoria preventiva, análise de riscos e orientação estratégica para sua empresa.</p>
@@ -475,27 +555,27 @@
                 <h2 class="text-4xl md:text-5xl font-medium tracking-tighter text-white mb-4" style="font-family: 'Playfair Display', serif;">Por Que Escolher Nosso Escritório?</h2>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <div class="flex gap-4 bg-white/5 rounded-xl border border-white/10 p-6 transition-all duration-300 hover:bg-white/10 hover:-translate-y-1 animate-on-scroll" style="animation: fadeSlideIn 1s cubic-bezier(0.2,0.8,0.2,1) 0.15s both;">
+                <div class="analytics-card flex gap-4 bg-white/5 rounded-xl border border-white/10 p-6 transition-all duration-300 hover:bg-white/10 hover:-translate-y-1 animate-on-scroll" style="animation: fadeSlideIn 1s cubic-bezier(0.2,0.8,0.2,1) 0.15s both;">
                     <div class="w-10 h-10 rounded-full bg-gold-500 flex items-center justify-center text-black text-sm font-bold shrink-0">01</div>
                     <div><h3 class="text-lg font-semibold text-white mb-2">Experiência no Mercado</h3><p class="text-sm text-white/60">Atuação no mercado jurídico com experiência em diversas áreas do direito.</p></div>
                 </div>
-                <div class="flex gap-4 bg-white/5 rounded-xl border border-white/10 p-6 transition-all duration-300 hover:bg-white/10 hover:-translate-y-1 animate-on-scroll" style="animation: fadeSlideIn 1s cubic-bezier(0.2,0.8,0.2,1) 0.2s both;">
+                <div class="analytics-card flex gap-4 bg-white/5 rounded-xl border border-white/10 p-6 transition-all duration-300 hover:bg-white/10 hover:-translate-y-1 animate-on-scroll" style="animation: fadeSlideIn 1s cubic-bezier(0.2,0.8,0.2,1) 0.2s both;">
                     <div class="w-10 h-10 rounded-full bg-gold-500 flex items-center justify-center text-black text-sm font-bold shrink-0">02</div>
                     <div><h3 class="text-lg font-semibold text-white mb-2">Atendimento Personalizado</h3><p class="text-sm text-white/60">Cada cliente recebe atenção exclusiva e soluções jurídicas sob medida.</p></div>
                 </div>
-                <div class="flex gap-4 bg-white/5 rounded-xl border border-white/10 p-6 transition-all duration-300 hover:bg-white/10 hover:-translate-y-1 animate-on-scroll" style="animation: fadeSlideIn 1s cubic-bezier(0.2,0.8,0.2,1) 0.25s both;">
+                <div class="analytics-card flex gap-4 bg-white/5 rounded-xl border border-white/10 p-6 transition-all duration-300 hover:bg-white/10 hover:-translate-y-1 animate-on-scroll" style="animation: fadeSlideIn 1s cubic-bezier(0.2,0.8,0.2,1) 0.25s both;">
                     <div class="w-10 h-10 rounded-full bg-gold-500 flex items-center justify-center text-black text-sm font-bold shrink-0">03</div>
                     <div><h3 class="text-lg font-semibold text-white mb-2">Transparência Total</h3><p class="text-sm text-white/60">Comunicação clara sobre processos, prazos e valores, sem custos ocultos.</p></div>
                 </div>
-                <div class="flex gap-4 bg-white/5 rounded-xl border border-white/10 p-6 transition-all duration-300 hover:bg-white/10 hover:-translate-y-1 animate-on-scroll" style="animation: fadeSlideIn 1s cubic-bezier(0.2,0.8,0.2,1) 0.3s both;">
+                <div class="analytics-card flex gap-4 bg-white/5 rounded-xl border border-white/10 p-6 transition-all duration-300 hover:bg-white/10 hover:-translate-y-1 animate-on-scroll" style="animation: fadeSlideIn 1s cubic-bezier(0.2,0.8,0.2,1) 0.3s both;">
                     <div class="w-10 h-10 rounded-full bg-gold-500 flex items-center justify-center text-black text-sm font-bold shrink-0">04</div>
                     <div><h3 class="text-lg font-semibold text-white mb-2">Resultados Efetivos</h3><p class="text-sm text-white/60">Estratégias baseadas na legislação vigente e jurisprudência consolidada.</p></div>
                 </div>
-                <div class="flex gap-4 bg-white/5 rounded-xl border border-white/10 p-6 transition-all duration-300 hover:bg-white/10 hover:-translate-y-1 animate-on-scroll" style="animation: fadeSlideIn 1s cubic-bezier(0.2,0.8,0.2,1) 0.35s both;">
+                <div class="analytics-card flex gap-4 bg-white/5 rounded-xl border border-white/10 p-6 transition-all duration-300 hover:bg-white/10 hover:-translate-y-1 animate-on-scroll" style="animation: fadeSlideIn 1s cubic-bezier(0.2,0.8,0.2,1) 0.35s both;">
                     <div class="w-10 h-10 rounded-full bg-gold-500 flex items-center justify-center text-black text-sm font-bold shrink-0">05</div>
                     <div><h3 class="text-lg font-semibold text-white mb-2">Agilidade e Eficiência</h3><p class="text-sm text-white/60">Processos otimizados e equipe dedicada para respostas ágeis.</p></div>
                 </div>
-                <div class="flex gap-4 bg-white/5 rounded-xl border border-white/10 p-6 transition-all duration-300 hover:bg-white/10 hover:-translate-y-1 animate-on-scroll" style="animation: fadeSlideIn 1s cubic-bezier(0.2,0.8,0.2,1) 0.4s both;">
+                <div class="analytics-card flex gap-4 bg-white/5 rounded-xl border border-white/10 p-6 transition-all duration-300 hover:bg-white/10 hover:-translate-y-1 animate-on-scroll" style="animation: fadeSlideIn 1s cubic-bezier(0.2,0.8,0.2,1) 0.4s both;">
                     <div class="w-10 h-10 rounded-full bg-gold-500 flex items-center justify-center text-black text-sm font-bold shrink-0">06</div>
                     <div><h3 class="text-lg font-semibold text-white mb-2">Compromisso Ético</h3><p class="text-sm text-white/60">Atuação pautada nos mais altos padrões éticos e profissionais.</p></div>
                 </div>
@@ -515,15 +595,15 @@
                 <p class="section-subtitle text-lg text-white/60">O que nossos clientes dizem sobre nosso trabalho</p>
             </div>
             <div class="avaliacoes-grid grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div class="flex flex-col min-h-[180px] bg-gradient-to-b from-gold-400 to-gold-600 rounded-xl p-8 text-black shadow-2xl animate-on-scroll" style="animation: fadeSlideIn 1s cubic-bezier(0.2,0.8,0.2,1) 0.2s both; --border-gradient: linear-gradient(180deg, rgba(255,255,255,0.3), rgba(255,255,255,0)); --border-radius-before: 12px;">
+                <div class="electric-glow-card flex flex-col min-h-[180px] bg-gradient-to-b from-gold-400 to-gold-600 rounded-xl p-8 text-black shadow-2xl animate-on-scroll" style="animation: fadeSlideIn 1s cubic-bezier(0.2,0.8,0.2,1) 0.2s both; --border-gradient: linear-gradient(180deg, rgba(255,255,255,0.3), rgba(255,255,255,0)); --border-radius-before: 12px;">
                     <p class="text-lg font-semibold leading-snug mb-4">"Atendimento profissional. O escritório atuou no meu caso com agilidade e profissionalismo. Recomendo."</p>
                     <div class="mt-auto pt-4 border-t border-black/10 flex items-center gap-2 text-sm font-medium">★★★★★ <span class="font-semibold">Maria Silva</span> · Há 2 meses</div>
                 </div>
-                <div class="flex flex-col min-h-[180px] bg-white/5 rounded-xl border border-white/10 backdrop-blur-md p-8 animate-on-scroll" style="animation: fadeSlideIn 1s cubic-bezier(0.2,0.8,0.2,1) 0.3s both;">
+                <div class="electric-glow-card flex flex-col min-h-[180px] bg-white/5 rounded-xl border border-white/10 backdrop-blur-md p-8 animate-on-scroll" style="animation: fadeSlideIn 1s cubic-bezier(0.2,0.8,0.2,1) 0.3s both;">
                     <p class="text-lg font-medium text-white/90 mb-4">"Profissionais competentes e atenciosos. Fui bem atendido e o caso foi tratado com agilidade."</p>
                     <div class="mt-auto pt-4 border-t border-white/10 flex items-center gap-2 text-sm text-white/60">★★★★★ <span class="font-semibold text-white">João Santos</span> · Há 1 mês</div>
                 </div>
-                <div class="flex flex-col min-h-[180px] bg-white/5 rounded-xl border border-white/10 backdrop-blur-md p-8 animate-on-scroll" style="animation: fadeSlideIn 1s cubic-bezier(0.2,0.8,0.2,1) 0.4s both;">
+                <div class="electric-glow-card flex flex-col min-h-[180px] bg-white/5 rounded-xl border border-white/10 backdrop-blur-md p-8 animate-on-scroll" style="animation: fadeSlideIn 1s cubic-bezier(0.2,0.8,0.2,1) 0.4s both;">
                     <p class="text-lg font-medium text-white/90 mb-4">"Transparência, ética e profissionalismo. Atendimento conforme esperado de um escritório de advocacia."</p>
                     <div class="mt-auto pt-4 border-t border-white/10 flex items-center gap-2 text-sm text-white/60">★★★★★ <span class="font-semibold text-white">Ana Costa</span> · Há 3 semanas</div>
                 </div>
