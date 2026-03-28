@@ -336,6 +336,30 @@
             .nav-menu li { width: 100%; }
             .nav-menu .nav-link { display: block; padding: 0.75rem 1rem; }
         }
+
+        /* === Hero Video Hover Effect === */
+        .hero-video-container { position: relative; width: 100%; cursor: default; }
+        .hero-video-glow {
+            position: absolute; inset: 0; border-radius: 1rem; pointer-events: none;
+            background: radial-gradient(ellipse at center, rgba(201,169,97,0.14) 0%, transparent 70%);
+            filter: blur(45px); transform: scale(1.2);
+            transition: opacity 0.5s ease;
+        }
+        .hero-video-container:hover .hero-video-glow { opacity: 1.8; }
+        .hero-video-wrap {
+            position: relative; border-radius: 1rem; overflow: hidden;
+            border: 1px solid rgba(201,169,97,0.25);
+            box-shadow: 0 0 50px rgba(201,169,97,0.12), 0 0 120px rgba(201,169,97,0.06);
+            background: rgba(10,14,18,0.4);
+            transition: transform 0.5s cubic-bezier(0.2,0.8,0.2,1), box-shadow 0.5s ease, border-color 0.5s ease;
+        }
+        .hero-video-container:hover .hero-video-wrap {
+            transform: scale(1.035);
+            border-color: rgba(201,169,97,0.65);
+            box-shadow: 0 0 90px rgba(201,169,97,0.42), 0 0 180px rgba(201,169,97,0.16), 0 28px 70px rgba(0,0,0,0.45);
+        }
+        .hero-video-wrap video { transition: filter 0.5s ease; }
+        .hero-video-container:hover .hero-video-wrap video { filter: brightness(1.08) saturate(1.1); }
     </style>
     <script>
         (function(){const once=true;if(!window.__inViewIO){window.__inViewIO=new IntersectionObserver((entries)=>{entries.forEach((entry)=>{if(entry.isIntersecting){entry.target.classList.add("animate");if(once)window.__inViewIO.unobserve(entry.target)}})},{threshold:0.15,rootMargin:"0px 0px -10% 0px"})}window.initInViewAnimations=function(selector=".animate-on-scroll"){document.querySelectorAll(selector).forEach((el)=>{window.__inViewIO.observe(el)})};document.addEventListener("DOMContentLoaded",()=>initInViewAnimations())})();
@@ -407,7 +431,7 @@
 
         <!-- Hero Section -->
         <section id="hero" class="flex-1 grid grid-cols-1 lg:grid-cols-12 pt-24 pb-16 gap-x-4 gap-y-4 items-center px-6 md:px-10">
-            <div class="col-span-1 lg:col-span-7 pt-10 lg:pt-0 flex flex-col justify-center">
+            <div class="col-span-1 lg:col-span-6 pt-10 lg:pt-0 flex flex-col justify-center">
                 <div class="inline-flex items-center gap-2 text-gold-500 mb-8 animate-on-scroll" style="animation: fadeSlideIn 1s cubic-bezier(0.2,0.8,0.2,1) 0.1s both;">
                     <span class="flex h-2 w-2 rounded-full bg-gold-500"></span>
                     <span class="text-xs font-bold tracking-widest uppercase badge-shimmer">Escritório de Advocacia</span>
@@ -435,6 +459,22 @@
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
                         </div>
                     </a>
+                </div>
+            </div>
+
+            <!-- Hero Video -->
+            <div class="col-span-1 lg:col-span-6 flex items-center justify-center pt-6 lg:pt-0 animate-on-scroll" style="animation: fadeSlideIn 1s cubic-bezier(0.2,0.8,0.2,1) 0.45s both;">
+                <div class="hero-video-container w-full max-w-md lg:max-w-full">
+                    <!-- Glow backdrop -->
+                    <div class="hero-video-glow"></div>
+                    <!-- Video container with hover effect -->
+                    <div class="hero-video-wrap">
+                        <video autoplay muted loop playsinline class="w-full h-auto block">
+                            <source src="videos/hero-logo.mp4" type="video/mp4">
+                        </video>
+                        <!-- Subtle edge vignette -->
+                        <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse at center, transparent 55%, rgba(10,14,18,0.25) 100%);"></div>
+                    </div>
                 </div>
             </div>
         </section>
