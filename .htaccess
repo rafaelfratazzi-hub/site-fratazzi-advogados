@@ -1,3 +1,19 @@
+# MIME Types para vídeo
 AddType video/mp4 .mp4
 AddType video/webm .webm
 AddType video/ogg .ogv
+
+# CRÍTICO: Desabilitar compressão para arquivos de vídeo
+# Compressão gzip/brotli quebra o streaming de vídeo no navegador
+<FilesMatch "\.(mp4|webm|ogv|ogg|mov|avi|mkv)$">
+    SetEnv no-gzip 1
+    SetEnv no-brotli 1
+    Header always set Accept-Ranges "bytes"
+    Header always set Cache-Control "public, max-age=3600"
+    Header always set X-Content-Type-Options "nosniff"
+</FilesMatch>
+
+# Garantir que o servidor suporta byte-range requests (necessário para vídeo)
+<IfModule mod_headers.c>
+    Header always set Accept-Ranges bytes
+</IfModule>

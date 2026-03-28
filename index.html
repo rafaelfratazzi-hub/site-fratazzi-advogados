@@ -469,7 +469,7 @@
                     <div class="hero-video-glow"></div>
                     <!-- Video container with hover effect -->
                     <div class="hero-video-wrap">
-                        <video autoplay muted loop playsinline class="w-full h-auto block">
+                        <video id="heroVideo" autoplay muted loop playsinline preload="auto" class="w-full h-auto block">
                             <source src="videos/hero-logo.mp4" type="video/mp4">
                         </video>
                         <!-- Subtle edge vignette -->
@@ -705,6 +705,44 @@
     <script src="js/google-reviews.js"></script>
     <script>
         lucide.createIcons({ attrs: { 'stroke-width': 1.5 } });
+    </script>
+    <script>
+        // Force video play - handles cases where autoplay is delayed by server
+        (function() {
+            var video = document.getElementById('heroVideo');
+            if (!video) return;
+
+            function tryPlay() {
+                video.muted = true;
+                var p = video.play();
+                if (p !== undefined) {
+                    p.catch(function() {
+                        // If autoplay still fails, retry once on first user interaction
+                        document.addEventListener('click', function() { video.play(); }, { once: true });
+                        document.addEventListener('touchstart', function() { video.play(); }, { once: true });
+                    });
+                }
+            }
+
+            if (video.readyState >= 2) {
+                tryPlay();
+            } else {
+                video.addEventListener('canplay', tryPlay, { once: true });
+                video.addEventListener('loadeddata', tryPlay, { once: true });
+            }
+
+            // Reload video source if it failed to load
+            video.addEventListener('error', function() {
+                var src = video.querySelector('source');
+                if (src) {
+                    var url = src.src;
+                    src.src = '';
+                    src.src = url + '?v=' + Date.now();
+                    video.load();
+                    setTimeout(tryPlay, 500);
+                }
+            }, { once: true });
+        })();
     </script>
 </body>
 </html>
