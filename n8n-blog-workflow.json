@@ -147,7 +147,22 @@
     },
     {
       "parameters": {
-        "url": "=https://api.callmebot.com/whatsapp.php?phone=SEU_NUMERO&text={{ encodeURIComponent('✅ Novo artigo publicado!%0A%0A📁 Categoria: ' + $json.categoria + '%0A📝 ' + $json.titulo + '%0A%0A🔗 ' + $json.url) }}&apikey=SUA_APIKEY",
+        "method": "POST",
+        "url": "https://evolutionapi.rafaelfratazzi.com.br/message/sendText/fratazzi",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            { "name": "apikey", "value": "fratazzi2026" },
+            { "name": "Content-Type", "value": "application/json" }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            { "name": "number", "value": "5511976618039" },
+            { "name": "text", "value": "=✅ Novo artigo publicado!\n\n📁 Categoria: {{ $json.categoria }}\n📝 {{ $json.titulo }}\n\n🔗 {{ $json.url }}" }
+          ]
+        },
         "options": {}
       },
       "id": "a1b2c3d4-0010-0010-0010-000000000010",
