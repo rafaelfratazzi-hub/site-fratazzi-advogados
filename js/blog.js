@@ -351,6 +351,20 @@ const blogPosts = [
         image: "🏥",
         tags: ["Acidente de Trabalho", "CAT", "Indenização", "Estabilidade"]
     },
+    {
+        id: 48,
+        title: "Reforma Tributária: O que Esperar das Mudanças em 2025/2026?",
+        category: "tributario",
+        categoryLabel: "Tributário",
+        excerpt: "A reforma tributária brasileira é um dos temas mais relevantes em discussão. Entenda as mudanças que estão por vir e como empresas e cidadãos devem se preparar.",
+        content: "A reforma tributária brasileira é um dos temas mais relevantes em discussão para os próximos anos. Com propostas já apresentadas, é fundamental que empresas e cidadãos compreendam as mudanças que podem ocorrer.",
+        author: "Dr. Rafael Fratazzi",
+        date: "2026-03-28",
+        readTime: "7 min",
+        image: "📊",
+        tags: ["Reforma Tributária", "Impostos", "Planejamento Tributário"],
+        link: "artigos/artigo-48.html"
+    },
 ];
 
 // Função para formatar data
@@ -382,7 +396,7 @@ function createPostCard(post) {
                 </div>
             </div>
             <div class="post-card-footer">
-                <a href="artigos/artigo-${post.id}.html" class="post-read-more" data-post-id="${post.id}">
+                <a href="${post.link || 'artigos/artigo-' + post.id + '.html'}" class="post-read-more" data-post-id="${post.id}">
                     Ler mais
                     <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
