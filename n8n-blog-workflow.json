@@ -144,6 +144,17 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [2000, 300]
+    },
+    {
+      "parameters": {
+        "url": "=https://api.callmebot.com/whatsapp.php?phone=SEU_NUMERO&text={{ encodeURIComponent('✅ Novo artigo publicado!%0A%0A📁 Categoria: ' + $json.categoria + '%0A📝 ' + $json.titulo + '%0A%0A🔗 ' + $json.url) }}&apikey=SUA_APIKEY",
+        "options": {}
+      },
+      "id": "a1b2c3d4-0010-0010-0010-000000000010",
+      "name": "Notificacao WhatsApp",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [2220, 300]
     }
   ],
   "connections": {
@@ -229,6 +240,17 @@
         [
           {
             "node": "Log de Sucesso",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Log de Sucesso": {
+      "main": [
+        [
+          {
+            "node": "Notificacao WhatsApp",
             "type": "main",
             "index": 0
           }
