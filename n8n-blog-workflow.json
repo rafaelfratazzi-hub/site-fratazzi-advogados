@@ -77,7 +77,7 @@
     {
       "parameters": {
         "operation": "upload",
-        "path": "=/public_html/artigos/{{ $json.nomeArquivo }}",
+        "path": "=/domains/fratazziadvogados.com.br/public_html/artigos/{{ $json.nomeArquivo }}",
         "binaryPropertyName": "artigoHtml"
       },
       "id": "a1b2c3d4-0005-0005-0005-000000000005",
@@ -94,7 +94,7 @@
     {
       "parameters": {
         "operation": "download",
-        "path": "/public_html/js/blog.js",
+        "path": "/domains/fratazziadvogados.com.br/public_html/js/blog.js",
         "binaryPropertyName": "blogJs"
       },
       "id": "a1b2c3d4-0006-0006-0006-000000000006",
@@ -121,7 +121,7 @@
     {
       "parameters": {
         "operation": "upload",
-        "path": "/public_html/js/blog.js",
+        "path": "/domains/fratazziadvogados.com.br/public_html/js/blog.js",
         "binaryPropertyName": "blogJs"
       },
       "id": "a1b2c3d4-0008-0008-0008-000000000008",
