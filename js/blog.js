@@ -1,6 +1,20 @@
 // Base de dados de posts do blog
 const blogPosts = [
     {
+        id: 48,
+        title: "Reforma Tributária: O que Esperar das Mudanças em 2025/2026?",
+        category: "tributario",
+        categoryLabel: "Tributário",
+        excerpt: "A reforma tributária brasileira é um dos temas mais relevantes em discussão. Entenda as mudanças que estão por vir e como empresas e cidadãos devem se preparar.",
+        content: "A reforma tributária brasileira é um dos temas mais relevantes em discussão para os próximos anos. Com propostas já apresentadas, é fundamental que empresas e cidadãos compreendam as mudanças que podem ocorrer.",
+        author: "Dr. Rafael Fratazzi",
+        date: "2026-03-28",
+        readTime: "7 min",
+        image: "📊",
+        tags: ["Reforma Tributária", "Impostos", "Planejamento Tributário"],
+        link: "artigos/artigo-48.html"
+    },
+    {
         id: 1,
         title: "Novas Regras do Simples Nacional em 2024: O Que Sua Empresa Precisa Saber",
         category: "tributario",
@@ -351,20 +365,6 @@ const blogPosts = [
         image: "🏥",
         tags: ["Acidente de Trabalho", "CAT", "Indenização", "Estabilidade"]
     },
-    {
-        id: 48,
-        title: "Reforma Tributária: O que Esperar das Mudanças em 2025/2026?",
-        category: "tributario",
-        categoryLabel: "Tributário",
-        excerpt: "A reforma tributária brasileira é um dos temas mais relevantes em discussão. Entenda as mudanças que estão por vir e como empresas e cidadãos devem se preparar.",
-        content: "A reforma tributária brasileira é um dos temas mais relevantes em discussão para os próximos anos. Com propostas já apresentadas, é fundamental que empresas e cidadãos compreendam as mudanças que podem ocorrer.",
-        author: "Dr. Rafael Fratazzi",
-        date: "2026-03-28",
-        readTime: "7 min",
-        image: "📊",
-        tags: ["Reforma Tributária", "Impostos", "Planejamento Tributário"],
-        link: "artigos/artigo-48.html"
-    },
 ];
 
 // Função para formatar data
@@ -411,12 +411,13 @@ function createPostCard(post) {
 function renderPosts(posts) {
     const container = document.getElementById('postsContainer');
     const noResults = document.getElementById('noResults');
-    
+
     if (posts.length === 0) {
         container.innerHTML = '';
         noResults.style.display = 'block';
     } else {
-        container.innerHTML = posts.map(post => createPostCard(post)).join('');
+        const sorted = [...posts].sort((a, b) => new Date(b.date) - new Date(a.date));
+        container.innerHTML = sorted.map(post => createPostCard(post)).join('');
         noResults.style.display = 'none';
     }
 }
