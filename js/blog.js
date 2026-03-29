@@ -367,9 +367,9 @@ const blogPosts = [
     },
 ];
 
-// Função para formatar data
+// Função para formatar data (T12:00:00 evita problema de fuso UTC)
 function formatDate(dateString) {
-    const date = new Date(dateString);
+    const date = new Date(dateString + 'T12:00:00');
     const options = { year: 'numeric', month: 'long', day: 'numeric' };
     return date.toLocaleDateString('pt-BR', options);
 }
@@ -456,19 +456,11 @@ function filterPosts() {
     renderPosts(filtered);
 }
 
-// Event Listeners
-document.addEventListener('DOMContentLoaded', function() {
-    // Verificar se há posts bancários
-    const bancarioPosts = blogPosts.filter(post => post.category === 'bancario');
-    if (bancarioPosts.length === 0) {
-        console.warn('ATENÇÃO: Nenhum artigo bancário encontrado no array blogPosts!');
-    } else {
-        console.log('Artigos bancários encontrados:', bancarioPosts.length);
-    }
-    
-    // Renderizar todos os posts inicialmente
+// Inicializar blog
+function initBlog() {
+    // Renderizar todos os posts
     renderPosts(blogPosts);
-    
+
     // Filtro por categoria
     document.querySelectorAll('.category-btn').forEach(btn => {
         btn.addEventListener('click', function() {
@@ -477,24 +469,26 @@ document.addEventListener('DOMContentLoaded', function() {
             filterPosts();
         });
     });
-    
+
     // Busca
     const searchInput = document.getElementById('blogSearch');
     const searchBtn = document.querySelector('.blog-search-btn');
-    
+
     if (searchInput) {
         searchInput.addEventListener('input', filterPosts);
         searchInput.addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                filterPosts();
-            }
+            if (e.key === 'Enter') filterPosts();
         });
     }
-    
     if (searchBtn) {
         searchBtn.addEventListener('click', filterPosts);
     }
-    
-    // Links "Ler mais" já estão configurados com href nos cards
-});
+}
+
+// Executar imediatamente se DOM já está pronto, senão aguardar
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initBlog);
+} else {
+    initBlog();
+}
 
