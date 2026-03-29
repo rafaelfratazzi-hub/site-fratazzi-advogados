@@ -1,0 +1,247 @@
+{
+  "name": "Blog Automatico - Fratazzi Advogados",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "cronExpression",
+              "expression": "0 11 * * 1-6"
+            }
+          ]
+        }
+      },
+      "id": "a1b2c3d4-0001-0001-0001-000000000001",
+      "name": "Agendador Diario 8h",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.1,
+      "position": [240, 300]
+    },
+    {
+      "parameters": {
+        "jsCode": "// =============================================\n// CONFIGURAÇÃO - altere apenas aqui se necessário\n// =============================================\nconst ARTIGO_INICIAL = 48;        // próximo número de artigo\nconst DATA_INICIO = '2026-03-29'; // data de início da automação\n\n// Rodízio de categorias (ordem conforme solicitado)\nconst categorias = [\n  {\n    id: 'tributario',\n    label: 'Tributário',\n    cssClass: 'article-category-tributario',\n    emoji: '📊',\n    keywords: 'tributário, impostos, Receita Federal, planejamento tributário, IRPJ, CSLL, PIS, COFINS'\n  },\n  {\n    id: 'bancario',\n    label: 'Direito Bancário',\n    cssClass: 'article-category-bancario',\n    emoji: '🏦',\n    keywords: 'direito bancário, bancos, crédito, juros abusivos, CDC, financiamento, empréstimo'\n  },\n  {\n    id: 'novidades',\n    label: 'Novidades',\n    cssClass: 'article-category-novidades',\n    emoji: '📰',\n    keywords: 'novidades jurídicas, STF, STJ, legislação, decisões recentes, jurisprudência'\n  },\n  {\n    id: 'dicas-empresas',\n    label: 'Dicas para Empresas',\n    cssClass: 'article-category-dicas-empresas',\n    emoji: '💡',\n    keywords: 'empresas, compliance, gestão jurídica, contratos, sócios, CNPJ, abertura de empresa'\n  },\n  {\n    id: 'trabalhista',\n    label: 'Trabalhista',\n    cssClass: 'article-category-trabalhista',\n    emoji: '⚖️',\n    keywords: 'direito trabalhista, CLT, rescisão, FGTS, férias, horas extras, assédio moral'\n  },\n  {\n    id: 'recuperacao-creditos',\n    label: 'Recuperação de Créditos',\n    cssClass: 'article-category-recuperacao-creditos',\n    emoji: '💰',\n    keywords: 'recuperação de créditos, cobrança, negativação, Serasa, SPC, dívidas, protesto'\n  }\n];\n\n// Calcular dia do ciclo\nconst inicio = new Date(DATA_INICIO + 'T00:00:00Z');\nconst hoje = new Date();\nconst diasPassados = Math.max(0, Math.floor((hoje - inicio) / (1000 * 60 * 60 * 24)));\nconst categoriaIndex = diasPassados % 6;\nconst categoria = categorias[categoriaIndex];\nconst numeroArtigo = ARTIGO_INICIAL + diasPassados;\n\n// Data formatada em português\nconst meses = ['janeiro','fevereiro','março','abril','maio','junho','julho','agosto','setembro','outubro','novembro','dezembro'];\nconst dataFormatada = `${hoje.getDate()} de ${meses[hoje.getMonth()]} de ${hoje.getFullYear()}`;\nconst dataISO = hoje.toISOString().split('T')[0];\n\nreturn [{\n  json: {\n    categoria,\n    numeroArtigo,\n    dataFormatada,\n    dataISO,\n    nomeArquivo: `artigo-${numeroArtigo}.html`\n  }\n}];"
+      },
+      "id": "a1b2c3d4-0002-0002-0002-000000000002",
+      "name": "Calcular Categoria e Numero",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [460, 300]
+    },
+    {
+      "parameters": {
+        "resource": "text",
+        "operation": "message",
+        "modelId": {
+          "cachedResultName": "GPT-4O-MINI",
+          "value": "gpt-4o-mini"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "Você é um advogado especialista e redator jurídico sênior do escritório Fratazzi Advogados Associados, localizado em Guarulhos/SP. Escreve artigos jurídicos profissionais, didáticos e de alta qualidade em português brasileiro. O escritório atua nas áreas: Tributário, Direito Bancário, Trabalhista, Recuperação de Créditos e Empresarial.",
+              "role": "system"
+            },
+            {
+              "content": "=Escreva um artigo jurídico completo e atual sobre a categoria: **{{ $json.categoria.label }}**\n\nPalavras-chave da área: {{ $json.categoria.keywords }}\n\nINSTRUÇÕES IMPORTANTES:\n1. Escolha um tema ATUAL e RELEVANTE desta área (preferencialmente algo que esteja em discussão no Brasil em 2025/2026, como novas leis, decisões do STF/STJ, mudanças na legislação, ou problemas muito comuns dos brasileiros nesta área)\n2. O artigo deve ser informativo, prático e útil\n3. Escreva em português brasileiro formal mas acessível ao cidadão comum\n4. Inclua referências a leis, artigos, súmulas quando relevante (ex: art. 50 do CC, Súmula 435 STJ)\n5. Tom profissional do escritório Fratazzi Advogados\n6. NUNCA mencione outros escritórios ou concorrentes\n\nRetorne APENAS um JSON válido (sem markdown, sem ```json, só o objeto JSON puro) com esta estrutura exata:\n{\n  \"titulo\": \"Título do artigo atrativo e claro (máximo 90 caracteres)\",\n  \"excerpt\": \"Resumo de 2-3 frases que desperte interesse (máximo 220 caracteres)\",\n  \"tempoLeitura\": \"X min\",\n  \"tags\": [\"Tag1\", \"Tag2\", \"Tag3\"],\n  \"ctaTitulo\": \"Pergunta direta de call-to-action relacionada ao tema do artigo\",\n  \"ctaTexto\": \"Uma frase curta incentivando o contato\",\n  \"conteudoHTML\": \"<p class=\\\"article-lead\\\">Parágrafo introdutório impactante de 3-4 linhas.</p><h2>Título da Seção 1</h2><p>Conteúdo...</p><h2>Título da Seção 2</h2><p>Conteúdo...</p><h2>Título da Seção 3</h2><p>Conteúdo...</p><h2>Título da Seção 4</h2><p>Conteúdo...</p><h2>Conclusão</h2><p>Conteúdo...</p>\"\n}\n\nREQUISITOS DO conteudoHTML:\n- Começar com um <p class=\\\"article-lead\\\"> (parágrafo de abertura impactante)\n- 4 a 6 seções com <h2>\n- Usar <strong> para termos jurídicos importantes e referências legais\n- Usar <ul><li> para listas quando apropriado\n- Mínimo 700 palavras de conteúdo total\n- NÃO usar aspas duplas dentro do conteudoHTML (use aspas simples ou &quot;)",
+              "role": "user"
+            }
+          ]
+        },
+        "simplifyOutput": true,
+        "options": {
+          "temperature": 0.7
+        }
+      },
+      "id": "a1b2c3d4-0003-0003-0003-000000000003",
+      "name": "Gerar Artigo com GPT",
+      "type": "n8n-nodes-base.openAi",
+      "typeVersion": 1.4,
+      "position": [680, 300],
+      "credentials": {
+        "openAiApi": {
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Pegar dados do nó anterior\nconst dadosCalculo = $('Calcular Categoria e Numero').first().json;\nconst respostaGPT = $input.first().json.message.content;\n\n// Parse do JSON retornado pelo GPT\nlet artigo;\ntry {\n  // Limpar possível markdown\n  const jsonLimpo = respostaGPT.replace(/```json\\n?/g, '').replace(/```\\n?/g, '').trim();\n  artigo = JSON.parse(jsonLimpo);\n} catch(e) {\n  // Tentar extrair JSON se veio com texto ao redor\n  const match = respostaGPT.match(/\\{[\\s\\S]*\\}/);\n  if (match) {\n    artigo = JSON.parse(match[0]);\n  } else {\n    throw new Error('GPT não retornou JSON válido: ' + respostaGPT.substring(0, 200));\n  }\n}\n\nconst { categoria, numeroArtigo, dataFormatada, dataISO, nomeArquivo } = dadosCalculo;\n\n// Montar tags HTML\nconst tagsHTML = artigo.tags.map(t => `<span class=\"article-tag\">${t}</span>`).join('');\n\n// Montar HTML completo do artigo seguindo o template do site\nconst html = `<!DOCTYPE html>\n<html lang=\"pt-BR\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <meta name=\"description\" content=\"Artigo sobre ${categoria.label}: ${artigo.titulo}. Fratazzi Advogados em Guarulhos, SP.\">\n    <meta name=\"keywords\" content=\"${categoria.id}, advogado Guarulhos, Fratazzi Advogados, ${artigo.tags.join(', ')}\">\n    <title>${artigo.titulo}</title>\n    <link rel=\"canonical\" href=\"https://fratazziadvogados.com.br/artigos/${nomeArquivo}\">\n    <meta property=\"og:title\" content=\"${artigo.titulo}\">\n    <meta property=\"og:description\" content=\"${artigo.excerpt}\">\n    <meta property=\"og:type\" content=\"article\">\n    <link rel=\"stylesheet\" href=\"../css/style.css\">\n    <link rel=\"stylesheet\" href=\"../css/blog.css\">\n    <link rel=\"preconnect\" href=\"https://fonts.googleapis.com\">\n    <link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin>\n    <link href=\"https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap\" rel=\"stylesheet\">\n    <script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','1199971412124179');fbq('track','PageView');<\\/script>\n</head>\n<body>\n    <header class=\"header\">\n        <nav class=\"navbar\"><div class=\"container\"><div class=\"nav-wrapper\">\n            <div class=\"logo\"><a href=\"../index.html\">\n                <svg class=\"logo-svg\" viewBox=\"0 0 60 60\" xmlns=\"http://www.w3.org/2000/svg\"><defs><linearGradient id=\"g\"><stop offset=\"0%\" style=\"stop-color:#c9a961\"/><stop offset=\"100%\" style=\"stop-color:#a68b4f\"/></linearGradient></defs><rect x=\"8\" y=\"8\" width=\"8\" height=\"44\" rx=\"2\" fill=\"url(#g)\"/><rect x=\"8\" y=\"8\" width=\"28\" height=\"8\" rx=\"2\" fill=\"url(#g)\"/><rect x=\"8\" y=\"26\" width=\"20\" height=\"8\" rx=\"2\" fill=\"url(#g)\"/></svg>\n                <div class=\"logo-text-container\"><span class=\"logo-text\">FRATAZZI</span><span class=\"logo-accent\">ADVOGADOS ASSOCIADOS</span></div>\n            </a></div>\n            <button class=\"menu-toggle\" id=\"menuToggle\"><span></span><span></span><span></span></button>\n            <ul class=\"nav-menu\" id=\"navMenu\">\n                <li><a href=\"../index.html\">Início</a></li><li><a href=\"../servicos.html\">Serviços</a></li>\n                <li><a href=\"../blog.html\">Blog</a></li><li><a href=\"../index.html#sobre\">Sobre</a></li>\n                <li><a href=\"../index.html#avaliacoes\">Avaliações</a></li><li><a href=\"../contato.html\">Contato</a></li>\n            </ul>\n        </div></div></nav>\n    </header>\n    <article class=\"article-page\"><div class=\"container\">\n        <div class=\"article-header\">\n            <a href=\"../blog.html\" class=\"article-back-link\"><svg viewBox=\"0 0 24 24\" fill=\"none\"><path d=\"M19 12H5M5 12L12 19M5 12L12 5\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg> Voltar ao Blog</a>\n            <div class=\"article-category-badge ${categoria.cssClass}\">${categoria.label}</div>\n            <h1 class=\"article-title\">${artigo.titulo}</h1>\n            <div class=\"article-meta\">\n                <div class=\"article-meta-item\"><strong>Autor:</strong> Dr. Rafael Fratazzi</div>\n                <div class=\"article-meta-item\"><strong>Publicado em:</strong> ${dataFormatada}</div>\n                <div class=\"article-meta-item\"><strong>Tempo de leitura:</strong> ${artigo.tempoLeitura}</div>\n            </div>\n            <div class=\"article-tags\">${tagsHTML}</div>\n        </div>\n        <div class=\"article-content\">${artigo.conteudoHTML}</div>\n        <div class=\"article-cta\">\n            <h3>${artigo.ctaTitulo}</h3><p>${artigo.ctaTexto}</p>\n            <div class=\"article-cta-buttons\">\n                <a href=\"https://wa.me/5511945617464?text=Ol%C3%A1,%20vim%20pelo%20site.\" class=\"btn btn-whatsapp\" target=\"_blank\" rel=\"noopener noreferrer\">\n                    <svg viewBox=\"0 0 24 24\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z\"/></svg>\n                    Falar no WhatsApp\n                </a>\n                <a href=\"../contato.html\" class=\"btn btn-primary\">Solicitar Consulta</a>\n            </div>\n        </div>\n    </div></article>\n    <footer class=\"footer\"><div class=\"container\"><div class=\"footer-content\">\n        <div class=\"footer-section\"><h3>Contato</h3><div class=\"footer-info\">\n            <p>R. Otávio Forghieri, 72 - Sala 63<br>Guarulhos - SP, 07090-070</p>\n            <p><strong>Tel:</strong> <a href=\"https://wa.me/5511945617464\">(11) 94561-7464</a></p>\n        </div></div>\n        <div class=\"footer-section\"><h3>Horário</h3><div class=\"footer-info\"><p>Seg-Sex: 09h às 18h</p></div></div>\n    </div><div class=\"footer-bottom\"><p>&copy; 2018 Fratazzi Advogados Associados.</p></div></div></footer>\n    <a href=\"https://wa.me/5511945617464\" class=\"whatsapp-float\" target=\"_blank\" aria-label=\"WhatsApp\">\n        <svg viewBox=\"0 0 24 24\" style=\"width:35px;height:35px;fill:white;\"><path d=\"M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z\"/></svg>\n    </a>\n    <script src=\"../js/menu.js\"><\\/script>\n</body></html>`;\n\n// Preparar como binário para upload FTP\nconst base64 = Buffer.from(html, 'utf-8').toString('base64');\n\nreturn [{\n  json: {\n    ...dadosCalculo,\n    artigo,\n    nomeArquivo\n  },\n  binary: {\n    artigoHtml: {\n      data: base64,\n      mimeType: 'text/html',\n      fileName: nomeArquivo\n    }\n  }\n}];"
+      },
+      "id": "a1b2c3d4-0004-0004-0004-000000000004",
+      "name": "Montar HTML do Artigo",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [900, 300]
+    },
+    {
+      "parameters": {
+        "operation": "upload",
+        "path": "=/public_html/artigos/{{ $json.nomeArquivo }}",
+        "binaryPropertyName": "artigoHtml"
+      },
+      "id": "a1b2c3d4-0005-0005-0005-000000000005",
+      "name": "Upload Artigo FTP",
+      "type": "n8n-nodes-base.ftp",
+      "typeVersion": 1,
+      "position": [1120, 300],
+      "credentials": {
+        "ftp": {
+          "name": "FTP Hostinger Fratazzi"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "download",
+        "path": "/public_html/js/blog.js",
+        "binaryPropertyName": "blogJs"
+      },
+      "id": "a1b2c3d4-0006-0006-0006-000000000006",
+      "name": "Download blog.js",
+      "type": "n8n-nodes-base.ftp",
+      "typeVersion": 1,
+      "position": [1340, 300],
+      "credentials": {
+        "ftp": {
+          "name": "FTP Hostinger Fratazzi"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Ler blog.js atual\nconst binaryData = $input.first().binary.blogJs;\nconst blogJsAtual = Buffer.from(binaryData.data, 'base64').toString('utf-8');\n\n// Dados do artigo gerado\nconst dadosArtigo = $('Montar HTML do Artigo').first().json;\nconst { categoria, numeroArtigo, dataISO, artigo, nomeArquivo } = dadosArtigo;\n\n// Encontrar o maior ID existente no blog.js\nconst idMatches = [...blogJsAtual.matchAll(/id:\\s*(\\d+)/g)];\nconst maiorId = idMatches.length > 0 ? Math.max(...idMatches.map(m => parseInt(m[1]))) : 100;\nconst novoId = maiorId + 1;\n\n// Montar nova entrada para o blog.js\nconst novaEntrada = `    {\n        id: ${novoId},\n        title: ${JSON.stringify(artigo.titulo)},\n        category: ${JSON.stringify(categoria.id)},\n        categoryLabel: ${JSON.stringify(categoria.label)},\n        excerpt: ${JSON.stringify(artigo.excerpt)},\n        content: ${JSON.stringify(artigo.excerpt)},\n        author: \"Dr. Rafael Fratazzi\",\n        date: \"${dataISO}\",\n        readTime: \"${artigo.tempoLeitura}\",\n        image: \"${categoria.emoji}\",\n        tags: ${JSON.stringify(artigo.tags)},\n        link: \"artigos/${nomeArquivo}\"\n    }`;\n\n// Inserir nova entrada no início do array blogPosts\nconst blogJsAtualizado = blogJsAtual.replace(\n  'const blogPosts = [',\n  `const blogPosts = [\\n${novaEntrada},`\n);\n\n// Preparar como binário para upload\nconst base64 = Buffer.from(blogJsAtualizado, 'utf-8').toString('base64');\n\nreturn [{\n  json: { novoId, nomeArquivo, titulo: artigo.titulo },\n  binary: {\n    blogJs: {\n      data: base64,\n      mimeType: 'application/javascript',\n      fileName: 'blog.js'\n    }\n  }\n}];"
+      },
+      "id": "a1b2c3d4-0007-0007-0007-000000000007",
+      "name": "Atualizar blog.js",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [1560, 300]
+    },
+    {
+      "parameters": {
+        "operation": "upload",
+        "path": "/public_html/js/blog.js",
+        "binaryPropertyName": "blogJs"
+      },
+      "id": "a1b2c3d4-0008-0008-0008-000000000008",
+      "name": "Upload blog.js FTP",
+      "type": "n8n-nodes-base.ftp",
+      "typeVersion": 1,
+      "position": [1780, 300],
+      "credentials": {
+        "ftp": {
+          "name": "FTP Hostinger Fratazzi"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const dados = $('Atualizar blog.js').first().json;\nconst categoria = $('Calcular Categoria e Numero').first().json.categoria;\n\nconsole.log('✅ Artigo publicado com sucesso!');\nconsole.log(`📄 Arquivo: ${dados.nomeArquivo}`);\nconsole.log(`📁 Categoria: ${categoria.label}`);\nconsole.log(`📝 Título: ${dados.titulo}`);\nconsole.log(`🔢 ID no blog.js: ${dados.novoId}`);\n\nreturn [{\n  json: {\n    status: 'sucesso',\n    arquivo: dados.nomeArquivo,\n    categoria: categoria.label,\n    titulo: dados.titulo,\n    idBlog: dados.novoId,\n    url: `https://fratazziadvogados.com.br/artigos/${dados.nomeArquivo}`\n  }\n}];"
+      },
+      "id": "a1b2c3d4-0009-0009-0009-000000000009",
+      "name": "Log de Sucesso",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [2000, 300]
+    }
+  ],
+  "connections": {
+    "Agendador Diario 8h": {
+      "main": [
+        [
+          {
+            "node": "Calcular Categoria e Numero",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Calcular Categoria e Numero": {
+      "main": [
+        [
+          {
+            "node": "Gerar Artigo com GPT",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Gerar Artigo com GPT": {
+      "main": [
+        [
+          {
+            "node": "Montar HTML do Artigo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Montar HTML do Artigo": {
+      "main": [
+        [
+          {
+            "node": "Upload Artigo FTP",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Upload Artigo FTP": {
+      "main": [
+        [
+          {
+            "node": "Download blog.js",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Download blog.js": {
+      "main": [
+        [
+          {
+            "node": "Atualizar blog.js",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Atualizar blog.js": {
+      "main": [
+        [
+          {
+            "node": "Upload blog.js FTP",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Upload blog.js FTP": {
+      "main": [
+        [
+          {
+            "node": "Log de Sucesso",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2026-03-29T00:00:00.000Z",
+  "versionId": "1"
+}
