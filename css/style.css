@@ -101,7 +101,7 @@ a {
    ============================================ */
 
 .header {
-    background: var(--azul-marinho);
+    background: #0a0e12;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
     position: sticky;
     top: 0;
