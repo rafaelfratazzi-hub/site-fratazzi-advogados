@@ -1,6 +1,34 @@
 // Base de dados de posts do blog
 const blogPosts = [
     {
+        id: 50,
+        title: "Decisões Recentes do STF e STJ: Impactos na Legislação Brasileira em 2026",
+        category: "novidades",
+        categoryLabel: "Novidades",
+        excerpt: "As decisões recentes do STF e STJ têm promovido mudanças significativas na interpretação da legislação brasileira. Entenda os impactos para cidadãos e empresas.",
+        content: "As decisões recentes do STF e STJ têm promovido mudanças significativas na interpretação da legislação brasileira.",
+        author: "Dr. Rafael Fratazzi",
+        date: "2026-03-31",
+        readTime: "7 min",
+        image: "📰",
+        tags: ["novidades jurídicas", "decisões recentes", "jurisprudência"],
+        link: "artigos/artigo-50.html"
+    },
+    {
+        id: 49,
+        title: "Crédito Consignado: Entenda Seus Direitos e Riscos em 2026",
+        category: "bancario",
+        categoryLabel: "Direito Bancário",
+        excerpt: "O crédito consignado é uma das modalidades de empréstimo mais utilizadas no Brasil. Conheça seus direitos, os riscos envolvidos e como se proteger em 2026.",
+        content: "O crédito consignado é uma das modalidades de empréstimo mais utilizadas no Brasil.",
+        author: "Dr. Rafael Fratazzi",
+        date: "2026-03-30",
+        readTime: "6 min",
+        image: "🏦",
+        tags: ["crédito consignado", "direito bancário", "empréstimo"],
+        link: "artigos/artigo-49.html"
+    },
+    {
         id: 48,
         title: "Reforma Tributária: O que Esperar das Mudanças em 2025/2026?",
         category: "tributario",
