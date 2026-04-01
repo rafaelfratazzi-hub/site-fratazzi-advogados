@@ -313,10 +313,6 @@
 
     <script src="js/menu.js"></script>
     <script src="js/blog.js"></script>
-    <script>
-        lucide.createIcons({ attrs: { 'stroke-width': 1.5 } });
-        // Ordena blogPosts por data antes do DOMContentLoaded renderizar
-        try { blogPosts.sort(function(a,b){ return new Date(b.date)-new Date(a.date); }); } catch(e){}
-    </script>
+    <script>lucide.createIcons({ attrs: { 'stroke-width': 1.5 } });</script>
 </body>
 </html>
