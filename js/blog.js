@@ -1,6 +1,48 @@
 // Base de dados de posts do blog
 const blogPosts = [
     {
+        id: 50,
+        title: "Decisões Recentes do STF e STJ: Impactos na Legislação Brasileira em 2026",
+        category: "novidades",
+        categoryLabel: "Novidades",
+        excerpt: "As decisões recentes do STF e STJ têm promovido mudanças significativas na interpretação da legislação brasileira. Entenda os impactos para cidadãos e empresas.",
+        content: "As decisões recentes do STF e STJ têm promovido mudanças significativas na interpretação da legislação brasileira.",
+        author: "Dr. Rafael Fratazzi",
+        date: "2026-03-31",
+        readTime: "7 min",
+        image: "📰",
+        tags: ["novidades jurídicas", "decisões recentes", "jurisprudência"],
+        link: "artigos/artigo-50.html"
+    },
+    {
+        id: 49,
+        title: "Crédito Consignado: Entenda Seus Direitos e Riscos em 2026",
+        category: "bancario",
+        categoryLabel: "Direito Bancário",
+        excerpt: "O crédito consignado é uma das modalidades de empréstimo mais utilizadas no Brasil. Conheça seus direitos, os riscos envolvidos e como se proteger em 2026.",
+        content: "O crédito consignado é uma das modalidades de empréstimo mais utilizadas no Brasil.",
+        author: "Dr. Rafael Fratazzi",
+        date: "2026-03-30",
+        readTime: "6 min",
+        image: "🏦",
+        tags: ["crédito consignado", "direito bancário", "empréstimo"],
+        link: "artigos/artigo-49.html"
+    },
+    {
+        id: 48,
+        title: "Reforma Tributária: O que Esperar das Mudanças em 2025/2026?",
+        category: "tributario",
+        categoryLabel: "Tributário",
+        excerpt: "A reforma tributária brasileira é um dos temas mais relevantes em discussão. Entenda as mudanças que estão por vir e como empresas e cidadãos devem se preparar.",
+        content: "A reforma tributária brasileira é um dos temas mais relevantes em discussão para os próximos anos. Com propostas já apresentadas, é fundamental que empresas e cidadãos compreendam as mudanças que podem ocorrer.",
+        author: "Dr. Rafael Fratazzi",
+        date: "2026-03-28",
+        readTime: "7 min",
+        image: "📊",
+        tags: ["Reforma Tributária", "Impostos", "Planejamento Tributário"],
+        link: "artigos/artigo-48.html"
+    },
+    {
         id: 1,
         title: "Novas Regras do Simples Nacional em 2024: O Que Sua Empresa Precisa Saber",
         category: "tributario",
@@ -351,11 +393,271 @@ const blogPosts = [
         image: "🏥",
         tags: ["Acidente de Trabalho", "CAT", "Indenização", "Estabilidade"]
     },
+    {
+        id: 28,
+        title: "Busca e Apreensão de Veículo: Como se Defender e Seus Direitos",
+        category: "bancario",
+        categoryLabel: "Direito Bancário",
+        excerpt: "A busca e apreensão de veículos financiados é regida pelo Decreto-Lei 911/1969. O processo é ágil, mas o devedor tem direitos importantes que devem ser exercidos em prazos curtos.",
+        content: "A busca e apreensão de veículos financiados é regida pelo Decreto-Lei 911/1969, alterado pela Lei 10.931/2004. É um processo ágil — mas o devedor tem direitos importantes que devem ser exercidos em prazos curtos.",
+        author: "Equipe Fratazzi",
+        date: "2025-01-02",
+        readTime: "7 min",
+        image: "🚗",
+        tags: ["Busca e Apreensão", "Veículo Financiado", "Direito Bancário"]
+    },
+    {
+        id: 29,
+        title: "Fraude Bancária: Pix, Cartão Clonado e Conta Hackeada — Quando o Banco Responde",
+        category: "bancario",
+        categoryLabel: "Direito Bancário",
+        excerpt: "As fraudes bancárias cresceram exponencialmente. A questão jurídica central: quando o banco é responsável pelo ressarcimento? A resposta está na Súmula 479 do STJ e no CDC.",
+        content: "As fraudes bancárias cresceram exponencialmente. A questão jurídica central: quando o banco é responsável pelo ressarcimento? A resposta está na Súmula 479 do STJ e no CDC.",
+        author: "Equipe Fratazzi",
+        date: "2024-12-28",
+        readTime: "8 min",
+        image: "🔐",
+        tags: ["Fraude Bancária", "Pix", "Cartão Clonado", "CDC"]
+    },
+    {
+        id: 30,
+        title: "Demissão Sem Justa Causa: Todos os Seus Direitos e Verbas Rescisórias",
+        category: "trabalhista",
+        categoryLabel: "Trabalhista",
+        excerpt: "A demissão sem justa causa garante ao trabalhador uma série de direitos previstos na CLT e na CF/88. Conhecer cada verba e seu cálculo correto é fundamental para não sair prejudicado.",
+        content: "A demissão sem justa causa garante ao trabalhador uma série de direitos previstos na CLT e na CF/88. Conhecer cada verba e seu cálculo correto é fundamental para não sair prejudicado.",
+        author: "Equipe Fratazzi",
+        date: "2025-01-20",
+        readTime: "8 min",
+        image: "📋",
+        tags: ["Demissão", "Verbas Rescisórias", "CLT", "Direitos Trabalhistas"]
+    },
+    {
+        id: 31,
+        title: "Assédio Moral no Trabalho: Como Identificar, Provar e Receber Indenização",
+        category: "trabalhista",
+        categoryLabel: "Trabalhista",
+        excerpt: "O assédio moral laboral é uma das causas mais frequentes de ações trabalhistas. A jurisprudência do TST é consolidada: assédio moral gera direito à indenização por danos morais.",
+        content: "O assédio moral laboral é uma das causas mais frequentes de ações trabalhistas. Embora não haja lei federal específica, a jurisprudência do TST é vasta e consolidada.",
+        author: "Equipe Fratazzi",
+        date: "2025-01-15",
+        readTime: "8 min",
+        image: "⚠️",
+        tags: ["Assédio Moral", "Indenização", "Danos Morais", "Trabalhista"]
+    },
+    {
+        id: 32,
+        title: "Horas Extras: Cálculo Correto, Banco de Horas e Quando Acionar a Justiça",
+        category: "trabalhista",
+        categoryLabel: "Trabalhista",
+        excerpt: "A CF/88 garante adicional de no mínimo 50% sobre a hora normal. A CLT limita a jornada a 8h diárias e 44h semanais — qualquer hora além disso não compensada é hora extra devida.",
+        content: "O art. 7º, XVI da CF/88 garante adicional de no mínimo 50% sobre a hora normal. A CLT limita a jornada a 8h diárias e 44h semanais — qualquer hora além disso, se não compensada, é hora extra devida.",
+        author: "Equipe Fratazzi",
+        date: "2025-01-10",
+        readTime: "7 min",
+        image: "⏰",
+        tags: ["Horas Extras", "Banco de Horas", "CLT", "Jornada de Trabalho"]
+    },
+    {
+        id: 33,
+        title: "Terceirização: Direitos dos Trabalhadores Após a Reforma Trabalhista",
+        category: "trabalhista",
+        categoryLabel: "Trabalhista",
+        excerpt: "A Lei 13.429/2017 e a Reforma Trabalhista liberaram a terceirização irrestrita, inclusive de atividade-fim. O STF referendou — mas os trabalhadores terceirizados mantêm direitos essenciais.",
+        content: "A Lei 13.429/2017 e a Reforma Trabalhista (Lei 13.467/2017) liberaram a terceirização irrestrita, inclusive de atividade-fim. O STF referendou no julgamento da ADPF 324 e do RE 958.252.",
+        author: "Equipe Fratazzi",
+        date: "2025-01-05",
+        readTime: "7 min",
+        image: "🤝",
+        tags: ["Terceirização", "Reforma Trabalhista", "CLT", "Direitos Trabalhistas"]
+    },
+    {
+        id: 34,
+        title: "Acidente de Trabalho: Direitos, Benefícios do INSS e Indenizações",
+        category: "trabalhista",
+        categoryLabel: "Trabalhista",
+        excerpt: "O acidente de trabalho aciona direitos protegidos pela Lei 8.213/1991 e pela CF/88. Muitos trabalhadores desconhecem tudo a que têm direito — INSS, estabilidade e indenização do empregador.",
+        content: "O acidente de trabalho aciona uma série de direitos protegidos pela Lei 8.213/1991 e pelo art. 7º, XXVIII da CF/88. Muitos trabalhadores desconhecem tudo a que têm direito.",
+        author: "Equipe Fratazzi",
+        date: "2024-12-28",
+        readTime: "8 min",
+        image: "🏥",
+        tags: ["Acidente de Trabalho", "INSS", "Benefícios", "Indenização"]
+    },
+    {
+        id: 35,
+        title: "Equiparação Salarial: Quando Você Tem Direito a Receber Igual ao Colega",
+        category: "trabalhista",
+        categoryLabel: "Trabalhista",
+        excerpt: "O princípio 'trabalho igual, salário igual' está no art. 461 da CLT e na Súmula 6 do TST. Permite ao trabalhador pleitear o mesmo salário de colega que exerce função idêntica.",
+        content: "O princípio 'trabalho igual, salário igual' está no art. 461 da CLT e na Súmula 6 do TST. Permite ao trabalhador pleitear o mesmo salário de colega que exerce função idêntica.",
+        author: "Equipe Fratazzi",
+        date: "2024-12-22",
+        readTime: "6 min",
+        image: "⚖️",
+        tags: ["Equiparação Salarial", "CLT", "TST", "Isonomia"]
+    },
+    {
+        id: 36,
+        title: "Rescisão Indireta: Quando Pedir Demissão com Direito a FGTS e Seguro-Desemprego",
+        category: "trabalhista",
+        categoryLabel: "Trabalhista",
+        excerpt: "A rescisão indireta (art. 483 da CLT) é a 'justa causa do empregador': quando ele comete falta grave, o trabalhador encerra o contrato e recebe todas as verbas da demissão sem justa causa.",
+        content: "A rescisão indireta (art. 483 da CLT) é a 'justa causa do empregador' — quando o empregador comete falta grave, o trabalhador pode encerrar o contrato e receber FGTS com multa de 40% e seguro-desemprego.",
+        author: "Equipe Fratazzi",
+        date: "2024-12-18",
+        readTime: "7 min",
+        image: "📄",
+        tags: ["Rescisão Indireta", "FGTS", "Seguro-Desemprego", "CLT"]
+    },
+    {
+        id: 37,
+        title: "Trabalho Home Office: Direitos, Jornada e Equipamentos",
+        category: "trabalhista",
+        categoryLabel: "Trabalhista",
+        excerpt: "O teletrabalho foi regulamentado pela CLT e aprimorado pela Lei 14.442/2022. O trabalhador remoto mantém direitos essenciais que muitos empregadores tentam suprimir.",
+        content: "O teletrabalho foi regulamentado pelos arts. 75-A a 75-E da CLT (Reforma Trabalhista/2017) e aprimorado pela Lei 14.442/2022. O trabalhador remoto mantém direitos essenciais que muitos empregadores tentam suprimir.",
+        author: "Equipe Fratazzi",
+        date: "2024-12-12",
+        readTime: "7 min",
+        image: "💻",
+        tags: ["Home Office", "Teletrabalho", "CLT", "Direitos Trabalhistas"]
+    },
+    {
+        id: 38,
+        title: "INSS: Aposentadoria por Incapacidade Permanente e Como Contestar Perícia",
+        category: "novidades",
+        categoryLabel: "Novidades",
+        excerpt: "A EC 103/2019 renomeou os benefícios por incapacidade. As regras de proteção foram mantidas — e o segurado tem direito a contestar perícia médica desfavorável do INSS.",
+        content: "A EC 103/2019 renomeou os benefícios por incapacidade: aposentadoria por invalidez virou Aposentadoria por Incapacidade Permanente, e auxílio-doença virou Benefício por Incapacidade Temporária.",
+        author: "Equipe Fratazzi",
+        date: "2025-01-22",
+        readTime: "8 min",
+        image: "🏛️",
+        tags: ["INSS", "Aposentadoria", "Incapacidade", "Perícia Médica"]
+    },
+    {
+        id: 39,
+        title: "LGPD em 2025: O Que Empresas e Consumidores Precisam Saber",
+        category: "novidades",
+        categoryLabel: "Novidades",
+        excerpt: "A LGPD está em plena vigência e a ANPD já aplica sanções de até R$ 50 milhões por infração. Em 2025, adequação é obrigação legal — não opção.",
+        content: "A LGPD (Lei 13.709/2018) está em plena vigência desde 2020, e a ANPD já aplica sanções de até R$ 50 milhões por infração. Em 2025, adequação é obrigação legal — não opção.",
+        author: "Equipe Fratazzi",
+        date: "2025-01-18",
+        readTime: "8 min",
+        image: "🔒",
+        tags: ["LGPD", "ANPD", "Proteção de Dados", "Compliance"]
+    },
+    {
+        id: 40,
+        title: "Divórcio Extrajudicial em Cartório: Como Fazer, Custos e Requisitos",
+        category: "novidades",
+        categoryLabel: "Novidades",
+        excerpt: "O divórcio extrajudicial permite que casais se divorciem em cartório sem processo judicial — em prazo muito menor e com custo reduzido, desde que não haja filhos menores ou incapazes.",
+        content: "O divórcio extrajudicial, criado pela Lei 11.441/2007 e previsto nos arts. 733 e 734 do CPC/2015, permite que casais se divorciem em cartório sem processo judicial.",
+        author: "Equipe Fratazzi",
+        date: "2025-01-15",
+        readTime: "7 min",
+        image: "📝",
+        tags: ["Divórcio", "Cartório", "Família", "Extrajudicial"]
+    },
+    {
+        id: 41,
+        title: "Usucapião: Como Regularizar Seu Imóvel por Usucapião Extrajudicial",
+        category: "novidades",
+        categoryLabel: "Novidades",
+        excerpt: "A usucapião permite que quem possui e usa um imóvel por determinado período adquira a propriedade — mesmo sem compra formal. A via extrajudicial em cartório é mais rápida e barata.",
+        content: "A usucapião, prevista nos arts. 1.238 a 1.244 do CC e no art. 183 da CF/88, permite que quem possui e usa um imóvel por determinado período adquira a propriedade — mesmo sem compra formal.",
+        author: "Equipe Fratazzi",
+        date: "2025-01-10",
+        readTime: "9 min",
+        image: "🏠",
+        tags: ["Usucapião", "Imóvel", "Regularização", "Cartório"]
+    },
+    {
+        id: 42,
+        title: "Inventário e Herança: Como Funciona, Prazos e Como Evitar Conflitos",
+        category: "novidades",
+        categoryLabel: "Novidades",
+        excerpt: "O inventário é o procedimento obrigatório para transferência do patrimônio do falecido aos herdeiros. Escolher o procedimento correto economiza tempo, dinheiro e evita conflitos familiares.",
+        content: "O inventário é o procedimento obrigatório para transferência do patrimônio do falecido aos herdeiros, regulado pelo Código Civil (arts. 1.784 e ss.) e pelo CPC (arts. 610 a 673).",
+        author: "Equipe Fratazzi",
+        date: "2025-01-05",
+        readTime: "8 min",
+        image: "🏛️",
+        tags: ["Inventário", "Herança", "Família", "Sucessão"]
+    },
+    {
+        id: 43,
+        title: "Como Abrir Empresa: Tipos Societários, Custos e Erros a Evitar",
+        category: "dicas-empresas",
+        categoryLabel: "Dicas para Empresas",
+        excerpt: "Abrir uma empresa envolve decisões jurídicas importantes que impactam toda a vida do negócio. A escolha do tipo societário e das cláusulas do contrato social pode gerar problemas custosos no futuro.",
+        content: "Abrir uma empresa envolve decisões jurídicas importantes que impactam toda a vida do negócio. A escolha do tipo societário, do regime tributário e das cláusulas do contrato social pode gerar problemas custosos no futuro.",
+        author: "Equipe Fratazzi",
+        date: "2025-01-20",
+        readTime: "8 min",
+        image: "🏢",
+        tags: ["Abertura de Empresa", "Tipos Societários", "Contrato Social", "Empresas"]
+    },
+    {
+        id: 44,
+        title: "Contratos Empresariais: Cláusulas Essenciais para Proteger Seu Negócio",
+        category: "dicas-empresas",
+        categoryLabel: "Dicas para Empresas",
+        excerpt: "Um contrato empresarial mal redigido custa muito mais caro do que os honorários economizados. Saiba quais cláusulas são essenciais para proteger seu negócio de inadimplência e litígios.",
+        content: "Um contrato empresarial mal redigido custa muito mais caro do que os honorários economizados. Cláusulas ambíguas, ausência de multas e falta de previsão para inadimplência são armadilhas comuns.",
+        author: "Equipe Fratazzi",
+        date: "2025-01-15",
+        readTime: "8 min",
+        image: "📑",
+        tags: ["Contratos", "Cláusulas Essenciais", "Empresas", "Proteção Jurídica"]
+    },
+    {
+        id: 45,
+        title: "Recuperação Judicial: Quando Pedir, Como Funciona e Prazos",
+        category: "dicas-empresas",
+        categoryLabel: "Dicas para Empresas",
+        excerpt: "A Lei 11.101/2005 permite que empresas em dificuldade se reestruturem judicialmente, preservando empregos e a função social da empresa — desde que haja viabilidade econômica.",
+        content: "A Lei 11.101/2005, atualizada pela Lei 14.112/2020, permite que empresas em dificuldade se reestruturem judicialmente, preservando empregos e a função social da empresa.",
+        author: "Equipe Fratazzi",
+        date: "2025-01-10",
+        readTime: "9 min",
+        image: "🔄",
+        tags: ["Recuperação Judicial", "Lei 11.101", "Reestruturação", "Empresas"]
+    },
+    {
+        id: 46,
+        title: "Penhora Online SISBAJUD: Como Funciona e Como se Defender",
+        category: "dicas-empresas",
+        categoryLabel: "Dicas para Empresas",
+        excerpt: "O SISBAJUD permite que juízes bloqueiem valores em contas bancárias em minutos, sem aviso prévio. Entender como funciona é fundamental para qualquer empresário ou devedor judicial.",
+        content: "O SISBAJUD (Sistema de Busca de Ativos do Poder Judiciário) permite que juízes bloqueiem valores em contas bancárias em minutos, sem aviso prévio.",
+        author: "Equipe Fratazzi",
+        date: "2025-01-05",
+        readTime: "7 min",
+        image: "🏦",
+        tags: ["SISBAJUD", "Penhora Online", "Bloqueio Judicial", "Empresas"]
+    },
+    {
+        id: 47,
+        title: "Responsabilidade dos Sócios: Quando Seu Patrimônio Pessoal Responde por Dívidas da Empresa",
+        category: "dicas-empresas",
+        categoryLabel: "Dicas para Empresas",
+        excerpt: "Constituir uma empresa nem sempre separa completamente o patrimônio dos sócios das dívidas da pessoa jurídica. Saiba em quais situações seu patrimônio pessoal pode ser atingido.",
+        content: "Constituir uma empresa nem sempre separa completamente o patrimônio dos sócios das dívidas da pessoa jurídica. Há situações específicas em que o patrimônio pessoal dos sócios responde pelas obrigações da empresa.",
+        author: "Equipe Fratazzi",
+        date: "2024-12-28",
+        readTime: "8 min",
+        image: "🛡️",
+        tags: ["Responsabilidade dos Sócios", "Desconsideração da Personalidade", "Empresas", "Patrimônio"]
+    },
 ];
 
-// Função para formatar data
+// Função para formatar data (T12:00:00 evita problema de fuso UTC)
 function formatDate(dateString) {
-    const date = new Date(dateString);
+    const date = new Date(dateString + 'T12:00:00');
     const options = { year: 'numeric', month: 'long', day: 'numeric' };
     return date.toLocaleDateString('pt-BR', options);
 }
@@ -382,7 +684,7 @@ function createPostCard(post) {
                 </div>
             </div>
             <div class="post-card-footer">
-                <a href="artigos/artigo-${post.id}.html" class="post-read-more" data-post-id="${post.id}">
+                <a href="${post.link || 'artigos/artigo-' + post.id + '.html'}" class="post-read-more" data-post-id="${post.id}">
                     Ler mais
                     <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -397,12 +699,13 @@ function createPostCard(post) {
 function renderPosts(posts) {
     const container = document.getElementById('postsContainer');
     const noResults = document.getElementById('noResults');
-    
+
     if (posts.length === 0) {
         container.innerHTML = '';
         noResults.style.display = 'block';
     } else {
-        container.innerHTML = posts.map(post => createPostCard(post)).join('');
+        const sorted = [...posts].sort((a, b) => new Date(b.date) - new Date(a.date));
+        container.innerHTML = sorted.map(post => createPostCard(post)).join('');
         noResults.style.display = 'none';
     }
 }
@@ -441,19 +744,11 @@ function filterPosts() {
     renderPosts(filtered);
 }
 
-// Event Listeners
-document.addEventListener('DOMContentLoaded', function() {
-    // Verificar se há posts bancários
-    const bancarioPosts = blogPosts.filter(post => post.category === 'bancario');
-    if (bancarioPosts.length === 0) {
-        console.warn('ATENÇÃO: Nenhum artigo bancário encontrado no array blogPosts!');
-    } else {
-        console.log('Artigos bancários encontrados:', bancarioPosts.length);
-    }
-    
-    // Renderizar todos os posts inicialmente
+// Inicializar blog
+function initBlog() {
+    // Renderizar todos os posts
     renderPosts(blogPosts);
-    
+
     // Filtro por categoria
     document.querySelectorAll('.category-btn').forEach(btn => {
         btn.addEventListener('click', function() {
@@ -462,24 +757,26 @@ document.addEventListener('DOMContentLoaded', function() {
             filterPosts();
         });
     });
-    
+
     // Busca
     const searchInput = document.getElementById('blogSearch');
     const searchBtn = document.querySelector('.blog-search-btn');
-    
+
     if (searchInput) {
         searchInput.addEventListener('input', filterPosts);
         searchInput.addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                filterPosts();
-            }
+            if (e.key === 'Enter') filterPosts();
         });
     }
-    
     if (searchBtn) {
         searchBtn.addEventListener('click', filterPosts);
     }
-    
-    // Links "Ler mais" já estão configurados com href nos cards
-});
+}
+
+// Executar imediatamente se DOM já está pronto, senão aguardar
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initBlog);
+} else {
+    initBlog();
+}
 
