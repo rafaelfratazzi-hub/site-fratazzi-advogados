@@ -314,14 +314,9 @@
     <script src="js/menu.js"></script>
     <script src="js/blog.js"></script>
     <script>
-        // Ordena posts do mais recente para o mais antigo (sem alterar blog.js)
-        (function() {
-            const _orig = renderPosts;
-            window.renderPosts = function(posts) {
-                _orig([...posts].sort((a, b) => new Date(b.date) - new Date(a.date)));
-            };
-        })();
         lucide.createIcons({ attrs: { 'stroke-width': 1.5 } });
+        // Ordena blogPosts por data antes do DOMContentLoaded renderizar
+        try { blogPosts.sort(function(a,b){ return new Date(b.date)-new Date(a.date); }); } catch(e){}
     </script>
 </body>
 </html>
