@@ -313,6 +313,15 @@
 
     <script src="js/menu.js"></script>
     <script src="js/blog.js"></script>
-    <script>lucide.createIcons({ attrs: { 'stroke-width': 1.5 } });</script>
+    <script>
+        // Ordena posts do mais recente para o mais antigo (sem alterar blog.js)
+        (function() {
+            const _orig = renderPosts;
+            window.renderPosts = function(posts) {
+                _orig([...posts].sort((a, b) => new Date(b.date) - new Date(a.date)));
+            };
+        })();
+        lucide.createIcons({ attrs: { 'stroke-width': 1.5 } });
+    </script>
 </body>
 </html>
