@@ -331,10 +331,16 @@
         .avaliacao-author strong { color: white; font-weight: 600; }
         .avaliacao-text { font-size: 1.125rem; color: rgba(255,255,255,0.9); line-height: 1.6; flex: 1; }
         @media (max-width: 767px) {
-            .nav-menu { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; background: rgba(10,14,18,0.98); backdrop-blur-md; padding: 1rem; gap: 0.5rem; border-b border-white/10; }
+            .nav-menu { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; background: rgba(10,14,18,0.98); backdrop-filter: blur(12px); padding: 1rem; gap: 0.5rem; border-bottom: 1px solid rgba(255,255,255,0.1); }
             .nav-menu.active { display: flex !important; }
             .nav-menu li { width: 100%; }
             .nav-menu .nav-link { display: block; padding: 0.75rem 1rem; }
+            .animate-on-scroll {
+                animation: none !important;
+                opacity: 1 !important;
+                transform: none !important;
+                filter: none !important;
+            }
         }
 
         /* === Hero Video Hover Effect === */

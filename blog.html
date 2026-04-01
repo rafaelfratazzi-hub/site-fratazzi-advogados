@@ -131,6 +131,15 @@
             .nav-menu.active { display: flex !important; }
             .nav-menu li { width: 100%; }
             .nav-menu .nav-link { display: block; padding: 0.75rem 1rem; }
+            /* Garante visibilidade do conteúdo no mobile — as animações de scroll
+               dependem do IntersectionObserver que pode não disparar corretamente
+               em telas pequenas, deixando todo o conteúdo invisível (opacity:0) */
+            .animate-on-scroll {
+                animation: none !important;
+                opacity: 1 !important;
+                transform: none !important;
+                filter: none !important;
+            }
         }
     </style>
     <script>
