@@ -1,6 +1,34 @@
 // Base de dados de posts do blog
 const blogPosts = [
     {
+        id: 52,
+        title: "Assédio Moral no Trabalho: Entenda Seus Direitos e Proteções em 2026",
+        category: "trabalhista",
+        categoryLabel: "Trabalhista",
+        excerpt: "O assédio moral está em foco no direito trabalhista. Compreenda o que caracteriza essa prática, seus efeitos na saúde do trabalhador e como se defender.",
+        content: "O assédio moral está em foco no direito trabalhista.",
+        author: "Dr. Rafael Fratazzi",
+        date: "2026-04-02",
+        readTime: "5 min",
+        image: "⚖️",
+        tags: ["direito trabalhista", "assédio moral", "CLT"],
+        link: "artigos/artigo-52.html"
+    },
+    {
+        id: 51,
+        title: "Importância do Compliance na Abertura e Gestão de Empresas em 2026",
+        category: "empresarial",
+        categoryLabel: "Dicas para Empresas",
+        excerpt: "O compliance se tornou essencial para empresas de todos os portes. Entenda como implementar boas práticas de governança na abertura e gestão do seu negócio em 2026.",
+        content: "O compliance se tornou essencial para empresas de todos os portes.",
+        author: "Dr. Rafael Fratazzi",
+        date: "2026-04-01",
+        readTime: "6 min",
+        image: "🏢",
+        tags: ["compliance", "gestão empresarial", "governança"],
+        link: "artigos/artigo-51.html"
+    },
+    {
         id: 50,
         title: "Decisões Recentes do STF e STJ: Impactos na Legislação Brasileira em 2026",
         category: "novidades",
