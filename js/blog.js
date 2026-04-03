@@ -1,6 +1,20 @@
 // Base de dados de posts do blog
 const blogPosts = [
     {
+        id: 53,
+        title: "Recuperação de Créditos: Estratégias Eficazes em 2026",
+        category: "creditos",
+        categoryLabel: "Recuperação de Créditos",
+        excerpt: "Com o aumento da inadimplência, empresas precisam adotar estratégias eficazes de recuperação de créditos. Entenda como proceder sem infringir direitos dos devedores.",
+        content: "Com o aumento da inadimplência, empresas precisam adotar estratégias eficazes de recuperação de créditos.",
+        author: "Dr. Rafael Fratazzi",
+        date: "2026-04-03",
+        readTime: "6 min",
+        image: "💰",
+        tags: ["recuperação de créditos", "cobrança", "dívidas"],
+        link: "artigos/artigo-53.html"
+    },
+    {
         id: 52,
         title: "Assédio Moral no Trabalho: Entenda Seus Direitos e Proteções em 2026",
         category: "trabalhista",
