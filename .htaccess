@@ -1,3 +1,10 @@
+# Desabilitar cache para blog.js (atualizado diariamente)
+<FilesMatch "blog\.js$">
+    Header set Cache-Control "no-cache, no-store, must-revalidate"
+    Header set Pragma "no-cache"
+    Header set Expires 0
+</FilesMatch>
+
 # MIME Types para vídeo
 AddType video/mp4 .mp4
 AddType video/webm .webm
