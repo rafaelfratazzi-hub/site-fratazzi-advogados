@@ -1,9 +1,15 @@
-# Desabilitar cache para blog.js (atualizado diariamente)
-<FilesMatch "blog\.js$">
-    Header set Cache-Control "no-cache, no-store, must-revalidate"
-    Header set Pragma "no-cache"
-    Header set Expires 0
+# Desabilitar cache para blog.js e blog.html (atualizados diariamente)
+<FilesMatch "(blog\.js|blog\.html)$">
+    Header always set Cache-Control "no-cache, no-store, must-revalidate"
+    Header always set Pragma "no-cache"
+    Header always set Expires "0"
 </FilesMatch>
+
+# LiteSpeed Cache: desabilitar para blog.js e blog.html
+<IfModule LiteSpeed>
+    CacheDisable /js/blog.js
+    CacheDisable /blog.html
+</IfModule>
 
 # MIME Types para vídeo
 AddType video/mp4 .mp4
