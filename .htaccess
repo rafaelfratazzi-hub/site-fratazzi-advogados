@@ -1,13 +1,13 @@
-# Desabilitar cache para blog.js e blog.html (atualizados diariamente)
-<FilesMatch "(blog\.js|blog\.html)$">
+# Desabilitar cache para blog-posts.js e blog.html (atualizados diariamente)
+<FilesMatch "(blog-posts\.js|blog\.html)$">
     Header always set Cache-Control "no-cache, no-store, must-revalidate"
     Header always set Pragma "no-cache"
     Header always set Expires "0"
 </FilesMatch>
 
-# LiteSpeed Cache: desabilitar para blog.js e blog.html
+# LiteSpeed Cache: desabilitar para blog-posts.js e blog.html
 <IfModule LiteSpeed>
-    CacheDisable /js/blog.js
+    CacheDisable /js/blog-posts.js
     CacheDisable /blog.html
 </IfModule>
 
