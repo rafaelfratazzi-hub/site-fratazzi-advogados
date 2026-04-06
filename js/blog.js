@@ -1,6 +1,48 @@
 // Base de dados de posts do blog
 const blogPosts = [
     {
+        id: 56,
+        title: "Mudanças Recentes na Jurisprudência do STF: Impactos em 2026",
+        category: "novidades",
+        categoryLabel: "Novidades",
+        excerpt: "O STF tem proferido decisões que alteram significativamente a interpretação de direitos fundamentais e legislações diversas. Entenda os principais impactos em 2026.",
+        content: "O STF tem proferido decisões que alteram significativamente a interpretação de direitos fundamentais.",
+        author: "Dr. Rafael Fratazzi",
+        date: "2026-04-06",
+        readTime: "7 min",
+        image: "⚖️",
+        tags: ["STF", "jurisprudência", "direitos fundamentais"],
+        link: "artigos/artigo-56.html"
+    },
+    {
+        id: 55,
+        title: "Direitos do Consumidor no E-commerce: O Que Mudou em 2026",
+        category: "consumidor",
+        categoryLabel: "Direito do Consumidor",
+        excerpt: "As compras online cresceram e com elas os conflitos de consumo digital. Saiba quais são seus direitos no e-commerce e como se proteger de abusos em 2026.",
+        content: "As compras online cresceram e com elas os conflitos de consumo digital.",
+        author: "Dr. Rafael Fratazzi",
+        date: "2026-04-05",
+        readTime: "5 min",
+        image: "🛒",
+        tags: ["direito do consumidor", "e-commerce", "CDC"],
+        link: "artigos/artigo-55.html"
+    },
+    {
+        id: 54,
+        title: "Divórcio Consensual e Litigioso: Entenda o Processo em 2026",
+        category: "familia",
+        categoryLabel: "Direito de Família",
+        excerpt: "O divórcio pode ser um processo rápido e menos traumático quando as partes chegam a um acordo. Entenda as diferenças entre consensual e litigioso.",
+        content: "O divórcio pode ser um processo rápido e menos traumático quando as partes chegam a um acordo.",
+        author: "Dr. Rafael Fratazzi",
+        date: "2026-04-04",
+        readTime: "6 min",
+        image: "👨‍👩‍👧",
+        tags: ["divórcio", "direito de família", "partilha de bens"],
+        link: "artigos/artigo-54.html"
+    },
+    {
         id: 53,
         title: "Recuperação de Créditos: Estratégias Eficazes em 2026",
         category: "creditos",
